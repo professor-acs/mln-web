@@ -15,11 +15,12 @@ function InequalityChart() {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-dark-800 border border-gold-muted rounded-xl p-4 shadow-2xl">
-          <p className="font-mono text-gold-DEFAULT font-bold mb-2">Năm {label}</p>
+        <div className="bg-slate-900 border border-white/5 p-4 shadow-2xl">
+          <p className="font-mono text-accent text-[10px] uppercase tracking-widest mb-2">Year {label}</p>
           {payload.map((p: any, i: number) => (
-            <p key={i} className="text-sm font-inter" style={{ color: p.color }}>
-              {p.name}: <span className="font-bold">{p.value}%</span>
+            <p key={i} className="text-xs font-sans text-slate-300 flex justify-between gap-4">
+              <span className="opacity-60">{p.name}:</span>
+              <span className="font-bold text-slate-100">{p.value}%</span>
             </p>
           ))}
         </div>
@@ -29,66 +30,62 @@ function InequalityChart() {
   }
 
   return (
-    <div ref={chartRef} className="glass-card p-6 mt-8">
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+    <div ref={chartRef} className="p-10 glass-card border-white/5 mt-20">
+      <div className="flex flex-wrap items-center justify-between gap-8 mb-12">
         <div>
-          <h4 className="font-cinzel text-lg font-bold text-cream mb-1">
-            Bất Bình Đẳng Tài Sản Toàn Cầu (1980–2024)
+          <h4 className="font-serif text-2xl text-slate-100 mb-2">
+            Bất Bình Đẳng Tài Sản Toàn Cầu
           </h4>
-          <p className="text-xs font-mono text-cream/40">Nguồn: Oxfam Global Inequality Report</p>
+          <p className="text-[9px] font-mono text-slate-500 uppercase tracking-[0.3em]">
+            Data Source: World Inequality Database (1980–2024)
+          </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-1 p-1 bg-white/5 rounded-sm">
           {(['area', 'bar'] as const).map((t) => (
             <button
               key={t}
               onClick={() => setChartType(t)}
-              className={`px-3 py-1 rounded-full text-xs font-mono transition-all ${
+              className={`px-6 py-2 rounded-sm text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
                 chartType === t
-                  ? 'bg-gold-DEFAULT text-dark-DEFAULT font-bold'
-                  : 'border border-gold-muted text-gold-DEFAULT'
+                  ? 'bg-accent text-dark font-bold'
+                  : 'text-slate-500 hover:text-slate-300'
               }`}
             >
-              {t === 'area' ? 'Đường' : 'Cột'}
+              {t}
             </button>
           ))}
         </div>
       </div>
 
-      <div style={{ height: 280 }}>
+      <div style={{ height: 360 }}>
         <ResponsiveContainer width="100%" height="100%">
           {chartType === 'area' ? (
-            <AreaChart data={realityData.chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+            <AreaChart data={realityData.chartData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
               <defs>
-                <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#c9a84c" stopOpacity={0.4} />
-                  <stop offset="95%" stopColor="#c9a84c" stopOpacity={0} />
-                </linearGradient>
-                <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#00d4ff" stopOpacity={0.4} />
-                  <stop offset="95%" stopColor="#00d4ff" stopOpacity={0} />
+                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#d4af37" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="#d4af37" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-              <XAxis dataKey="name" stroke="#f0ece450" tick={{ fontFamily: 'JetBrains Mono', fontSize: 11 }} />
-              <YAxis stroke="#f0ece450" tick={{ fontFamily: 'JetBrains Mono', fontSize: 11 }}
-                tickFormatter={(v) => `${v}%`} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#ffffff" strokeOpacity={0.03} vertical={false} />
+              <XAxis dataKey="name" stroke="#475569" tick={{ fontFamily: 'Space Grotesk', fontSize: 9 }} axisLine={false} tickLine={false} dy={10} />
+              <YAxis stroke="#475569" tick={{ fontFamily: 'Space Grotesk', fontSize: 9 }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
               <Tooltip content={<CustomTooltip />} />
-              <Legend wrapperStyle={{ fontFamily: 'Inter', fontSize: 12, color: '#f0ece4aa' }} />
-              <Area type="monotone" dataKey="top1" name="Top 1% giàu nhất"
-                stroke="#c9a84c" fill="url(#goldGrad)" strokeWidth={2.5} dot={{ fill: '#c9a84c', r: 4 }} />
-              <Area type="monotone" dataKey="bottom50" name="Bottom 50% nghèo nhất"
-                stroke="#00d4ff" fill="url(#blueGrad)" strokeWidth={2.5} dot={{ fill: '#00d4ff', r: 4 }} />
+              <Legend verticalAlign="top" align="right" height={40} iconType="circle"
+                wrapperStyle={{ fontFamily: 'Space Grotesk', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', paddingBottom: '20px' }} />
+              <Area type="monotone" dataKey="top1" name="Top 1%" stroke="#d4af37" fill="url(#areaGrad)" strokeWidth={2} dot={{ fill: '#d4af37', r: 3, strokeWidth: 0 }} activeDot={{ r: 5, strokeWidth: 0 }} />
+              <Area type="monotone" dataKey="bottom50" name="Bottom 50%" stroke="#475569" fill="transparent" strokeWidth={1} strokeDasharray="4 4" dot={{ fill: '#475569', r: 2, strokeWidth: 0 }} />
             </AreaChart>
           ) : (
-            <BarChart data={realityData.chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-              <XAxis dataKey="name" stroke="#f0ece450" tick={{ fontFamily: 'JetBrains Mono', fontSize: 11 }} />
-              <YAxis stroke="#f0ece450" tick={{ fontFamily: 'JetBrains Mono', fontSize: 11 }}
-                tickFormatter={(v) => `${v}%`} />
+            <BarChart data={realityData.chartData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#ffffff" strokeOpacity={0.03} vertical={false} />
+              <XAxis dataKey="name" stroke="#475569" tick={{ fontFamily: 'Space Grotesk', fontSize: 9 }} axisLine={false} tickLine={false} dy={10} />
+              <YAxis stroke="#475569" tick={{ fontFamily: 'Space Grotesk', fontSize: 9 }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
               <Tooltip content={<CustomTooltip />} />
-              <Legend wrapperStyle={{ fontFamily: 'Inter', fontSize: 12, color: '#f0ece4aa' }} />
-              <Bar dataKey="top1" name="Top 1% giàu nhất" fill="#c9a84c" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="bottom50" name="Bottom 50% nghèo nhất" fill="#00d4ff" radius={[4, 4, 0, 0]} />
+              <Legend verticalAlign="top" align="right" height={40} iconType="circle"
+                wrapperStyle={{ fontFamily: 'Space Grotesk', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', paddingBottom: '20px' }} />
+              <Bar dataKey="top1" name="Top 1%" fill="#d4af37" radius={[2, 2, 0, 0]} barSize={32} />
+              <Bar dataKey="bottom50" name="Bottom 50%" fill="#1e293b" radius={[2, 2, 0, 0]} barSize={32} />
             </BarChart>
           )}
         </ResponsiveContainer>
@@ -102,170 +99,131 @@ function StatCard({ stat, index }: { stat: typeof realityData.stats[0]; index: n
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={inView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="glass-card p-6 text-center"
-      style={{ borderColor: `${stat.color}40` }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, delay: index * 0.15 }}
+      className="p-12 border-r border-white/5 last:border-0 flex flex-col items-center md:items-start"
     >
-      <div className="font-cinzel text-4xl sm:text-5xl font-black mb-2" style={{ color: stat.color }}>
+      <div className="font-serif text-6xl font-medium text-accent mb-4 tracking-tighter">
         {inView ? (
           <CountUp
             end={stat.value}
-            duration={2}
+            duration={3}
             decimals={stat.value % 1 !== 0 ? 1 : 0}
             suffix={stat.suffix}
           />
         ) : '0'}
       </div>
-      <p className="text-xs font-inter text-cream/60 leading-relaxed">{stat.label}</p>
+      <p className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.4em] text-center md:text-left">
+        {stat.label}
+      </p>
     </motion.div>
   )
 }
 
 export default function Reality21() {
   const [activeCaseStudy, setActiveCaseStudy] = useState(0)
-  const [headerRef, headerInView] = useInView({ threshold: 0.2, triggerOnce: true })
   const activeCase = realityData.caseStudies[activeCaseStudy]
 
   return (
-    <section id="reality" className="py-24 px-6 relative overflow-hidden">
-      {/* Tech background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div style={{
-          background: 'radial-gradient(ellipse at 80% 20%, rgba(0,212,255,0.05), transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.05), transparent 60%)',
-          position: 'absolute', inset: 0,
-        }} />
-        {/* Grid lines */}
-        <div style={{
-          backgroundImage: 'linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-          position: 'absolute', inset: 0,
-        }} />
-      </div>
-
-      <div className="max-w-6xl mx-auto relative">
+    <section id="reality" className="py-40 px-6 relative overflow-hidden bg-dark">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <motion.div
-          ref={headerRef}
-          initial={{ opacity: 0, y: 40 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center gap-2 mb-4 text-xs font-mono tracking-widest uppercase border rounded-full px-4 py-2"
-            style={{ borderColor: 'rgba(0,212,255,0.3)', color: '#00d4ff' }}>
-            <span className="w-2 h-2 rounded-full bg-neon-blue animate-pulse" />
-            <span>Block 03 · Thực tiễn thế kỷ 21</span>
-          </div>
-          <h2 className="font-cinzel text-3xl sm:text-5xl font-black mb-4">
-            <span className="neon-text">Giai Cấp Thời Số</span>
+        <div className="mb-32">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-4 mb-8"
+          >
+            <div className="h-[1px] w-12 bg-accent/60" />
+            <span className="text-accent font-mono text-[10px] tracking-[0.4em] uppercase">
+              Section 04: Digital Era Reality
+            </span>
+          </motion.div>
+          
+          <h2 className="font-serif text-5xl md:text-7xl text-slate-100 mb-8 leading-[1.1]">
+            Giai Cấp Trong <br />
+            <span className="text-accent italic">Thời Đại Số</span>
           </h2>
-          <p className="font-inter text-cream/60 max-w-2xl mx-auto">
-            Bản chất bóc lột giai cấp không biến mất — nó khoác lên mình bộ vest tech startup và di chuyển trên cơ sở hạ tầng kỹ thuật số
+          
+          <p className="font-sans text-slate-400 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
+            Bản chất của bóc lột không biến mất — nó chỉ tiến hóa sang những hình thái tinh vi 
+            dưới sự hỗ trợ của thuật toán và hạ tầng kỹ thuật số.
           </p>
-          <div className="w-16 h-px mx-auto mt-6"
-            style={{ background: 'linear-gradient(90deg, transparent, #00d4ff, transparent)' }} />
-        </motion.div>
+        </div>
 
-        {/* Stat Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 glass-card border-white/5 mb-32">
           {realityData.stats.map((s, i) => (
             <StatCard key={i} stat={s} index={i} />
           ))}
         </div>
 
-        {/* Case Study Tabs */}
-        <div className="flex gap-3 mb-6">
-          {realityData.caseStudies.map((c, i) => (
-            <button
-              key={c.id}
-              onClick={() => setActiveCaseStudy(i)}
-              className={`flex items-center gap-2 px-5 py-3 rounded-xl font-inter font-semibold text-sm transition-all duration-300 ${
-                activeCaseStudy === i
-                  ? 'text-dark-DEFAULT'
-                  : 'glass-card text-cream/60 hover:text-cream'
-              }`}
-              style={activeCaseStudy === i ? {
-                background: `linear-gradient(135deg, ${c.tagColor}, ${c.tagColor}cc)`,
-                boxShadow: `0 0 30px ${c.tagColor}40`,
-              } : {}}
-            >
-              <span>{c.icon}</span>
-              <span className="hidden sm:inline">{c.tag}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Active Case Study */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeCase.id}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.4 }}
-            className="glass-card p-8"
-            style={{ borderColor: `${activeCase.tagColor}40` }}
-          >
-            <div className="flex items-start gap-4 mb-6">
-              <span className="text-4xl">{activeCase.icon}</span>
-              <div>
-                <span className="text-xs font-mono px-3 py-1 rounded-full border"
-                  style={{ borderColor: `${activeCase.tagColor}50`, color: activeCase.tagColor }}>
-                  {activeCase.tag}
-                </span>
-                <h3 className="font-cinzel text-xl sm:text-2xl font-bold mt-2 text-cream">
-                  {activeCase.title}
-                </h3>
-              </div>
-            </div>
-
-            <p className="font-inter text-cream/70 text-sm leading-relaxed mb-8 italic border-l-2 pl-4"
-              style={{ borderColor: activeCase.tagColor }}>
-              {activeCase.intro}
+        {/* Case Study Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          {/* Tabs */}
+          <div className="lg:col-span-4 space-y-3">
+            <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.5em] mb-8">
+              Analytical Studies
             </p>
+            {realityData.caseStudies.map((c, i) => (
+              <button
+                key={c.id}
+                onClick={() => setActiveCaseStudy(i)}
+                className={`w-full flex items-center gap-6 p-6 rounded-sm border transition-all duration-500 text-left ${
+                  activeCaseStudy === i
+                    ? 'bg-accent border-accent text-dark shadow-[0_0_30px_rgba(212,175,55,0.2)]'
+                    : 'bg-transparent border-white/5 text-slate-500 hover:border-white/20 hover:text-slate-300'
+                }`}
+              >
+                <span className="text-2xl">{c.icon}</span>
+                <span className="font-serif font-medium text-lg tracking-tight">{c.tag}</span>
+              </button>
+            ))}
+          </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {activeCase.analysis.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="p-4 rounded-xl border bg-white/3"
-                  style={{ borderColor: `${activeCase.tagColor}25` }}
-                >
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xl">{item.icon}</span>
-                    <p className="text-xs font-bold font-mono" style={{ color: activeCase.tagColor }}>
-                      {item.label}
-                    </p>
+          {/* Content */}
+          <div className="lg:col-span-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCase.id}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.6 }}
+                className="glass-card border-white/5 p-12 min-h-[560px] flex flex-col"
+              >
+                <div className="flex items-center gap-6 mb-12">
+                  <span className="text-5xl grayscale opacity-40">{activeCase.icon}</span>
+                  <div>
+                    <h3 className="font-serif text-3xl text-slate-100">{activeCase.title}</h3>
+                    <div className="h-[1px] w-12 bg-accent/40 mt-3" />
                   </div>
-                  <p className="text-sm font-inter text-cream/70 leading-relaxed">{item.value}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </AnimatePresence>
+                </div>
+
+                <p className="font-serif text-xl text-slate-400 italic mb-12 leading-relaxed pl-8 border-l border-accent/20">
+                  {activeCase.intro}
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-auto">
+                  {activeCase.analysis.map((item, i) => (
+                    <div key={i} className="p-8 bg-white/[0.02] border border-white/5 rounded-sm hover:border-accent/10 transition-colors duration-500">
+                      <div className="flex items-center gap-4 mb-4">
+                        <span className="text-xl opacity-40">{item.icon}</span>
+                        <span className="text-[9px] font-mono text-accent uppercase tracking-[0.4em]">{item.label}</span>
+                      </div>
+                      <p className="text-sm text-slate-300 leading-relaxed font-light">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
 
         {/* Inequality Chart */}
         <InequalityChart />
-
-        {/* Marx conclusion */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-10 p-6 rounded-2xl text-center"
-          style={{ background: 'linear-gradient(135deg, rgba(0,212,255,0.08), rgba(201,168,76,0.08))', border: '1px solid rgba(0,212,255,0.2)' }}
-        >
-          <p className="font-cinzel text-lg text-cream/90">
-            Câu hỏi của thế kỷ 21: <span className="neon-text font-bold">"Ai sở hữu AI?"</span>{' '}
-            chính là câu hỏi về <span className="gold-text font-bold">quyền lực giai cấp</span> của thời đại mới.
-          </p>
-        </motion.div>
       </div>
     </section>
   )

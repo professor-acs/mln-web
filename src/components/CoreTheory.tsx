@@ -1,164 +1,163 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { theoryCards } from '../data/content'
 
-const colorConfig = {
-  gold: {
-    accent: '#c9a84c',
-    glow: 'rgba(201,168,76,0.3)',
-    border: 'rgba(201,168,76,0.4)',
-    badge: 'bg-yellow-900/40 text-yellow-300 border-yellow-700/50',
-    numberBg: 'bg-gold-DEFAULT/10 border border-gold-DEFAULT/30',
-  },
-  crimson: {
-    accent: '#e74c3c',
-    glow: 'rgba(231,76,60,0.3)',
-    border: 'rgba(231,76,60,0.4)',
-    badge: 'bg-red-900/40 text-red-300 border-red-700/50',
-    numberBg: 'bg-red-900/20 border border-red-700/30',
-  },
-  purple: {
-    accent: '#7c3aed',
-    glow: 'rgba(124,58,237,0.3)',
-    border: 'rgba(124,58,237,0.4)',
-    badge: 'bg-purple-900/40 text-purple-300 border-purple-700/50',
-    numberBg: 'bg-purple-900/20 border border-purple-700/30',
-  },
-}
-
 function TheoryCard({ card, index }: { card: typeof theoryCards[0]; index: number }) {
   const [flipped, setFlipped] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
-  const cfg = colorConfig[card.color as keyof typeof colorConfig]
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 60 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.15, ease: 'easeOut' }}
-      className="flip-card-container"
-      style={{ height: '480px' }}
+      transition={{ duration: 1, delay: index * 0.15, ease: 'easeOut' }}
+      className={`flip-card-container cursor-pointer group ${flipped ? 'flipped' : ''}`}
+      style={{ height: '560px' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => setFlipped(!flipped)}
     >
-      <div className={`flip-card-inner w-full h-full ${flipped ? 'flipped' : ''}`}>
+      <div className="flip-card-inner w-full h-full">
         {/* FRONT */}
-        <div
-          className="flip-card-front w-full h-full glass-card p-8 flex flex-col cursor-pointer"
-          style={{
-            borderColor: cfg.border,
-            boxShadow: flipped ? 'none' : `0 0 40px ${cfg.glow}`,
-          }}
-          onClick={() => setFlipped(true)}
+        <div 
+          className={`flip-card-front w-full h-full glass-card p-10 flex flex-col relative overflow-hidden transition-all duration-700 ${
+            isHovered ? 'bg-slate-900/60 border-accent/40 shadow-[0_0_50px_rgba(212,175,55,0.1)] scale-[1.02]' : 'bg-slate-900/40 border-white/5'
+          }`}
         >
-          <div className="text-5xl mb-4">{card.icon}</div>
-          <div className={`inline-block text-xs font-mono px-3 py-1 rounded-full border mb-4 ${cfg.badge}`}>
-            {card.subtitle}
+          {/* Decorative Background Icon */}
+          <div className={`absolute -right-6 -top-6 text-9xl transition-all duration-1000 select-none pointer-events-none ${
+            isHovered ? 'opacity-[0.08] rotate-0 scale-110' : 'opacity-[0.02] -rotate-12 scale-100'
+          }`}>
+            {card.icon}
           </div>
-          <h3 className="font-cinzel text-2xl font-bold mb-4" style={{ color: cfg.accent }}>
-            {card.title}
-          </h3>
-          <p className="font-inter text-cream/70 text-sm leading-relaxed flex-1">
-            {card.frontSummary}
-          </p>
-          <div className="mt-6 flex items-center gap-2 text-sm font-inter" style={{ color: cfg.accent }}>
-            <span>Nhấn để xem chi tiết</span>
-            <motion.div
-              animate={{ rotate: [0, 180, 360] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-            </motion.div>
+
+          {/* Radiant Glow */}
+          <AnimatePresence>
+            {isHovered && !flipped && (
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: 'radial-gradient(circle at 20% 20%, rgba(212,175,55,0.1) 0%, transparent 60%)'
+                }}
+              />
+            )}
+          </AnimatePresence>
+
+          <div className="relative z-10 flex flex-col h-full">
+            <div className={`w-16 h-16 rounded-sm border mb-12 flex items-center justify-center text-4xl transition-all duration-700 ${
+              isHovered ? 'bg-accent/10 border-accent/40 rotate-0 shadow-[0_0_20px_rgba(212,175,55,0.2)]' : 'bg-white/5 border-white/10 -rotate-6'
+            }`}>
+              {card.icon}
+            </div>
+            
+            <div className="mb-8">
+              <span className={`font-mono text-[10px] uppercase tracking-[0.5em] mb-4 block transition-colors duration-500 ${
+                isHovered ? 'text-accent' : 'text-slate-500'
+              }`}>
+                {card.subtitle}
+              </span>
+              <h3 className={`font-serif text-3xl leading-tight transition-colors duration-500 ${
+                isHovered ? 'text-white' : 'text-slate-300'
+              }`}>
+                {card.title}
+              </h3>
+            </div>
+            
+            <p className={`font-sans text-sm leading-relaxed flex-1 font-light transition-colors duration-500 ${
+              isHovered ? 'text-slate-300' : 'text-slate-500'
+            }`}>
+              {card.frontSummary}
+            </p>
+
+            <div className="mt-10 pt-8 border-t border-white/5 flex items-center justify-between">
+              <span className={`text-[10px] font-mono uppercase tracking-[0.4em] transition-all duration-500 ${
+                isHovered ? 'text-accent opacity-100 translate-x-0' : 'text-slate-600 opacity-60 -translate-x-2'
+              }`}>
+                Xem chi tiết
+              </span>
+              <div className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-500 ${
+                isHovered ? 'border-accent bg-accent text-dark rotate-0' : 'border-white/10 text-slate-500 rotate-[-45deg]'
+              }`}>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* BACK */}
-        <div
-          className="flip-card-back glass-card p-8 flex flex-col overflow-y-auto"
-          style={{ borderColor: cfg.border }}
-        >
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="font-cinzel text-xl font-bold" style={{ color: cfg.accent }}>
-              {card.title}
-            </h3>
-            <button
-              onClick={() => setFlipped(false)}
-              className="text-cream/50 hover:text-cream transition-colors p-1"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+        <div className="flip-card-back glass-card p-10 flex flex-col border-accent/30 bg-slate-950/90 shadow-[0_0_60px_rgba(212,175,55,0.15)]">
+          <div className="flex items-center justify-between mb-10 border-b border-white/10 pb-6">
+            <div>
+              <h3 className="font-serif text-2xl text-white">
+                {card.title}
+              </h3>
+              <p className="text-[9px] font-mono text-accent uppercase tracking-[0.4em] mt-2">Hệ tư tưởng · Chương III</p>
+            </div>
+            <div className="w-10 h-10 rounded-full border border-accent/20 flex items-center justify-center bg-accent/5">
+               <span className="text-accent">
+                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                 </svg>
+               </span>
+            </div>
           </div>
 
-          {/* Card-specific back content */}
-          {card.id === 'class-def' && card.criteria && (
-            <div className="space-y-3 flex-1">
-              {card.criteria.map((c) => (
-                <div key={c.number} className="flex gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
-                  <span className="font-mono text-xs font-bold flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center"
-                    style={{ background: `${cfg.glow}`, color: cfg.accent }}>
-                    {c.number}
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-cream mb-1">{c.title}</p>
-                    <p className="text-xs text-cream/60 leading-relaxed">{c.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {card.id === 'origin' && card.stages && (
-            <div className="space-y-3 flex-1">
-              {card.stages.map((s, i) => (
-                <div key={i}>
-                  <div className="flex gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
-                    <span className="text-2xl flex-shrink-0">{s.icon}</span>
+          <div className="flex-1 space-y-6 overflow-y-auto pr-2 custom-scrollbar">
+            {card.id === 'class-def' && card.criteria && (
+              <div className="space-y-4">
+                {card.criteria.map((c) => (
+                  <div key={c.number} className="flex gap-6 items-start">
+                    <span className="font-serif italic text-accent text-xl opacity-40">{c.number}</span>
                     <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <p className="text-sm font-semibold text-cream">{s.era}</p>
-                        <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: `${cfg.glow}`, color: cfg.accent }}>
-                          {s.state}
-                        </span>
-                      </div>
-                      <p className="text-xs text-cream/60 leading-relaxed">{s.desc}</p>
+                      <p className="text-slate-100 text-sm font-medium mb-1">{c.title}</p>
+                      <p className="text-slate-400 text-xs leading-relaxed font-light">{c.desc}</p>
                     </div>
                   </div>
-                  {s.arrow && (
-                    <div className="flex justify-center my-1">
-                      <svg className="w-5 h-5 text-cream/30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
+                ))}
+              </div>
+            )}
+
+            {card.id === 'origin' && card.stages && (
+              <div className="space-y-6">
+                {card.stages.map((s, i) => (
+                  <div key={i} className="relative pl-8 border-l border-white/5">
+                    <div className="absolute -left-[1px] top-0 w-[2px] h-4 bg-accent" />
+                    <div className="mb-2">
+                       <span className="text-[9px] font-mono text-accent uppercase tracking-widest">{s.era}</span>
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-
-          {card.id === 'struggle' && card.forms && (
-            <div className="space-y-3 flex-1">
-              {card.forms.map((f, i) => (
-                <div key={i} className="flex gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-                  <span className="text-2xl flex-shrink-0">{f.icon}</span>
-                  <div>
-                    <p className="text-sm font-semibold text-cream mb-1">{f.title}</p>
-                    <p className="text-xs text-cream/60 leading-relaxed">{f.desc}</p>
+                    <p className="text-slate-400 text-xs leading-relaxed font-light">{s.desc}</p>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </div>
+            )}
 
-          {/* Key takeaway */}
+            {card.id === 'struggle' && card.forms && (
+              <div className="space-y-4">
+                {card.forms.map((f, i) => (
+                  <div key={i} className="p-5 bg-white/[0.02] border border-white/5 rounded-sm">
+                    <div className="flex items-center gap-4 mb-2">
+                       <span className="text-xl opacity-60">{f.icon}</span>
+                       <p className="text-slate-100 text-sm font-medium">{f.title}</p>
+                    </div>
+                    <p className="text-slate-400 text-xs leading-relaxed font-light">{f.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
           {card.keyTakeaway && (
-            <div className="mt-4 p-4 rounded-xl border" style={{ borderColor: cfg.border, background: `${cfg.glow}` }}>
-              <p className="text-xs font-inter text-cream/90 leading-relaxed">
-                <span className="font-bold" style={{ color: cfg.accent }}>💡 Tóm luận: </span>
+            <div className="mt-8 p-6 bg-accent/[0.03] border border-accent/10 rounded-sm">
+              <p className="text-xs font-sans text-slate-300 leading-relaxed italic">
+                <span className="text-accent font-mono font-bold not-italic uppercase text-[9px] tracking-widest mr-2">Cốt yếu:</span>
                 {card.keyTakeaway}
               </p>
             </div>
@@ -170,50 +169,68 @@ function TheoryCard({ card, index }: { card: typeof theoryCards[0]; index: numbe
 }
 
 export default function CoreTheory() {
-  const [headerRef, headerInView] = useInView({ threshold: 0.3, triggerOnce: true })
-
   return (
-    <section id="theory" className="py-24 px-6 relative">
-      <div className="max-w-6xl mx-auto">
-        {/* Section header */}
-        <motion.div
-          ref={headerRef}
-          initial={{ opacity: 0, y: 40 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 mb-4 text-xs font-mono text-gold-DEFAULT/60 tracking-widest uppercase border border-gold-muted rounded-full px-4 py-2">
-            <span>Block 02</span>
-            <span className="w-1 h-1 rounded-full bg-gold-DEFAULT/60" />
-            <span>Lý thuyết cốt lõi</span>
+    <section id="theory" className="py-40 px-6 relative overflow-hidden bg-dark">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-32 items-end">
+          <div className="lg:col-span-8">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4 mb-8"
+            >
+              <div className="h-[1px] w-12 bg-accent/60" />
+              <span className="text-accent font-mono text-[10px] tracking-[0.4em] uppercase">
+                Section 02: Core Ideology
+              </span>
+            </motion.div>
+            
+            <h2 className="font-serif text-5xl md:text-7xl text-slate-100 mb-8 leading-[1.1]">
+              Nền Tảng <span className="text-accent italic">Lý Luận</span> <br />
+              Về Giai Cấp
+            </h2>
+            
+            <p className="font-sans text-slate-400 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
+              Hệ thống hóa ba trụ cột định nghĩa bản chất xã hội và quy luật vận động 
+              của nhân loại dưới nhãn quan duy vật biện chứng.
+            </p>
           </div>
-          <h2 className="font-cinzel text-3xl sm:text-5xl font-black mb-4">
-            <span className="gold-text">Nền Tảng Lý Luận</span>
-          </h2>
-          <p className="font-inter text-cream/60 max-w-2xl mx-auto">
-            Ba trụ cột lý thuyết định nghĩa giai cấp và đấu tranh giai cấp theo chủ nghĩa duy vật lịch sử
-          </p>
-          <div className="section-divider mt-6" />
-        </motion.div>
+          
+          <div className="lg:col-span-4 lg:text-right hidden lg:block">
+             <div className="inline-block px-10 py-10 border border-white/5 rounded-full">
+               <span className="block text-6xl font-serif text-accent/20">03</span>
+               <span className="text-[8px] font-mono text-slate-600 uppercase tracking-[0.5em] mt-2 block">
+                 Pillars
+               </span>
+             </div>
+          </div>
+        </div>
 
-        {/* Flip Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {theoryCards.map((card, i) => (
             <TheoryCard key={card.id} card={card} index={i} />
           ))}
         </div>
 
-        {/* Bottom note */}
+        {/* Footnote */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
-          className="mt-10 text-center"
+          transition={{ delay: 0.8 }}
+          className="mt-24 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6"
         >
-          <p className="text-xs font-mono text-cream/30 italic">
-            * Nguồn: V.I. Lenin, "Sáng kiến vĩ đại", Toàn tập, Tập 39 · Giáo trình Triết học Mác-Lênin, Bộ GD&ĐT
+          <div className="flex items-center gap-4">
+             <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+             <p className="text-[9px] font-mono text-slate-500 uppercase tracking-[0.3em]">
+               Official Reference Archive
+             </p>
+          </div>
+          <p className="text-xs font-serif italic text-slate-500 max-w-md text-center md:text-right leading-relaxed">
+            V.I. Lenin, "Sáng kiến vĩ đại" & Giáo trình Triết học Mác-Lênin (Bộ Giáo dục và Đào tạo Việt Nam)
           </p>
         </motion.div>
       </div>

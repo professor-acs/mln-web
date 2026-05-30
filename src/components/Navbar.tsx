@@ -1,37 +1,28 @@
-import { useEffect, useState, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { siteMetadata } from '../data/content'
 
 const sections = [
-  { id: 'hero', label: 'Mở đầu' },
-  { id: 'theory', label: 'Lý thuyết' },
-  { id: 'timeline', label: 'Lịch sử' },
-  { id: 'reality', label: 'Thực tiễn' },
-  { id: 'quiz', label: 'Tương tác' },
+  { id: 'hero', label: 'Intro' },
+  { id: 'theory', label: 'Theory' },
+  { id: 'timeline', label: 'History' },
+  { id: 'reality', label: 'Reality' },
+  { id: 'quiz', label: 'Interactive' },
 ]
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('hero')
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const [showLabel, setShowLabel] = useState<string | null>(null)
-  const [navVisible, setNavVisible] = useState(false)
-  const scrollRef = useRef(0)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
-      setScrollProgress(progress)
-      setNavVisible(scrollTop > 100)
-      scrollRef.current = scrollTop
+      setScrolled(window.scrollY > 50)
 
-      // Determine active section
       for (const s of sections) {
         const el = document.getElementById(s.id)
         if (el) {
           const rect = el.getBoundingClientRect()
-          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+          if (rect.top <= 200 && rect.bottom >= 200) {
             setActiveSection(s.id)
             break
           }
@@ -48,77 +39,66 @@ export default function Navbar() {
   }
 
   return (
-    <>
-      {/* Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-dark-700">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+        scrolled ? 'py-4 bg-dark/80 backdrop-blur-xl border-b border-white/5' : 'py-10 bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-8 flex items-center justify-between">
+        {/* Logo / Monogram */}
         <motion.div
-          className="h-full"
-          style={{
-            background: 'linear-gradient(90deg, #c9a84c, #e74c3c, #7c3aed)',
-            width: `${scrollProgress}%`,
-          }}
-          transition={{ ease: 'linear', duration: 0.1 }}
-        />
-      </div>
-
-      {/* Top Brand */}
-      <AnimatePresence>
-        {navVisible && (
-          <motion.div
-            initial={{ y: -60, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -60, opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="fixed top-1 left-6 z-50 flex items-center gap-3"
-          >
-            <span className="text-xs font-mono text-gold-DEFAULT/70 hidden sm:block">
-              {siteMetadata.course}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="flex items-center gap-6 cursor-pointer group"
+          onClick={() => scrollTo('hero')}
+        >
+          <div className="relative w-10 h-10 flex items-center justify-center">
+            <div className="absolute inset-0 border border-accent/20 rotate-45 group-hover:rotate-90 transition-transform duration-700" />
+            <span className="text-accent font-serif font-bold text-xl relative z-10">M</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-slate-100 font-serif font-medium text-sm tracking-widest uppercase">
+              Marx-Lenin
             </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <span className="text-[8px] text-accent/60 font-mono uppercase tracking-[0.4em]">
+              Archive 03
+            </span>
+          </div>
+        </motion.div>
 
-      {/* Right-side Navigation Dots */}
-      <AnimatePresence>
-        {navVisible && (
-          <motion.nav
-            initial={{ x: 40, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: 40, opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-3 hide-mobile"
-          >
-            {sections.map((s) => (
-              <div
-                key={s.id}
-                className="relative flex items-center group"
-                onMouseEnter={() => setShowLabel(s.id)}
-                onMouseLeave={() => setShowLabel(null)}
-              >
-                {/* Label */}
-                <AnimatePresence>
-                  {showLabel === s.id && (
-                    <motion.span
-                      initial={{ x: 10, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      exit={{ x: 10, opacity: 0 }}
-                      className="absolute right-6 text-xs font-inter text-cream whitespace-nowrap bg-dark-800 border border-gold-muted px-2 py-1 rounded-md"
-                    >
-                      {s.label}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-                {/* Dot */}
-                <button
-                  onClick={() => scrollTo(s.id)}
-                  className={`nav-dot transition-all duration-300 ${activeSection === s.id ? 'active' : ''}`}
-                  aria-label={`Go to ${s.label}`}
+        {/* Navigation */}
+        <nav className="hidden md:flex items-center gap-12">
+          {sections.map((s) => (
+            <button
+              key={s.id}
+              onClick={() => scrollTo(s.id)}
+              className={`relative text-[10px] font-mono uppercase tracking-[0.4em] transition-all duration-500 ${
+                activeSection === s.id ? 'text-accent' : 'text-slate-500 hover:text-slate-100'
+              }`}
+            >
+              {s.label}
+              {activeSection === s.id && (
+                <motion.div
+                  layoutId="navUnderline"
+                  className="absolute -bottom-2 left-0 right-0 h-[1px] bg-accent/60"
+                  transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                 />
-              </div>
-            ))}
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </>
+              )}
+            </button>
+          ))}
+        </nav>
+
+        {/* Status Indicator */}
+        <div className="flex items-center gap-4">
+          <div className="hidden lg:flex flex-col items-end mr-4">
+             <span className="text-[8px] font-mono text-slate-600 uppercase tracking-widest">System Status</span>
+             <span className="text-[9px] font-mono text-accent uppercase tracking-widest">Active</span>
+          </div>
+          <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group hover:border-accent/40 transition-colors duration-500">
+             <div className="w-1 h-1 bg-accent rounded-full animate-pulse" />
+          </div>
+        </div>
+      </div>
+    </header>
   )
 }

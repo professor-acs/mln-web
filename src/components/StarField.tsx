@@ -1,42 +1,25 @@
-import { useEffect, useRef } from 'react'
-
-interface Star {
-  x: number
-  y: number
-  size: number
-  duration: number
-  delay: number
-}
-
 export default function StarField() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-dark">
+      {/* Texture Layer */}
+      <div className="absolute inset-0 opacity-[0.05] bg-grain mix-blend-overlay" />
 
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
+      {/* Luxury Gradient Orbs - Increased opacity and spread */}
+      <div className="absolute top-[-15%] left-[-5%] w-[80%] h-[80%] rounded-full bg-accent/10 blur-[120px] animate-pulse" 
+        style={{ animationDuration: '10s' }} />
+      <div className="absolute bottom-[-15%] right-[-5%] w-[70%] h-[70%] rounded-full bg-philosophy-burgundy/15 blur-[100px] animate-pulse"
+        style={{ animationDuration: '15s' }} />
+      
+      {/* Central light to reduce "dark void" feel */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-accent/[0.04] blur-[140px]" />
 
-    const stars: Star[] = Array.from({ length: 150 }, () => ({
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 2 + 0.5,
-      duration: Math.random() * 4 + 2,
-      delay: Math.random() * 5,
-    }))
-
-    container.innerHTML = stars
-      .map(
-        (s) =>
-          `<div class="star" style="
-            left:${s.x}%;
-            top:${s.y}%;
-            width:${s.size}px;
-            height:${s.size}px;
-            --duration:${s.duration}s;
-            --delay:${s.delay}s;
-          "></div>`
-      )
-      .join('')
-  }, [])
-
-  return <div ref={containerRef} className="star-field" />
+      {/* Grid Pattern - slightly more visible for structure */}
+      <div className="absolute inset-0 opacity-[0.02]"
+        style={{ 
+          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`, 
+          backgroundSize: '80px 80px' 
+        }}
+      />
+    </div>
+  )
 }

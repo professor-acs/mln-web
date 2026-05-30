@@ -9,10 +9,23 @@ const config: Config = {
     extend: {
       colors: {
         dark: {
-          DEFAULT: '#0a0a1a',
-          800: '#0f0f2a',
-          700: '#14143a',
-          600: '#1a1a4a',
+          DEFAULT: '#0f172a', // Lightened from #020617 (Slate 900)
+          950: '#020617',
+          900: '#0f172a',
+          800: '#1e293b',
+          700: '#334155',
+        },
+        accent: {
+          DEFAULT: '#d4af37', // Antique Gold
+          light: '#f5d17a',
+          dark: '#996515',
+          muted: 'rgba(212, 175, 55, 0.05)',
+        },
+        philosophy: {
+          burgundy: '#450a0a',
+          clay: '#7f1d1d',
+          paper: '#f8fafc',
+          ink: '#0f172a',
         },
         gold: {
           DEFAULT: '#c9a84c',
@@ -20,21 +33,14 @@ const config: Config = {
           dark: '#a07a30',
           muted: 'rgba(201,168,76,0.3)',
         },
-        crimson: {
-          DEFAULT: '#c0392b',
-          light: '#e74c3c',
-          dark: '#8B0000',
-        },
-        cream: '#f0ece4',
-        neon: {
-          blue: '#00d4ff',
-          purple: '#7c3aed',
-        },
       },
       fontFamily: {
-        cinzel: ['Cinzel', 'serif'],
-        inter: ['Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        serif: ['"Playfair Display"', 'serif'],
+        sans: ['"Outfit"', 'sans-serif'],
+        mono: ['"Space Grotesk"', 'monospace'],
+      },
+      backgroundImage: {
+        'grain': "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Ffilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\"%3E%3C/rect%3E%3C/svg%3E')",
       },
       animation: {
         'fade-in': 'fadeIn 1s ease forwards',

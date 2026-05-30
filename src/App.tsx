@@ -20,24 +20,21 @@ export default function App() {
       <main className="pb-16">
         <Hero />
 
-        {/* Section separator */}
+        {/* Section separator - slightly more visible on lighter bg */}
         <div className="max-w-6xl mx-auto px-6">
-          <div className="h-px w-full"
-            style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)' }} />
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
         </div>
 
         <CoreTheory />
 
         <div className="max-w-6xl mx-auto px-6">
-          <div className="h-px w-full"
-            style={{ background: 'linear-gradient(90deg, transparent, rgba(192,57,43,0.3), transparent)' }} />
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
         </div>
 
         <Timeline />
 
         <div className="max-w-6xl mx-auto px-6">
-          <div className="h-px w-full"
-            style={{ background: 'linear-gradient(90deg, transparent, rgba(0,212,255,0.3), transparent)' }} />
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
         </div>
 
         <Reality21 />
