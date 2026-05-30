@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { siteMetadata } from '../data/content'
 
 const sections = [
   { id: 'hero', label: 'Intro' },
@@ -40,9 +39,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        scrolled ? 'py-4 bg-dark/80 backdrop-blur-xl border-b border-white/5' : 'py-10 bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled ? 'py-4 bg-dark/80 backdrop-blur-xl border-b border-white/5' : 'py-10 bg-transparent'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-8 flex items-center justify-between">
         {/* Logo / Monogram */}
@@ -72,9 +70,8 @@ export default function Navbar() {
             <button
               key={s.id}
               onClick={() => scrollTo(s.id)}
-              className={`relative text-[10px] font-mono uppercase tracking-[0.4em] transition-all duration-500 ${
-                activeSection === s.id ? 'text-accent' : 'text-slate-500 hover:text-slate-100'
-              }`}
+              className={`relative text-[10px] font-mono uppercase tracking-[0.4em] transition-all duration-500 ${activeSection === s.id ? 'text-accent' : 'text-slate-500 hover:text-slate-100'
+                }`}
             >
               {s.label}
               {activeSection === s.id && (
@@ -91,11 +88,11 @@ export default function Navbar() {
         {/* Status Indicator */}
         <div className="flex items-center gap-4">
           <div className="hidden lg:flex flex-col items-end mr-4">
-             <span className="text-[8px] font-mono text-slate-600 uppercase tracking-widest">System Status</span>
-             <span className="text-[9px] font-mono text-accent uppercase tracking-widest">Active</span>
+            <span className="text-[8px] font-mono text-slate-600 uppercase tracking-widest">System Status</span>
+            <span className="text-[9px] font-mono text-accent uppercase tracking-widest">Active</span>
           </div>
           <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group hover:border-accent/40 transition-colors duration-500">
-             <div className="w-1 h-1 bg-accent rounded-full animate-pulse" />
+            <div className="w-1 h-1 bg-accent rounded-full animate-pulse" />
           </div>
         </div>
       </div>
