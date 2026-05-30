@@ -163,59 +163,104 @@ export default function Reality21() {
         {/* Case Study Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           {/* Tabs */}
-          <div className="lg:col-span-4 space-y-3">
-            <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.5em] mb-8">
-              Analytical Studies
-            </p>
-            {realityData.caseStudies.map((c, i) => (
-              <button
-                key={c.id}
-                onClick={() => setActiveCaseStudy(i)}
-                className={`w-full flex items-center gap-6 p-6 rounded-sm border transition-all duration-500 text-left ${
-                  activeCaseStudy === i
-                    ? 'bg-accent border-accent text-dark shadow-[0_0_30px_rgba(212,175,55,0.2)]'
-                    : 'bg-transparent border-white/5 text-slate-500 hover:border-white/20 hover:text-slate-300'
-                }`}
-              >
-                <span className="text-2xl">{c.icon}</span>
-                <span className="font-serif font-medium text-lg tracking-tight">{c.tag}</span>
-              </button>
-            ))}
+          <div className="lg:col-span-4">
+            <div className="sticky top-32">
+              <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.5em] mb-10 pl-2">
+                Case Study Archives
+              </p>
+              <div className="space-y-4 relative">
+                {/* Vertical Progress Line for Tabs */}
+                <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-white/5" />
+                
+                {realityData.caseStudies.map((c, i) => (
+                  <button
+                    key={c.id}
+                    onClick={() => setActiveCaseStudy(i)}
+                    className="w-full relative group pl-8 py-2 text-left transition-all duration-500"
+                  >
+                    {/* Active Indicator */}
+                    <div className={`absolute left-0 top-0 bottom-0 w-[2px] transition-all duration-700 ${
+                      activeCaseStudy === i ? 'bg-accent h-full shadow-[0_0_15px_rgba(212,175,55,0.5)]' : 'bg-transparent h-0'
+                    }`} />
+                    
+                    <div className="flex flex-col">
+                      <span className={`text-[8px] font-mono uppercase tracking-[0.3em] mb-1 transition-colors duration-500 ${
+                        activeCaseStudy === i ? 'text-accent' : 'text-slate-600'
+                      }`}>
+                        Index 0{i + 1}
+                      </span>
+                      <span className={`font-serif text-xl tracking-tight transition-all duration-500 ${
+                        activeCaseStudy === i ? 'text-white translate-x-1' : 'text-slate-500 group-hover:text-slate-300'
+                      }`}>
+                        {c.tag}
+                      </span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Decorative detail */}
+              <div className="mt-20 p-6 border border-white/5 rounded-sm bg-white/[0.01]">
+                 <p className="text-[10px] text-slate-600 font-mono leading-relaxed">
+                   Các nghiên cứu điển hình nhằm minh chứng sự vận động của quy luật giai cấp trong bối cảnh nền kinh tế số và AI.
+                 </p>
+              </div>
+            </div>
           </div>
 
-          {/* Content */}
+          {/* Content Area */}
           <div className="lg:col-span-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCase.id}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.6 }}
-                className="glass-card border-white/5 p-12 min-h-[560px] flex flex-col"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.6, ease: "circOut" }}
+                className="relative glass-card border-white/5 p-12 md:p-16 min-h-[600px] flex flex-col overflow-hidden"
               >
-                <div className="flex items-center gap-6 mb-12">
-                  <span className="text-5xl grayscale opacity-40">{activeCase.icon}</span>
-                  <div>
-                    <h3 className="font-serif text-3xl text-slate-100">{activeCase.title}</h3>
-                    <div className="h-[1px] w-12 bg-accent/40 mt-3" />
-                  </div>
+                {/* Decorative background watermark */}
+                <div className="absolute top-0 right-0 font-serif text-[15rem] text-white/[0.02] leading-none select-none pointer-events-none translate-x-1/4 -translate-y-1/4">
+                  {activeCase.icon}
                 </div>
 
-                <p className="font-serif text-xl text-slate-400 italic mb-12 leading-relaxed pl-8 border-l border-accent/20">
-                  {activeCase.intro}
-                </p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-auto">
-                  {activeCase.analysis.map((item, i) => (
-                    <div key={i} className="p-8 bg-white/[0.02] border border-white/5 rounded-sm hover:border-accent/10 transition-colors duration-500">
-                      <div className="flex items-center gap-4 mb-4">
-                        <span className="text-xl opacity-40">{item.icon}</span>
-                        <span className="text-[9px] font-mono text-accent uppercase tracking-[0.4em]">{item.label}</span>
-                      </div>
-                      <p className="text-sm text-slate-300 leading-relaxed font-light">{item.value}</p>
+                <div className="relative z-10">
+                  <div className="flex items-center gap-8 mb-12">
+                    <div className="w-20 h-20 rounded-full border border-white/5 flex items-center justify-center bg-white/[0.02] text-4xl shadow-inner">
+                      {activeCase.icon}
                     </div>
-                  ))}
+                    <div>
+                      <h3 className="font-serif text-4xl md:text-5xl text-white leading-tight tracking-tighter">
+                        {activeCase.title}
+                      </h3>
+                      <div className="h-[2px] w-16 bg-accent/40 mt-6" />
+                    </div>
+                  </div>
+
+                  <p className="font-serif text-xl md:text-2xl text-slate-400 italic mb-16 leading-relaxed border-l-2 border-accent/20 pl-10 py-2">
+                    {activeCase.intro}
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                    {activeCase.analysis.map((item, i) => (
+                      <div 
+                        key={i} 
+                        className="group p-8 bg-slate-950/40 border border-white/5 rounded-sm hover:border-accent/20 transition-all duration-500"
+                      >
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className="p-2 rounded-sm bg-white/5 text-accent transition-colors duration-500 group-hover:bg-accent group-hover:text-dark">
+                            <span className="text-sm font-mono font-bold">0{i + 1}</span>
+                          </div>
+                          <span className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.3em] group-hover:text-accent transition-colors duration-500">
+                            {item.label}
+                          </span>
+                        </div>
+                        <p className="text-base text-slate-300 leading-relaxed font-light group-hover:text-white transition-colors duration-500">
+                          {item.value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>
