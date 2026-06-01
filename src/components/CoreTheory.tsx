@@ -1,15 +1,19 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { theoryCards } from '../data/content'
+import { sectionContent } from '../data/content'
 
-function TheoryCard({ card, index }: { card: typeof theoryCards[0]; index: number }) {
+type SectionType = '3.2.1' | '3.2.2' | '3.2.3'
+
+function TheoryCard(props: Readonly<{ card: any; index: number }>) {
+  const { card, index } = props
   const [flipped, setFlipped] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
 
   return (
     <motion.div
+      id={card.id}
       ref={ref}
       initial={{ opacity: 0, y: 60 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -113,7 +117,35 @@ function TheoryCard({ card, index }: { card: typeof theoryCards[0]; index: numbe
           <div className="flex-1 space-y-6 overflow-y-auto pr-2 custom-scrollbar">
             {card.id === 'class-def' && card.criteria && (
               <div className="space-y-4">
-                {card.criteria.map((c) => (
+                {card.criteria.map((c: any) => (
+                  <div key={c.number} className="flex gap-6 items-start">
+                    <span className="font-serif italic text-accent text-xl opacity-40">{c.number}</span>
+                    <div>
+                      <p className="text-slate-100 text-sm font-medium mb-1">{c.title}</p>
+                      <p className="text-slate-400 text-xs leading-relaxed font-light">{c.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {card.id === 'nationality-def' && card.characteristics && (
+              <div className="space-y-4">
+                {card.characteristics.map((c: any) => (
+                  <div key={c.number} className="flex gap-6 items-start">
+                    <span className="font-serif italic text-accent text-xl opacity-40">{c.number}</span>
+                    <div>
+                      <p className="text-slate-100 text-sm font-medium mb-1">{c.title}</p>
+                      <p className="text-slate-400 text-xs leading-relaxed font-light">{c.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {card.id === 'relationship' && card.relationship && (
+              <div className="space-y-4">
+                {card.relationship.map((c: any) => (
                   <div key={c.number} className="flex gap-6 items-start">
                     <span className="font-serif italic text-accent text-xl opacity-40">{c.number}</span>
                     <div>
@@ -127,8 +159,8 @@ function TheoryCard({ card, index }: { card: typeof theoryCards[0]; index: numbe
 
             {card.id === 'origin' && card.stages && (
               <div className="space-y-6">
-                {card.stages.map((s, i) => (
-                  <div key={i} className="relative pl-8 border-l border-white/5">
+                  {card.stages.map((s: any) => (
+                    <div key={s.era} className="relative pl-8 border-l border-white/5">
                     <div className="absolute -left-[1px] top-0 w-[2px] h-4 bg-accent" />
                     <div className="mb-2">
                        <span className="text-[9px] font-mono text-accent uppercase tracking-widest">{s.era}</span>
@@ -139,15 +171,68 @@ function TheoryCard({ card, index }: { card: typeof theoryCards[0]; index: numbe
               </div>
             )}
 
-            {card.id === 'struggle' && card.forms && (
+            {card.id === 'nationality-history' && card.stages && (
+              <div className="space-y-6">
+                  {card.stages.map((s: any) => (
+                    <div key={s.era} className="relative pl-8 border-l border-white/5">
+                    <div className="absolute -left-[1px] top-0 w-[2px] h-4 bg-accent" />
+                    <div className="mb-2">
+                       <span className="text-[9px] font-mono text-accent uppercase tracking-widest">{s.era}</span>
+                    </div>
+                    <p className="text-slate-400 text-xs leading-relaxed font-light">{s.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {card.id === 'historical-process' && card.timeline && (
+              <div className="space-y-6">
+                  {card.timeline.map((t: any) => (
+                    <div key={t.era} className="relative pl-8 border-l border-white/5">
+                    <div className="absolute -left-[1px] top-0 w-[2px] h-4 bg-accent" />
+                    <div className="mb-2">
+                       <span className="text-[9px] font-mono text-accent uppercase tracking-widest">{t.era}</span>
+                    </div>
+                    <p className="text-slate-400 text-xs leading-relaxed font-light">{t.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {card.id === 'nationality-roles' && card.forms && (
               <div className="space-y-4">
-                {card.forms.map((f, i) => (
-                  <div key={i} className="p-5 bg-white/[0.02] border border-white/5 rounded-sm">
+                {card.forms.map((f: any) => (
+                  <div key={f.title} className="p-5 bg-white/[0.02] border border-white/5 rounded-sm">
                     <div className="flex items-center gap-4 mb-2">
                        <span className="text-xl opacity-60">{f.icon}</span>
                        <p className="text-slate-100 text-sm font-medium">{f.title}</p>
                     </div>
                     <p className="text-slate-400 text-xs leading-relaxed font-light">{f.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {card.id === 'practical-implications' && card.implications && (
+              <div className="space-y-4">
+                {card.implications.map((imp: any) => (
+                  <div key={imp.title} className="p-5 bg-white/[0.02] border border-white/5 rounded-sm">
+                    <div className="flex items-center gap-4 mb-2">
+                       <span className="text-xl opacity-60">{imp.icon}</span>
+                       <p className="text-slate-100 text-sm font-medium">{imp.title}</p>
+                    </div>
+                    <p className="text-slate-400 text-xs leading-relaxed font-light">{imp.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {card.points && (
+              <div className="space-y-4">
+                {card.points.map((p: any) => (
+                  <div key={p.title} className="p-5 bg-white/[0.02] border border-white/5 rounded-sm">
+                    <p className="text-slate-100 text-sm font-medium mb-1">{p.title}</p>
+                    <p className="text-slate-400 text-xs leading-relaxed font-light">{p.desc}</p>
                   </div>
                 ))}
               </div>
@@ -168,7 +253,13 @@ function TheoryCard({ card, index }: { card: typeof theoryCards[0]; index: numbe
   )
 }
 
-export default function CoreTheory() {
+interface CoreTheoryProps {
+  readonly activeSection?: SectionType
+}
+
+export default function CoreTheory({ activeSection = '3.2.1' }: Readonly<CoreTheoryProps>) {
+  const section = sectionContent[activeSection]
+
   return (
     <section id="theory" className="py-40 px-6 relative overflow-hidden bg-dark">
       <div className="max-w-7xl mx-auto">
@@ -183,37 +274,53 @@ export default function CoreTheory() {
             >
               <div className="h-[1px] w-12 bg-accent/60" />
               <span className="text-accent font-mono text-[10px] tracking-[0.4em] uppercase">
-                Section 02: Core Ideology
+                {section.subtitle}: {section.title}
               </span>
             </motion.div>
             
-            <h2 className="font-serif text-5xl md:text-7xl text-slate-100 mb-8 leading-[1.1]">
-              Nền Tảng <span className="text-accent italic">Lý Luận</span> <br />
-              Về Giai Cấp
-            </h2>
+            <motion.h2 
+              key={activeSection}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="font-serif text-5xl md:text-7xl text-slate-100 mb-8 leading-[1.1]"
+            >
+              {section.title}
+            </motion.h2>
             
-            <p className="font-sans text-slate-400 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
-              Hệ thống hóa ba trụ cột định nghĩa bản chất xã hội và quy luật vận động 
-              của nhân loại dưới nhãn quan duy vật biện chứng.
-            </p>
+            <motion.p
+              key={`desc-${activeSection}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="font-sans text-slate-400 max-w-2xl text-lg md:text-xl leading-relaxed font-light"
+            >
+              {section.description}
+            </motion.p>
           </div>
           
           <div className="lg:col-span-4 lg:text-right hidden lg:block">
              <div className="inline-block px-10 py-10 border border-white/5 rounded-full">
-               <span className="block text-6xl font-serif text-accent/20">03</span>
+               <span className="block text-6xl font-serif text-accent/20">{activeSection}</span>
                <span className="text-[8px] font-mono text-slate-600 uppercase tracking-[0.5em] mt-2 block">
-                 Pillars
+                 Section
                </span>
              </div>
           </div>
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {theoryCards.map((card, i) => (
+        <motion.div 
+          key={activeSection}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
+          {section.cards.map((card, i) => (
             <TheoryCard key={card.id} card={card} index={i} />
           ))}
-        </div>
+        </motion.div>
 
         {/* Footnote */}
         <motion.div
