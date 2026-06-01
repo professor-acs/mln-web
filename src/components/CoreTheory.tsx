@@ -97,8 +97,22 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
         </div>
 
         {/* BACK */}
-        <div className="flip-card-back glass-card p-10 flex flex-col border-accent/30 bg-slate-950/90 shadow-[0_0_60px_rgba(212,175,55,0.15)]">
-          <div className="flex items-center justify-between mb-10 border-b border-white/10 pb-6">
+        <div className="flip-card-back glass-card p-10 flex flex-col border-accent/30 bg-slate-950/90 shadow-[0_0_60px_rgba(212,175,55,0.15)] relative overflow-hidden group/back">
+          {/* Card Background Image */}
+          {card.image && (
+            <div className="absolute inset-0 opacity-5 group-hover/back:opacity-10 transition-opacity duration-700 pointer-events-none">
+              <img 
+                src={card.image} 
+                alt={card.title} 
+                className="w-full h-full object-cover filter grayscale"
+                crossOrigin="anonymous"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          )}
+
+          <div className="relative z-10 flex flex-col h-full">
+            <div className="flex items-center justify-between mb-10 border-b border-white/10 pb-6">
             <div>
               <h3 className="font-serif text-2xl text-white">
                 {card.title}
@@ -115,37 +129,9 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
           </div>
 
           <div className="flex-1 space-y-6 overflow-y-auto pr-2 custom-scrollbar">
-            {card.id === 'class-def' && card.criteria && (
+            {(card.criteria || card.characteristics || card.relationship) && (
               <div className="space-y-4">
-                {card.criteria.map((c: any) => (
-                  <div key={c.number} className="flex gap-6 items-start">
-                    <span className="font-serif italic text-accent text-xl opacity-40">{c.number}</span>
-                    <div>
-                      <p className="text-slate-100 text-sm font-medium mb-1">{c.title}</p>
-                      <p className="text-slate-400 text-xs leading-relaxed font-light">{c.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {card.id === 'nationality-def' && card.characteristics && (
-              <div className="space-y-4">
-                {card.characteristics.map((c: any) => (
-                  <div key={c.number} className="flex gap-6 items-start">
-                    <span className="font-serif italic text-accent text-xl opacity-40">{c.number}</span>
-                    <div>
-                      <p className="text-slate-100 text-sm font-medium mb-1">{c.title}</p>
-                      <p className="text-slate-400 text-xs leading-relaxed font-light">{c.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {card.id === 'relationship' && card.relationship && (
-              <div className="space-y-4">
-                {card.relationship.map((c: any) => (
+                {(card.criteria || card.characteristics || card.relationship).map((c: any) => (
                   <div key={c.number} className="flex gap-6 items-start">
                     <span className="font-serif italic text-accent text-xl opacity-40">{c.number}</span>
                     <div>
@@ -199,12 +185,24 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
               </div>
             )}
 
+            {card.id === 'struggle' && card.forms && (
+              <div className="space-y-4">
+                {card.forms.map((f: any) => (
+                  <div key={f.title} className="p-5 bg-white/[0.02] border border-white/5 rounded-sm">
+                    <div className="flex items-center gap-4 mb-2">
+                       <p className="text-slate-100 text-sm font-medium">{f.title}</p>
+                    </div>
+                    <p className="text-slate-400 text-xs leading-relaxed font-light">{f.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
             {card.id === 'nationality-roles' && card.forms && (
               <div className="space-y-4">
                 {card.forms.map((f: any) => (
                   <div key={f.title} className="p-5 bg-white/[0.02] border border-white/5 rounded-sm">
                     <div className="flex items-center gap-4 mb-2">
-                       <span className="text-xl opacity-60">{f.icon}</span>
                        <p className="text-slate-100 text-sm font-medium">{f.title}</p>
                     </div>
                     <p className="text-slate-400 text-xs leading-relaxed font-light">{f.desc}</p>
@@ -218,7 +216,6 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
                 {card.implications.map((imp: any) => (
                   <div key={imp.title} className="p-5 bg-white/[0.02] border border-white/5 rounded-sm">
                     <div className="flex items-center gap-4 mb-2">
-                       <span className="text-xl opacity-60">{imp.icon}</span>
                        <p className="text-slate-100 text-sm font-medium">{imp.title}</p>
                     </div>
                     <p className="text-slate-400 text-xs leading-relaxed font-light">{imp.desc}</p>
@@ -237,6 +234,21 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
                 ))}
               </div>
             )}
+
+            {card.lifeLinks && (
+              <div className="space-y-4 mt-8 pt-8 border-t border-white/5">
+                <p className="text-[10px] font-mono text-accent uppercase tracking-widest mb-4">Liên hệ đời sống</p>
+                {card.lifeLinks.map((link: any) => (
+                  <div key={link.title} className="flex gap-4 items-start">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
+                    <div>
+                      <p className="text-slate-200 text-xs font-medium mb-1">{link.title}</p>
+                      <p className="text-slate-500 text-[11px] leading-relaxed italic">{link.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {card.keyTakeaway && (
@@ -249,6 +261,7 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
           )}
         </div>
       </div>
+    </div>
     </motion.div>
   )
 }

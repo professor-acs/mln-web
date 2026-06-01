@@ -5,8 +5,7 @@ import { sectionContent } from '../data/content'
 type SectionType = '3.2.1' | '3.2.2' | '3.2.3'
 
 const staticSections = [
-  { id: 'hero', label: 'Intro' },
-  { id: 'theory', label: 'Theory' },
+  { id: 'hero', label: 'Khởi đầu' },
 ]
 
 function getDynamicSections(activeSection: SectionType) {

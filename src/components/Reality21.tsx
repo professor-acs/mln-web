@@ -208,56 +208,55 @@ export default function Reality21() {
             </div>
           </div>
 
-          {/* Content Area */}
+          {/* Case Content */}
           <div className="lg:col-span-8">
             <AnimatePresence mode="wait">
               <motion.div
-                key={activeCase.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.6, ease: "circOut" }}
-                className="relative glass-card border-white/5 p-12 md:p-16 min-h-[600px] flex flex-col overflow-hidden"
+                key={activeCaseStudy}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.5 }}
+                className="glass-card p-12 border-accent/10 relative overflow-hidden group"
               >
-                {/* Decorative background watermark */}
-                <div className="absolute top-0 right-0 font-serif text-[15rem] text-white/[0.02] leading-none select-none pointer-events-none translate-x-1/4 -translate-y-1/4">
-                  {activeCase.icon}
-                </div>
+                {/* Case Study Image Background */}
+                {activeCase.image && (
+                  <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none">
+                    <img 
+                       src={activeCase.image} 
+                       alt={activeCase.title} 
+                       className="w-full h-full object-cover filter grayscale"
+                       crossOrigin="anonymous"
+                       referrerPolicy="no-referrer"
+                     />
+                  </div>
+                )}
 
                 <div className="relative z-10">
-                  <div className="flex items-center gap-8 mb-12">
-                    <div className="w-20 h-20 rounded-full border border-white/5 flex items-center justify-center bg-white/[0.02] text-4xl shadow-inner">
+                  <div className="flex items-center gap-6 mb-10">
+                    <div className="w-14 h-14 rounded-sm border border-accent/20 flex items-center justify-center text-3xl bg-accent/5">
                       {activeCase.icon}
                     </div>
                     <div>
-                      <h3 className="font-serif text-4xl md:text-5xl text-white leading-tight tracking-tighter">
-                        {activeCase.title}
-                      </h3>
-                      <div className="h-[2px] w-16 bg-accent/40 mt-6" />
+                      <h3 className="font-serif text-3xl text-white mb-2">{activeCase.title}</h3>
+                      <div className="flex items-center gap-4">
+                        <span className="text-[10px] font-mono text-accent uppercase tracking-widest">{activeCase.tag}</span>
+                        <div className="h-[1px] w-12 bg-white/10" />
+                      </div>
                     </div>
                   </div>
 
-                  <p className="font-serif text-xl md:text-2xl text-slate-400 italic mb-16 leading-relaxed border-l-2 border-accent/20 pl-10 py-2">
+                  <p className="font-sans text-slate-300 text-lg leading-relaxed mb-12 font-light">
                     {activeCase.intro}
                   </p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-                    {activeCase.analysis.map((item, i) => (
-                      <div 
-                        key={i} 
-                        className="group p-8 bg-slate-950/40 border border-white/5 rounded-sm hover:border-accent/20 transition-all duration-500"
-                      >
-                        <div className="flex items-center gap-4 mb-6">
-                          <div className="p-2 rounded-sm bg-white/5 text-accent transition-colors duration-500 group-hover:bg-accent group-hover:text-dark">
-                            <span className="text-sm font-mono font-bold">0{i + 1}</span>
-                          </div>
-                          <span className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.3em] group-hover:text-accent transition-colors duration-500">
-                            {item.label}
-                          </span>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {activeCase.analysis.map((item: any, i: number) => (
+                      <div key={i} className="p-6 bg-white/[0.02] border border-white/5 rounded-sm hover:border-accent/20 transition-colors duration-500">
+                        <div className="flex items-center gap-4 mb-4">
+                          <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">{item.label}</span>
                         </div>
-                        <p className="text-base text-slate-300 leading-relaxed font-light group-hover:text-white transition-colors duration-500">
-                          {item.value}
-                        </p>
+                        <p className="text-slate-300 text-sm leading-relaxed">{item.value}</p>
                       </div>
                     ))}
                   </div>

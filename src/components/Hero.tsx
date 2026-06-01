@@ -38,6 +38,24 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden"
     >
+      {/* Background Hero Image */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.15 }}
+        transition={{ duration: 2 }}
+        className="absolute inset-0 z-0 pointer-events-none"
+      >
+        <img 
+           src={siteMetadata.heroImage} 
+           alt="Karl Marx" 
+           className="w-full h-full object-cover filter grayscale brightness-50"
+           crossOrigin="anonymous"
+           referrerPolicy="no-referrer"
+         />
+      </motion.div>
+      
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-dark via-dark/80 to-dark pointer-events-none" />
+
       <div className="relative z-10 w-full max-w-5xl mx-auto text-center">
         {/* Subtle Category Tag */}
         <motion.div

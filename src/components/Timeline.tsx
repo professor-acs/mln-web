@@ -13,7 +13,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
       initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 1.2, delay: index * 0.1 }}
-      className="relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-32 last:mb-0"
+      className="relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mb-40 last:mb-0"
     >
       {/* Desktop Center Line */}
       <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/5 -translate-x-1/2">
@@ -23,8 +23,8 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
       </div>
 
       {/* Content Side */}
-      <div className={`${index % 2 === 0 ? 'md:text-right' : 'md:order-2 md:text-left'} flex flex-col`}>
-        <div className="mb-6">
+      <div className={`${index % 2 === 0 ? 'md:text-right md:items-end' : 'md:order-2 md:text-left md:items-start'} flex flex-col w-full`}>
+        <div className="mb-6 w-full">
           <span className={`font-mono text-[10px] uppercase tracking-[0.5em] mb-2 block transition-colors duration-500 ${
             isHovered ? 'text-accent' : 'text-slate-500'
           }`}>
@@ -38,9 +38,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
         </div>
 
         <motion.div 
-          className={`p-10 rounded-sm border transition-all duration-700 relative overflow-hidden group ${
-            index % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'
-          } ${
+          className={`p-10 rounded-sm border transition-all duration-700 relative overflow-hidden group w-full max-w-xl ${
             isHovered 
               ? 'bg-slate-900/60 border-accent/40 shadow-[0_0_50px_rgba(212,175,55,0.1)] scale-[1.02]' 
               : 'bg-slate-900/40 border-white/10 backdrop-blur-sm'
@@ -48,6 +46,18 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
+          {/* Epoch Image Background */}
+          {epoch.image && (
+            <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none">
+              <img 
+                 src={epoch.image} 
+                 alt={epoch.era} 
+                 className="w-full h-full object-cover filter grayscale"
+                 crossOrigin="anonymous"
+                 referrerPolicy="no-referrer"
+               />
+            </div>
+          )}
           {/* Permanent Accent Line (Top) */}
           <div className={`absolute top-0 left-0 h-[2px] transition-all duration-700 ${
             isHovered ? 'w-full bg-accent' : 'w-12 bg-accent/30'
@@ -77,11 +87,6 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
 
           <div className="relative z-10">
             <div className="flex items-center gap-6 mb-10">
-              <div className={`text-4xl transition-all duration-700 ${
-                isHovered ? 'opacity-100 grayscale-0 scale-110 rotate-0' : 'opacity-40 grayscale-[0.5] -rotate-6'
-              }`}>
-                {epoch.icon}
-              </div>
               <div className={`flex-1 h-[1px] transition-all duration-700 ${
                 isHovered ? 'bg-accent/40' : 'bg-white/10'
               }`} />
@@ -156,18 +161,18 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
 
       {/* Aesthetic Side (Desktop Only) */}
       <div className={`hidden md:flex items-center justify-center ${index % 2 === 0 ? 'md:order-2' : ''}`}>
-        <div className="relative w-64 h-64 flex items-center justify-center">
+        <div className="relative w-80 h-80 flex items-center justify-center">
            <div className={`absolute inset-0 border rounded-full transition-all duration-700 ${
              isHovered ? 'border-accent/20 scale-110 shadow-[0_0_30px_rgba(212,175,55,0.1)]' : 'border-white/5 scale-100'
            }`} />
-           <div className={`absolute inset-4 border border-accent/5 rounded-full animate-[spin_20s_linear_infinite] transition-opacity duration-700 ${
+           <div className={`absolute inset-6 border border-accent/5 rounded-full animate-[spin_20s_linear_infinite] transition-opacity duration-700 ${
              isHovered ? 'opacity-100' : 'opacity-0'
            }`} />
-           <div className={`text-7xl select-none transition-all duration-700 ${
+           <div className={`text-8xl select-none transition-all duration-700 ${
              isHovered ? 'opacity-20 scale-125' : 'opacity-[0.03] scale-100'
            }`}>{epoch.icon}</div>
            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark">
-              <span className={`text-[8px] font-mono tracking-[0.6em] uppercase whitespace-nowrap transition-colors duration-500 ${
+              <span className={`text-[9px] font-mono tracking-[0.6em] uppercase whitespace-nowrap transition-colors duration-500 ${
                 isHovered ? 'text-accent' : 'text-slate-700'
               }`}>
                 Historical Milestone
