@@ -142,7 +142,6 @@ export const realityData = {
   caseStudies: [
     {
       id: 'gig',
-      icon: '📱',
       title: 'Nền Kinh Tế Nền Tảng & Gig Workers',
       image: 'https://images.unsplash.com/photo-1616432043562-3671ea2e5242?q=80&w=2000',
       tag: 'Case Study 01',
@@ -169,7 +168,6 @@ export const realityData = {
     },
     {
       id: 'ai',
-      icon: '🤖',
       title: 'Trí Tuệ Nhân Tạo & Độc Quyền Tư Liệu Sản Xuất',
       image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000',
       tag: 'Case Study 02',
@@ -241,6 +239,54 @@ export const quizQuestions = [
     explanation: {
       short: 'Đáp án đúng: C — Tư hữu về tư liệu sản xuất mới là căn nguyên!',
       long: 'Triết học Marx chỉ ra rằng sự chăm chỉ cá nhân có thể thay đổi vị thế ngắn hạn, nhưng cấu trúc áp bức giai cấp được bảo vệ bằng quyền sở hữu tư liệu sản xuất mới là thứ duy trì sự bất bình đẳng từ thế hệ này sang thế hệ khác. Đây là lý do tại sao con nhà tỷ phú dù không làm gì vẫn giàu — họ kế thừa tư liệu sản xuất, không phải kế thừa sự chăm chỉ.',
+    },
+  },
+  {
+    id: 3,
+    question: 'Tại sao ở phương Đông (như Việt Nam), dân tộc lại hình thành sớm hơn so với phương Tây (châu Âu)?',
+    emoji: '🇻🇳',
+    options: [
+      { id: 'A', text: 'Do phương Đông phát triển chủ nghĩa tư bản sớm hơn phương Tây', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Do nhu cầu đấu tranh chống ngoại xâm và cải tạo thiên nhiên (đắp đê, làm thủy lợi)', color: 'from-green-600 to-green-700' },
+      { id: 'C', text: 'Do sự chỉ đạo trực tiếp của các triều đại phong kiến tập quyền', color: 'from-red-600 to-red-700' },
+      { id: 'D', text: 'Do đặc điểm địa lý thuận lợi hơn cho việc giao lưu ngôn ngữ', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'B',
+    explanation: {
+      short: 'Đáp án đúng: B — Chống ngoại xâm và trị thủy là động lực hình thành dân tộc sớm!',
+      long: 'Khác với châu Âu nơi dân tộc gắn liền với sự ra đời của chủ nghĩa tư bản, ở phương Đông, nhu cầu đoàn kết để chống lại thiên tai (đắp đê) và giặc ngoại xâm đã thúc đẩy sự hình thành cộng đồng dân tộc ổn định từ rất sớm, ngay trong lòng chế độ phong kiến.',
+    },
+  },
+  {
+    id: 4,
+    question: 'Trong mối quan hệ giữa Giai cấp và Dân tộc, luận điểm nào sau đây là chính xác theo quan điểm Mác-Lênin?',
+    emoji: '🔗',
+    options: [
+      { id: 'A', text: 'Dân tộc quyết định sự tồn tại và bản chất của giai cấp', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Giai cấp và dân tộc hoàn toàn độc lập, không ảnh hưởng đến nhau', color: 'from-red-600 to-red-700' },
+      { id: 'C', text: 'Giai cấp quyết định khuynh hướng phát triển và tính chất của dân tộc', color: 'from-green-600 to-green-700' },
+      { id: 'D', text: 'Khi giai cấp mất đi thì dân tộc cũng biến mất ngay lập tức', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'C',
+    explanation: {
+      short: 'Đáp án đúng: C — Giai cấp thống trị quy định bộ mặt dân tộc!',
+      long: 'Giai cấp nào lãnh đạo dân tộc thì sẽ quy định khuynh hướng phát triển của dân tộc đó. Tuy nhiên, dân tộc là cộng đồng bền vững hơn; khi giai cấp mất đi, dân tộc vẫn tồn tại lâu dài.',
+    },
+  },
+  {
+    id: 5,
+    question: 'Sự tồn tại của "Nhân loại" đóng vai trò gì đối với sự tồn tại của Giai cấp và Dân tộc?',
+    emoji: '🌏',
+    options: [
+      { id: 'A', text: 'Là kết quả cuối cùng sau khi giai cấp và dân tộc biến mất', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Là tiền đề cho sự tồn tại của giai cấp và dân tộc', color: 'from-green-600 to-green-700' },
+      { id: 'C', text: 'Là một khái niệm trừu tượng không có thực trong đời sống', color: 'from-red-600 to-red-700' },
+      { id: 'D', text: 'Là đối tượng đấu tranh của các dân tộc độc lập', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'B',
+    explanation: {
+      short: 'Đáp án đúng: B — Nhân loại là tiền đề sinh tồn!',
+      long: 'Sự tồn tại của cộng đồng nhân loại là điều kiện tiên quyết. Trong xã hội có giai cấp, lợi ích nhân loại bị chi phối bởi lợi ích giai cấp, nhưng không bao giờ tách rời khỏi nhau.',
     },
   },
 ]

@@ -233,16 +233,11 @@ export default function Reality21() {
                 )}
 
                 <div className="relative z-10">
-                  <div className="flex items-center gap-6 mb-10">
-                    <div className="w-14 h-14 rounded-sm border border-accent/20 flex items-center justify-center text-3xl bg-accent/5">
-                      {activeCase.icon}
-                    </div>
-                    <div>
-                      <h3 className="font-serif text-3xl text-white mb-2">{activeCase.title}</h3>
-                      <div className="flex items-center gap-4">
-                        <span className="text-[10px] font-mono text-accent uppercase tracking-widest">{activeCase.tag}</span>
-                        <div className="h-[1px] w-12 bg-white/10" />
-                      </div>
+                  <div className="mb-10">
+                    <h3 className="font-serif text-3xl text-white mb-2">{activeCase.title}</h3>
+                    <div className="flex items-center gap-4">
+                      <span className="text-[10px] font-mono text-accent uppercase tracking-widest">{activeCase.tag}</span>
+                      <div className="h-[1px] w-12 bg-white/10" />
                     </div>
                   </div>
 
