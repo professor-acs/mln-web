@@ -28,6 +28,10 @@ export default function Quiz() {
     } else {
       setScores((s) => ({ ...s, wrong: s.wrong + 1 }))
     }
+    // Automatically show explanation after answering
+    setTimeout(() => {
+      setQuizState('explained')
+    }, 600)
   }
 
   const handleShowExplanation = () => setQuizState('explained')
@@ -72,7 +76,7 @@ export default function Quiz() {
             Kiểm Tra <span className="text-accent italic">Nhận Thức</span>
           </h2>
           
-          <p className="font-sans text-slate-400 max-w-xl mx-auto text-lg leading-relaxed font-light">
+          <p className="font-sans text-slate-200 max-w-xl mx-auto text-lg leading-relaxed font-light">
             Thử thách chiều sâu kiến thức của bạn về lý luận giai cấp 
             qua bộ câu hỏi trắc nghiệm chuyên sâu.
           </p>
@@ -91,10 +95,9 @@ export default function Quiz() {
               >
                 <div className="w-24 h-24 border border-accent/20 rounded-full flex items-center justify-center mx-auto mb-10 relative">
                   <div className="absolute inset-2 border border-accent/5 rounded-full animate-pulse" />
-                  <span className="text-4xl grayscale opacity-40">📜</span>
                 </div>
                 <h3 className="font-serif text-3xl text-slate-100 mb-6">Sẵn sàng bắt đầu?</h3>
-                <p className="text-slate-500 mb-12 max-w-sm mx-auto font-light leading-relaxed">
+                <p className="text-slate-300 mb-12 max-w-sm mx-auto font-light leading-relaxed">
                   Bộ câu hỏi tổng hợp các luận điểm quan trọng nhất trong Chương III của Triết học Marx-Lenin.
                 </p>
                 <button onClick={handleStart} className="btn-premium px-12 py-5">
@@ -114,7 +117,7 @@ export default function Quiz() {
                 {/* Progress */}
                 <div className="flex items-center justify-between mb-16">
                    <div className="flex items-center gap-6">
-                     <span className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.3em]">
+                     <span className="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em]">
                        Question {currentQ + 1} of {quizQuestions.length}
                      </span>
                      <div className="flex gap-1.5">
@@ -146,11 +149,11 @@ export default function Quiz() {
                     const isCorrect = opt.id === question.correct
                     const isWrong = isSelected && !isCorrect
                     
-                    let statusClasses = "border-white/5 text-slate-400 hover:border-white/20 hover:bg-white/[0.02]"
+                    let statusClasses = "border-white/5 text-slate-200 hover:border-white/20 hover:bg-white/[0.02]"
                     if (quizState !== 'question') {
                       if (isCorrect) statusClasses = "border-emerald-500/30 bg-emerald-500/[0.03] text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.05)]"
                       else if (isWrong) statusClasses = "border-rose-500/30 bg-rose-500/[0.03] text-rose-400"
-                      else statusClasses = "border-white/5 text-slate-600 opacity-40"
+                      else statusClasses = "border-white/5 text-slate-400 opacity-40"
                     }
 
                     return (
@@ -200,12 +203,19 @@ export default function Quiz() {
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
-                      className="mt-10 p-8 bg-accent/[0.02] border-l border-accent/40 rounded-sm"
+                      className="mt-10 p-10 bg-white/[0.01] border border-accent/20 rounded-sm relative overflow-hidden"
                     >
-                      <p className="text-xs font-sans text-slate-400 leading-relaxed italic font-light">
-                        <span className="text-accent font-mono font-bold not-italic uppercase text-[9px] tracking-[0.3em] mr-4">Context:</span>
-                        {question.explanation.long}
-                      </p>
+                      <div className="absolute top-0 left-0 w-1 h-full bg-accent/60" />
+                      <div className="relative z-10">
+                        <div className="flex items-center gap-3 mb-6">
+                          <span className="text-accent font-mono font-bold uppercase text-[10px] tracking-[0.4em]">
+                            Phân tích chi tiết
+                          </span>
+                        </div>
+                        <p className="text-[15px] font-sans text-slate-200 leading-[1.8] font-normal tracking-wide">
+                          {question.explanation.long}
+                        </p>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -221,18 +231,17 @@ export default function Quiz() {
               >
                 <div className="w-24 h-24 border border-white/10 rounded-full flex items-center justify-center mx-auto mb-10 relative">
                    <div className="absolute inset-0 border border-accent/20 rounded-full animate-ping opacity-20" />
-                   <span className="text-4xl grayscale opacity-40">🎓</span>
                 </div>
                 <h3 className="font-serif text-4xl text-slate-100 mb-6">Assessment Complete</h3>
                 <div className="flex justify-center gap-16 mb-16">
                    <div>
-                     <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.3em] mb-2">Accuracy</p>
+                     <p className="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-2">Accuracy</p>
                      <p className="text-5xl font-serif text-emerald-500 tracking-tighter">
                        {Math.round((scores.correct / quizQuestions.length) * 100)}%
                      </p>
                    </div>
                    <div>
-                     <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.3em] mb-2">Correct</p>
+                     <p className="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-2">Correct</p>
                      <p className="text-5xl font-serif text-slate-100 tracking-tighter">{scores.correct}</p>
                    </div>
                 </div>

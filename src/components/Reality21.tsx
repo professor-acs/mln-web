@@ -36,7 +36,7 @@ function InequalityChart() {
           <h4 className="font-serif text-2xl text-slate-100 mb-2">
             Bất Bình Đẳng Tài Sản Toàn Cầu
           </h4>
-          <p className="text-[9px] font-mono text-slate-500 uppercase tracking-[0.3em]">
+          <p className="text-[9px] font-mono text-slate-300 uppercase tracking-[0.3em]">
             Data Source: World Inequality Database (1980–2024)
           </p>
         </div>
@@ -48,7 +48,7 @@ function InequalityChart() {
               className={`px-6 py-2 rounded-sm text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
                 chartType === t
                   ? 'bg-accent text-dark font-bold'
-                  : 'text-slate-500 hover:text-slate-300'
+                  : 'text-slate-300 hover:text-white'
               }`}
             >
               {t}
@@ -114,7 +114,7 @@ function StatCard({ stat, index }: { stat: typeof realityData.stats[0]; index: n
           />
         ) : '0'}
       </div>
-      <p className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.4em] text-center md:text-left">
+      <p className="text-[10px] font-mono text-slate-300 uppercase tracking-[0.4em] text-center md:text-left">
         {stat.label}
       </p>
     </motion.div>
@@ -147,7 +147,7 @@ export default function Reality21() {
             <span className="text-accent italic">Thời Đại Số</span>
           </h2>
           
-          <p className="font-sans text-slate-400 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
+          <p className="font-sans text-slate-200 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
             Bản chất của bóc lột không biến mất — nó chỉ tiến hóa sang những hình thái tinh vi 
             dưới sự hỗ trợ của thuật toán và hạ tầng kỹ thuật số.
           </p>
@@ -165,7 +165,7 @@ export default function Reality21() {
           {/* Tabs */}
           <div className="lg:col-span-4">
             <div className="sticky top-32">
-              <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.5em] mb-10 pl-2">
+              <p className="text-[9px] font-mono text-slate-400 uppercase tracking-[0.5em] mb-10 pl-2">
                 Case Study Archives
               </p>
               <div className="space-y-4 relative">
@@ -185,12 +185,12 @@ export default function Reality21() {
                     
                     <div className="flex flex-col">
                       <span className={`text-[8px] font-mono uppercase tracking-[0.3em] mb-1 transition-colors duration-500 ${
-                        activeCaseStudy === i ? 'text-accent' : 'text-slate-600'
+                        activeCaseStudy === i ? 'text-accent' : 'text-slate-400'
                       }`}>
                         Index 0{i + 1}
                       </span>
                       <span className={`font-serif text-xl tracking-tight transition-all duration-500 ${
-                        activeCaseStudy === i ? 'text-white translate-x-1' : 'text-slate-500 group-hover:text-slate-300'
+                        activeCaseStudy === i ? 'text-white translate-x-1' : 'text-slate-300 group-hover:text-slate-100'
                       }`}>
                         {c.tag}
                       </span>
@@ -201,7 +201,7 @@ export default function Reality21() {
 
               {/* Decorative detail */}
               <div className="mt-20 p-6 border border-white/5 rounded-sm bg-white/[0.01]">
-                 <p className="text-[10px] text-slate-600 font-mono leading-relaxed">
+                 <p className="text-[10px] text-slate-400 font-mono leading-relaxed">
                    Các nghiên cứu điển hình nhằm minh chứng sự vận động của quy luật giai cấp trong bối cảnh nền kinh tế số và AI.
                  </p>
               </div>

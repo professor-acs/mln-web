@@ -94,7 +94,7 @@ export default function Hero() {
           transition={{ duration: 1.5, delay: 0.6 }}
           className="relative max-w-3xl mx-auto mb-16 py-12 px-8 border-y border-white/5"
         >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark text-[10px] font-mono text-slate-300 uppercase tracking-widest">
             Thesis
           </div>
           
@@ -116,7 +116,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 1.8 }}
-          className="font-sans text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-20 font-light"
+          className="font-sans text-slate-200 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-20 font-light opacity-90"
         >
           {siteMetadata.heroSubtext}
         </motion.p>

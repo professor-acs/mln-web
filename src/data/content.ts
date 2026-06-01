@@ -212,7 +212,6 @@ export const quizQuestions = [
   {
     id: 1,
     question: 'Bạn tích cóp tiền mua được một chiếc laptop xịn trị giá 100 triệu đồng để làm đồ họa. Chiếc máy này được phân loại là gì trong triết học Marx?',
-    emoji: '💻',
     options: [
       { id: 'A', text: 'Chắc chắn là Tư liệu sản xuất — vì nó tạo ra sản phẩm có giá trị', color: 'from-blue-600 to-blue-700' },
       { id: 'B', text: 'Chắc chắn là Tài sản cá nhân — vì nó thuộc quyền sở hữu của riêng bạn', color: 'from-red-600 to-red-700' },
@@ -228,7 +227,6 @@ export const quizQuestions = [
   {
     id: 2,
     question: 'Nguyên nhân gốc rễ dẫn đến việc một xã hội phân hóa thành kẻ giàu kẻ nghèo mang tính giai cấp bền vững là do đâu?',
-    emoji: '💰',
     options: [
       { id: 'A', text: 'Do người giàu thông minh, chăm chỉ hơn; người nghèo lười biếng, kém may mắn hơn', color: 'from-blue-600 to-blue-700' },
       { id: 'B', text: 'Do sự phân phối ngẫu nhiên của các nguồn lực trong nền kinh tế thị trường', color: 'from-red-600 to-red-700' },
@@ -244,7 +242,6 @@ export const quizQuestions = [
   {
     id: 3,
     question: 'Tại sao ở phương Đông (như Việt Nam), dân tộc lại hình thành sớm hơn so với phương Tây (châu Âu)?',
-    emoji: '🇻🇳',
     options: [
       { id: 'A', text: 'Do phương Đông phát triển chủ nghĩa tư bản sớm hơn phương Tây', color: 'from-blue-600 to-blue-700' },
       { id: 'B', text: 'Do nhu cầu đấu tranh chống ngoại xâm và cải tạo thiên nhiên (đắp đê, làm thủy lợi)', color: 'from-green-600 to-green-700' },
@@ -260,7 +257,6 @@ export const quizQuestions = [
   {
     id: 4,
     question: 'Trong mối quan hệ giữa Giai cấp và Dân tộc, luận điểm nào sau đây là chính xác theo quan điểm Mác-Lênin?',
-    emoji: '🔗',
     options: [
       { id: 'A', text: 'Dân tộc quyết định sự tồn tại và bản chất của giai cấp', color: 'from-blue-600 to-blue-700' },
       { id: 'B', text: 'Giai cấp và dân tộc hoàn toàn độc lập, không ảnh hưởng đến nhau', color: 'from-red-600 to-red-700' },
@@ -276,7 +272,6 @@ export const quizQuestions = [
   {
     id: 5,
     question: 'Sự tồn tại của "Nhân loại" đóng vai trò gì đối với sự tồn tại của Giai cấp và Dân tộc?',
-    emoji: '🌏',
     options: [
       { id: 'A', text: 'Là kết quả cuối cùng sau khi giai cấp và dân tộc biến mất', color: 'from-blue-600 to-blue-700' },
       { id: 'B', text: 'Là tiền đề cho sự tồn tại của giai cấp và dân tộc', color: 'from-green-600 to-green-700' },

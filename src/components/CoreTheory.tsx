@@ -73,20 +73,18 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
               </h3>
             </div>
             
-            <p className={`font-sans text-sm leading-relaxed flex-1 font-light transition-colors duration-500 ${
-              isHovered ? 'text-slate-300' : 'text-slate-500'
-            }`}>
+            <p className="text-slate-200 text-sm leading-relaxed font-light mb-10">
               {card.frontSummary}
             </p>
 
             <div className="mt-10 pt-8 border-t border-white/5 flex items-center justify-between">
               <span className={`text-[10px] font-mono uppercase tracking-[0.4em] transition-all duration-500 ${
-                isHovered ? 'text-accent opacity-100 translate-x-0' : 'text-slate-600 opacity-60 -translate-x-2'
+                isHovered ? 'text-accent opacity-100 translate-x-0' : 'text-slate-400 opacity-60 -translate-x-2'
               }`}>
                 Xem chi tiết
               </span>
               <div className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-500 ${
-                isHovered ? 'border-accent bg-accent text-dark rotate-0' : 'border-white/10 text-slate-500 rotate-[-45deg]'
+                isHovered ? 'border-accent bg-accent text-dark rotate-0' : 'border-white/10 text-slate-300 rotate-[-45deg]'
               }`}>
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -136,7 +134,7 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
                     <span className="font-serif italic text-accent text-xl opacity-40">{c.number}</span>
                     <div>
                       <p className="text-slate-100 text-sm font-medium mb-1">{c.title}</p>
-                      <p className="text-slate-400 text-xs leading-relaxed font-light">{c.desc}</p>
+                      <p className="text-slate-200 text-xs leading-relaxed font-light">{c.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -151,7 +149,7 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
                     <div className="mb-2">
                        <span className="text-[9px] font-mono text-accent uppercase tracking-widest">{s.era}</span>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed font-light">{s.desc}</p>
+                    <p className="text-slate-200 text-xs leading-relaxed font-light">{s.desc}</p>
                   </div>
                 ))}
               </div>
@@ -165,7 +163,7 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
                     <div className="mb-2">
                        <span className="text-[9px] font-mono text-accent uppercase tracking-widest">{s.era}</span>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed font-light">{s.desc}</p>
+                    <p className="text-slate-200 text-xs leading-relaxed font-light">{s.desc}</p>
                   </div>
                 ))}
               </div>
@@ -179,7 +177,7 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
                     <div className="mb-2">
                        <span className="text-[9px] font-mono text-accent uppercase tracking-widest">{t.era}</span>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed font-light">{t.desc}</p>
+                    <p className="text-slate-200 text-xs leading-relaxed font-light">{t.desc}</p>
                   </div>
                 ))}
               </div>
@@ -192,7 +190,7 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
                     <div className="flex items-center gap-4 mb-2">
                        <p className="text-slate-100 text-sm font-medium">{f.title}</p>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed font-light">{f.desc}</p>
+                    <p className="text-slate-200 text-xs leading-relaxed font-light">{f.desc}</p>
                   </div>
                 ))}
               </div>
@@ -205,7 +203,7 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
                     <div className="flex items-center gap-4 mb-2">
                        <p className="text-slate-100 text-sm font-medium">{f.title}</p>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed font-light">{f.desc}</p>
+                    <p className="text-slate-200 text-xs leading-relaxed font-light">{f.desc}</p>
                   </div>
                 ))}
               </div>
@@ -218,7 +216,7 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
                     <div className="flex items-center gap-4 mb-2">
                        <p className="text-slate-100 text-sm font-medium">{imp.title}</p>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed font-light">{imp.desc}</p>
+                    <p className="text-slate-200 text-xs leading-relaxed font-light">{imp.desc}</p>
                   </div>
                 ))}
               </div>
@@ -229,7 +227,7 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
                 {card.points.map((p: any) => (
                   <div key={p.title} className="p-5 bg-white/[0.02] border border-white/5 rounded-sm">
                     <p className="text-slate-100 text-sm font-medium mb-1">{p.title}</p>
-                    <p className="text-slate-400 text-xs leading-relaxed font-light">{p.desc}</p>
+                    <p className="text-slate-200 text-xs leading-relaxed font-light">{p.desc}</p>
                   </div>
                 ))}
               </div>
@@ -243,7 +241,7 @@ function TheoryCard(props: Readonly<{ card: any; index: number }>) {
                     <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
                     <div>
                       <p className="text-slate-200 text-xs font-medium mb-1">{link.title}</p>
-                      <p className="text-slate-500 text-[11px] leading-relaxed italic">{link.desc}</p>
+                      <p className="text-slate-300 text-[11px] leading-relaxed italic">{link.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -306,7 +304,7 @@ export default function CoreTheory({ activeSection = '3.2.1' }: Readonly<CoreThe
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-sans text-slate-400 max-w-2xl text-lg md:text-xl leading-relaxed font-light"
+              className="font-sans text-slate-200 max-w-2xl text-lg md:text-xl leading-relaxed font-light"
             >
               {section.description}
             </motion.p>

@@ -26,12 +26,12 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
       <div className={`${index % 2 === 0 ? 'md:text-right md:items-end' : 'md:order-2 md:text-left md:items-start'} flex flex-col w-full`}>
         <div className="mb-6 w-full">
           <span className={`font-mono text-[10px] uppercase tracking-[0.5em] mb-2 block transition-colors duration-500 ${
-            isHovered ? 'text-accent' : 'text-slate-500'
+            isHovered ? 'text-accent' : 'text-slate-300'
           }`}>
             {epoch.period}
           </span>
           <h3 className={`font-serif text-4xl leading-tight transition-colors duration-500 ${
-            isHovered ? 'text-white' : 'text-slate-400'
+            isHovered ? 'text-white' : 'text-slate-200'
           }`}>
             {epoch.era}
           </h3>
@@ -106,22 +106,18 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-8 mb-8">
-              <div className={`${index % 2 === 0 ? 'md:text-right' : 'text-left'}`}>
-                <p className={`text-[9px] font-mono uppercase mb-2 tracking-widest transition-colors duration-500 ${
-                  isHovered ? 'text-accent/80' : 'text-accent/40'
-                }`}>Thống trị</p>
-                <p className={`text-base font-serif transition-colors duration-500 ${
-                  isHovered ? 'text-slate-100' : 'text-slate-300'
-                }`}>{epoch.oppressor.name}</p>
+            <div className="space-y-4">
+              <div className="flex gap-4 items-start">
+                <div>
+                  <p className="text-slate-100 text-xs font-bold uppercase tracking-widest mb-1">Thống trị: {epoch.oppressor.name}</p>
+                  <p className="text-slate-300 text-xs leading-relaxed font-light">{epoch.oppressor.desc}</p>
+                </div>
               </div>
-              <div className={`${index % 2 === 0 ? 'text-left' : 'md:text-right'}`}>
-                <p className={`text-[9px] font-mono uppercase mb-2 tracking-widest transition-colors duration-500 ${
-                  isHovered ? 'text-accent/80' : 'text-accent/40'
-                }`}>Bị trị</p>
-                <p className={`text-base font-serif transition-colors duration-500 ${
-                  isHovered ? 'text-slate-100' : 'text-slate-300'
-                }`}>{epoch.oppressed.name}</p>
+              <div className="flex gap-4 items-start">
+                <div>
+                  <p className="text-slate-100 text-xs font-bold uppercase tracking-widest mb-1">Bị trị: {epoch.oppressed.name}</p>
+                  <p className="text-slate-300 text-xs leading-relaxed font-light">{epoch.oppressed.desc}</p>
+                </div>
               </div>
             </div>
 
@@ -168,12 +164,9 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
            <div className={`absolute inset-6 border border-accent/5 rounded-full animate-[spin_20s_linear_infinite] transition-opacity duration-700 ${
              isHovered ? 'opacity-100' : 'opacity-0'
            }`} />
-           <div className={`text-8xl select-none transition-all duration-700 ${
-             isHovered ? 'opacity-20 scale-125' : 'opacity-[0.03] scale-100'
-           }`}>{epoch.icon}</div>
            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark">
               <span className={`text-[9px] font-mono tracking-[0.6em] uppercase whitespace-nowrap transition-colors duration-500 ${
-                isHovered ? 'text-accent' : 'text-slate-700'
+                isHovered ? 'text-accent' : 'text-slate-400'
               }`}>
                 Historical Milestone
               </span>
@@ -207,7 +200,7 @@ export default function Timeline() {
             Của Nhân Loại
           </h2>
           
-          <p className="font-sans text-slate-400 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
+          <p className="font-sans text-slate-200 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
             Nhìn lại hành trình của các hình thái kinh tế - xã hội, nơi mỗi cuộc cách mạng 
             là một nấc thang tất yếu đưa xã hội lên tầm cao mới.
           </p>
@@ -234,7 +227,7 @@ export default function Timeline() {
             "Đấu tranh giai cấp là động lực trực tiếp của lịch sử các xã hội có giai cấp."
           </p>
           <div className="h-[1px] w-24 bg-accent/30 mx-auto mb-8" />
-          <p className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.5em]">
+          <p className="text-[10px] font-mono text-slate-300 uppercase tracking-[0.5em]">
             Friedrich Engels & Karl Marx
           </p>
         </motion.div>

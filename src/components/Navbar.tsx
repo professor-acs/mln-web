@@ -35,20 +35,36 @@ interface NavbarProps {
 export default function Navbar({ activeSection = '3.2.1', onSectionChange }: Readonly<NavbarProps>) {
   const [scrolledNav, setScrolledNav] = useState(false)
   const [showTopicMenu, setShowTopicMenu] = useState(false)
+  const [activeNavId, setActiveNavId] = useState('hero')
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolledNav(window.scrollY > 50)
+
+      // Get all sections we want to track
+      const sections = getDynamicSections(activeSection).map(s => s.id)
+      
+      for (const sectionId of sections.reverse()) {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          // If the top of the section is near the top of the viewport
+          if (rect.top <= 150) {
+            setActiveNavId(sectionId)
+            break
+          }
+        }
+      }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [activeSection])
 
   const scrollTo = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      const headerOffset = 100 // Adjust based on your header height
+      const headerOffset = 100
       const elementPosition = element.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset
 
@@ -99,11 +115,11 @@ export default function Navbar({ activeSection = '3.2.1', onSectionChange }: Rea
               key={s.id}
               onClick={() => scrollTo(s.id)}
               className={`relative text-[10px] font-mono uppercase tracking-[0.4em] transition-all duration-500 whitespace-nowrap ${
-                s.id === 'theory' ? 'text-accent' : 'text-slate-500 hover:text-slate-100'
+                activeNavId === s.id ? 'text-accent' : 'text-slate-500 hover:text-slate-100'
               }`}
             >
               {s.label}
-              {s.id === 'theory' && (
+              {activeNavId === s.id && (
                 <motion.div
                   layoutId="navUnderline"
                   className="absolute -bottom-2 left-0 right-0 h-[1px] bg-accent/60"
