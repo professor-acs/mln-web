@@ -114,15 +114,50 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Refined Subtext */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+        {/* Refined Subtext - Upgraded UI/UX */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, delay: 1.8 }}
-          className="font-sans text-slate-100 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto mb-20 font-light"
+          className="relative max-w-4xl mx-auto my-16 px-6 md:px-12 py-10 border-l-2 border-accent/30 bg-slate-900/10 backdrop-blur-sm text-left mb-20"
         >
-          {siteMetadata.heroSubtext}
-        </motion.p>
+          {/* Ký tự mở đầu trang trọng (Drop Cap) dạng mờ chạy ngầm */}
+          <span className="absolute -top-6 -left-4 font-serif text-9xl text-accent/5 select-none pointer-events-none font-bold">
+            “
+          </span>
+
+          {/* Khối 1: Lời dẫn nhập (Style tự sự, cỡ chữ lớn, thanh lịch) */}
+          <p className="font-serif text-xl md:text-2xl lg:text-3xl text-slate-300 font-light leading-relaxed mb-8 italic tracking-wide">
+            Khi lật mở những trang sử ký, chúng ta thường bị choáng ngợp bởi hào quang của các triều đại, 
+            danh tiếng của các vị vua hay sức mạnh của các cuộc viễn chinh. Nhưng đằng sau những biến động 
+            vĩ đại đó, có một động lực ngầm liên tục dịch chuyển bánh xe lịch sử...
+          </p>
+
+          {/* Khối 2: Tuyên ngôn cốt lõi (Sắc bén, uy quyền, tương phản mạnh) */}
+          <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row md:items-start gap-4">
+            {/* Nhãn nhãn thông số công nghệ nhỏ để giữ chất Sci-fi */}
+            <span className="font-mono text-xs text-accent tracking-[0.3em] uppercase pt-1 shrink-0">
+              [ CORE THESIS ]
+            </span>
+            
+            <div className="space-y-4">
+              <h4 className="font-sans text-2xl md:text-3xl font-medium text-white leading-snug">
+                Karl Marx gọi đó là{' '}
+                <span className="text-gradient-gold font-serif font-bold italic inline-block drop-shadow-[0_0_30px_rgba(212,175,55,0.4)]">
+                  Đấu tranh giai cấp.
+                </span>
+              </h4>
+              
+              <p className="font-sans text-base md:text-lg text-slate-200 leading-loose font-light tracking-wide">
+                Đây không phải là một lý thuyết quá khứ — nó là{' '}
+                <span className="text-white font-medium border-b border-accent/40 pb-0.5">
+                  lăng kính giải mã
+                </span>{' '}
+                toàn bộ thế giới chúng ta đang sống ngày hôm nay.
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Premium Actions */}
         <motion.div

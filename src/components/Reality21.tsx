@@ -121,6 +121,44 @@ function StatCard({ stat, index }: { stat: typeof realityData.stats[0]; index: n
   )
 }
 
+function highlightKeywords(text: string) {
+  const keywords = [
+    'Thuật toán', 'Máy chủ', 'Big Data', 'Nền tảng ứng dụng',
+    'tư liệu sản xuất số', 'thuật toán', 'tập đoàn công nghệ',
+    'tài xế công nghệ', 'đình công tập thể', 'bản chất bóc lột',
+    'Silicon Valley', 'Oxfam', '1% giàu nhất', '99%', 'vô sản hóa',
+    'tư liệu sản xuất mới', 'AI', 'Chip', 'siêu máy tính'
+  ];
+  
+  let parts: (string | any)[] = [text];
+  
+  keywords.forEach(keyword => {
+    const newParts: (string | any)[] = [];
+    parts.forEach(part => {
+      if (typeof part === 'string') {
+        const regex = new RegExp(`(${keyword})`, 'gi');
+        const split = part.split(regex);
+        split.forEach((subPart, index) => {
+          if (subPart.toLowerCase() === keyword.toLowerCase()) {
+            newParts.push(
+              <span key={`${keyword}-${index}`} className="font-medium text-white border-b border-accent/50">
+                {subPart}
+              </span>
+            );
+          } else if (subPart !== '') {
+            newParts.push(subPart);
+          }
+        });
+      } else {
+        newParts.push(part);
+      }
+    });
+    parts = newParts;
+  });
+  
+  return parts;
+}
+
 export default function Reality21() {
   const [activeCaseStudy, setActiveCaseStudy] = useState(0)
   const activeCase = realityData.caseStudies[activeCaseStudy]
@@ -245,18 +283,16 @@ export default function Reality21() {
                     {activeCase.analysis.map((item, i) => (
                       <div 
                         key={i} 
-                        className="group p-8 bg-slate-950/60 border border-white/15 rounded-sm hover:border-accent/30 transition-all duration-500"
+                        className="group p-8 bg-slate-950/60 border border-white/15 rounded-xl hover:border-accent/30 transition-all duration-500"
                       >
-                        <div className="flex items-center gap-4 mb-6">
-                          <div className="p-2 rounded-sm bg-white/5 text-accent transition-colors duration-500 group-hover:bg-accent group-hover:text-dark">
-                            <span className="text-sm font-mono font-bold">0{i + 1}</span>
-                          </div>
+                        <div className="flex items-center justify-between mb-6">
+                          <span className="font-mono text-accent font-bold text-lg opacity-80">0{i + 1}</span>
                           <span className="text-xs font-mono text-slate-250 uppercase tracking-[0.3em] group-hover:text-accent transition-colors duration-500">
                             {item.label}
                           </span>
                         </div>
-                        <p className="text-base text-slate-300 leading-relaxed font-light group-hover:text-white transition-colors duration-500">
-                          {item.value}
+                        <p className="text-slate-200 text-base leading-loose font-light transition-colors duration-500 group-hover:text-white">
+                          {highlightKeywords(item.value)}
                         </p>
                       </div>
                     ))}

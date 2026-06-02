@@ -32,8 +32,7 @@ html {
 body {
   background-color: var(--color-bg);
   color: #f1f5f9;
-  font-family: 'Outfit', sans-serif;
-  @apply selection:bg-accent/30 selection:text-accent-light;
+  @apply font-sans selection:bg-accent/30 selection:text-accent-light;
 }
 
 ::-webkit-scrollbar {

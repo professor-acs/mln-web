@@ -54,7 +54,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
           }`} />
 
           {/* Background Decorative Index */}
-          <div className={`absolute -right-4 -bottom-8 font-serif text-9xl transition-all duration-1000 select-none pointer-events-none ${
+          <div className={`absolute -right-4 -bottom-8 font-mono text-9xl transition-all duration-1000 select-none pointer-events-none ${
             isHovered ? 'text-accent/[0.08] translate-y-0' : 'text-white/[0.03] translate-y-4'
           }`}>
             0{index + 1}
@@ -136,7 +136,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
                       transition={{ delay: 0.1 }}
                     >
                        <p className="text-xs font-mono text-accent uppercase tracking-widest mb-2">Conflict Nature</p>
-                       <p className="text-sm text-slate-300 leading-relaxed font-light italic">"{epoch.conflict}"</p>
+                       <p className="text-slate-200 mt-4 text-base leading-loose font-light italic">"{epoch.conflict}"</p>
                     </motion.div>
                     <motion.div
                       initial={{ y: 10, opacity: 0 }}
@@ -144,7 +144,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
                       transition={{ delay: 0.2 }}
                     >
                        <p className="text-xs font-mono text-accent uppercase tracking-widest mb-2">Dialectical Result</p>
-                       <p className="text-sm text-slate-200 leading-relaxed font-light">{epoch.result}</p>
+                       <p className="text-slate-200 mt-4 text-base leading-loose font-light">{epoch.result}</p>
                     </motion.div>
                   </div>
                 </motion.div>

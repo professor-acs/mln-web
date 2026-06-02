@@ -35,8 +35,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ['Montserrat', 'Raleway', 'sans-serif'],
-        sans: ['"Be Vietnam Pro"', 'Inter', 'sans-serif'],
+        serif: ['Philosopher', 'serif'],
+        sans: ['Manrope', 'sans-serif'],
         mono: ['"Space Grotesk"', 'monospace'],
       },
       backgroundImage: {
