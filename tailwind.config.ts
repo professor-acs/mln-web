@@ -35,8 +35,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'serif'],
-        sans: ['"Outfit"', 'sans-serif'],
+        serif: ['Montserrat', 'Raleway', 'sans-serif'],
+        sans: ['"Be Vietnam Pro"', 'Inter', 'sans-serif'],
         mono: ['"Space Grotesk"', 'monospace'],
       },
       backgroundImage: {

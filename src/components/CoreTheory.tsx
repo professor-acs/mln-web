@@ -58,7 +58,7 @@ function TheoryCard({ card, index }: { card: typeof theoryCards[0]; index: numbe
             
             <div className="mb-8">
               <span className={`font-mono text-[10px] uppercase tracking-[0.5em] mb-4 block transition-colors duration-500 ${
-                isHovered ? 'text-accent' : 'text-slate-500'
+                isHovered ? 'text-accent' : 'text-slate-400'
               }`}>
                 {card.subtitle}
               </span>
@@ -70,14 +70,14 @@ function TheoryCard({ card, index }: { card: typeof theoryCards[0]; index: numbe
             </div>
             
             <p className={`font-sans text-sm leading-relaxed flex-1 font-light transition-colors duration-500 ${
-              isHovered ? 'text-slate-300' : 'text-slate-500'
+              isHovered ? 'text-slate-100' : 'text-slate-300'
             }`}>
               {card.frontSummary}
             </p>
 
             <div className="mt-10 pt-8 border-t border-white/5 flex items-center justify-between">
               <span className={`text-[10px] font-mono uppercase tracking-[0.4em] transition-all duration-500 ${
-                isHovered ? 'text-accent opacity-100 translate-x-0' : 'text-slate-600 opacity-60 -translate-x-2'
+                isHovered ? 'text-accent opacity-100 translate-x-0' : 'text-slate-400 -translate-x-2'
               }`}>
                 Xem chi tiết
               </span>
@@ -118,7 +118,7 @@ function TheoryCard({ card, index }: { card: typeof theoryCards[0]; index: numbe
                     <span className="font-serif italic text-accent text-xl opacity-40">{c.number}</span>
                     <div>
                       <p className="text-slate-100 text-sm font-medium mb-1">{c.title}</p>
-                      <p className="text-slate-400 text-xs leading-relaxed font-light">{c.desc}</p>
+                      <p className="text-slate-300 text-xs leading-relaxed font-light">{c.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -133,7 +133,7 @@ function TheoryCard({ card, index }: { card: typeof theoryCards[0]; index: numbe
                     <div className="mb-2">
                        <span className="text-[9px] font-mono text-accent uppercase tracking-widest">{s.era}</span>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed font-light">{s.desc}</p>
+                    <p className="text-slate-300 text-xs leading-relaxed font-light">{s.desc}</p>
                   </div>
                 ))}
               </div>
@@ -147,7 +147,7 @@ function TheoryCard({ card, index }: { card: typeof theoryCards[0]; index: numbe
                        <span className="text-xl opacity-60">{f.icon}</span>
                        <p className="text-slate-100 text-sm font-medium">{f.title}</p>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed font-light">{f.desc}</p>
+                    <p className="text-slate-300 text-xs leading-relaxed font-light">{f.desc}</p>
                   </div>
                 ))}
               </div>
@@ -192,7 +192,7 @@ export default function CoreTheory() {
               Về Giai Cấp
             </h2>
             
-            <p className="font-sans text-slate-400 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
+            <p className="font-sans text-slate-200 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
               Hệ thống hóa ba trụ cột định nghĩa bản chất xã hội và quy luật vận động 
               của nhân loại dưới nhãn quan duy vật biện chứng.
             </p>
@@ -201,7 +201,7 @@ export default function CoreTheory() {
           <div className="lg:col-span-4 lg:text-right hidden lg:block">
              <div className="inline-block px-10 py-10 border border-white/5 rounded-full">
                <span className="block text-6xl font-serif text-accent/20">03</span>
-               <span className="text-[8px] font-mono text-slate-600 uppercase tracking-[0.5em] mt-2 block">
+               <span className="text-[8px] font-mono text-slate-400 uppercase tracking-[0.5em] mt-2 block">
                  Pillars
                </span>
              </div>
@@ -225,11 +225,11 @@ export default function CoreTheory() {
         >
           <div className="flex items-center gap-4">
              <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-             <p className="text-[9px] font-mono text-slate-500 uppercase tracking-[0.3em]">
+             <p className="text-[9px] font-mono text-slate-300 uppercase tracking-[0.3em]">
                Official Reference Archive
              </p>
           </div>
-          <p className="text-xs font-serif italic text-slate-500 max-w-md text-center md:text-right leading-relaxed">
+          <p className="text-xs font-serif italic text-slate-300 max-w-md text-center md:text-right leading-relaxed">
             V.I. Lenin, "Sáng kiến vĩ đại" & Giáo trình Triết học Mác-Lênin (Bộ Giáo dục và Đào tạo Việt Nam)
           </p>
         </motion.div>

@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import StarField from './components/StarField'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -7,9 +9,22 @@ import Reality21 from './components/Reality21'
 import Quiz from './components/Quiz'
 import AiAppendix from './components/AiAppendix'
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
+
 export default function App() {
   return (
     <div className="relative min-h-screen" style={{ background: '#0a0a1a' }}>
+      {/* Scroll indicator/reset on route change */}
+      <ScrollToTop />
+
       {/* Background star field */}
       <StarField />
 
@@ -18,33 +33,13 @@ export default function App() {
 
       {/* Main content */}
       <main className="pb-16">
-        <Hero />
-
-        {/* Section separator - slightly more visible on lighter bg */}
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
-        </div>
-
-        <CoreTheory />
-
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
-        </div>
-
-        <Timeline />
-
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
-        </div>
-
-        <Reality21 />
-
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="h-px w-full"
-            style={{ background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.3), transparent)' }} />
-        </div>
-
-        <Quiz />
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/theory" element={<CoreTheory />} />
+          <Route path="/timeline" element={<Timeline />} />
+          <Route path="/reality" element={<Reality21 />} />
+          <Route path="/quiz" element={<Quiz />} />
+        </Routes>
       </main>
 
       {/* Pinned footer + Modal */}

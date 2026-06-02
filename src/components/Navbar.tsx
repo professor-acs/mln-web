@@ -1,41 +1,30 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
-const sections = [
-  { id: 'hero', label: 'Intro' },
-  { id: 'theory', label: 'Theory' },
-  { id: 'timeline', label: 'History' },
-  { id: 'reality', label: 'Reality' },
-  { id: 'quiz', label: 'Interactive' },
+const routes = [
+  { path: '/', label: 'Intro' },
+  { path: '/theory', label: 'Theory' },
+  { path: '/timeline', label: 'History' },
+  { path: '/reality', label: 'Reality' },
+  { path: '/quiz', label: 'Interactive' },
 ]
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState('hero')
+  const location = useLocation()
+  const navigate = useNavigate()
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
-
-      for (const s of sections) {
-        const el = document.getElementById(s.id)
-        if (el) {
-          const rect = el.getBoundingClientRect()
-          if (rect.top <= 200 && rect.bottom >= 200) {
-            setActiveSection(s.id)
-            break
-          }
-        }
-      }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
+  const currentPath = location.pathname
 
   return (
     <header
@@ -48,7 +37,7 @@ export default function Navbar() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="flex items-center gap-6 cursor-pointer group"
-          onClick={() => scrollTo('hero')}
+          onClick={() => navigate('/')}
         >
           <div className="relative w-10 h-10 flex items-center justify-center">
             <div className="absolute inset-0 border border-accent/20 rotate-45 group-hover:rotate-90 transition-transform duration-700" />
@@ -66,29 +55,32 @@ export default function Navbar() {
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-12">
-          {sections.map((s) => (
-            <button
-              key={s.id}
-              onClick={() => scrollTo(s.id)}
-              className={`relative text-[10px] font-mono uppercase tracking-[0.4em] transition-all duration-500 ${activeSection === s.id ? 'text-accent' : 'text-slate-500 hover:text-slate-100'
-                }`}
-            >
-              {s.label}
-              {activeSection === s.id && (
-                <motion.div
-                  layoutId="navUnderline"
-                  className="absolute -bottom-2 left-0 right-0 h-[1px] bg-accent/60"
-                  transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-            </button>
-          ))}
+          {routes.map((r) => {
+            const isActive = currentPath === r.path
+            return (
+              <Link
+                key={r.path}
+                to={r.path}
+                className={`relative text-[10px] font-mono uppercase tracking-[0.4em] transition-all duration-500 ${isActive ? 'text-accent' : 'text-slate-400 hover:text-slate-150'
+                  }`}
+              >
+                {r.label}
+                {isActive && (
+                  <motion.div
+                    layoutId="navUnderline"
+                    className="absolute -bottom-2 left-0 right-0 h-[1px] bg-accent/60"
+                    transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+              </Link>
+            )
+          })}
         </nav>
 
         {/* Status Indicator */}
         <div className="flex items-center gap-4">
           <div className="hidden lg:flex flex-col items-end mr-4">
-            <span className="text-[8px] font-mono text-slate-600 uppercase tracking-widest">System Status</span>
+            <span className="text-[8px] font-mono text-slate-400 uppercase tracking-widest">System Status</span>
             <span className="text-[9px] font-mono text-accent uppercase tracking-widest">Active</span>
           </div>
           <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group hover:border-accent/40 transition-colors duration-500">
