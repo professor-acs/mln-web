@@ -33,10 +33,14 @@ const config: Config = {
           dark: '#a07a30',
           muted: 'rgba(201,168,76,0.3)',
         },
+        cream: {
+          DEFAULT: '#f0ece4',
+          muted: 'rgba(240, 236, 228, 0.5)',
+        },
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'serif'],
-        sans: ['"Outfit"', 'sans-serif'],
+        serif: ['Philosopher', 'serif'],
+        sans: ['Manrope', 'sans-serif'],
         mono: ['"Space Grotesk"', 'monospace'],
       },
       backgroundImage: {

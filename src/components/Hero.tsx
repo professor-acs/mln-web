@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { siteMetadata } from '../data/content'
 
 function useTypewriter(text: string, speed = 50, startDelay = 500) {
@@ -27,10 +28,11 @@ function useTypewriter(text: string, speed = 50, startDelay = 500) {
 }
 
 export default function Hero() {
+  const navigate = useNavigate()
   const { displayed: quoteText, done: quoteDone } = useTypewriter(
     siteMetadata.mainQuote,
-    40,
-    1000
+    20,
+    300
   )
 
   return (
@@ -38,6 +40,25 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden"
     >
+      {/* Background Hero Image — Karl Marx */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.12 }}
+        transition={{ duration: 2.5 }}
+        className="absolute inset-0 z-0 pointer-events-none"
+      >
+        <img
+          src={siteMetadata.heroImage}
+          alt="Karl Marx"
+          className="w-full h-full object-cover filter grayscale brightness-50"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+      </motion.div>
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-dark/60 via-dark/70 to-dark pointer-events-none" />
+
       <div className="relative z-10 w-full max-w-5xl mx-auto text-center">
         {/* Subtle Category Tag */}
         <motion.div
@@ -46,11 +67,11 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="inline-flex items-center gap-4 mb-16"
         >
-          <div className="h-[1px] w-8 bg-accent/40" />
-          <span className="text-accent font-mono text-[10px] tracking-[0.5em] uppercase">
+          <div className="h-[1px] w-8 bg-accent/70" />
+          <span className="text-accent font-mono text-xs tracking-[0.5em] uppercase">
             {siteMetadata.course}
           </span>
-          <div className="h-[1px] w-8 bg-accent/40" />
+          <div className="h-[1px] w-8 bg-accent/70" />
         </motion.div>
 
         {/* Editorial Title */}
@@ -74,34 +95,69 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, delay: 0.6 }}
-          className="relative max-w-3xl mx-auto mb-16 py-12 px-8 border-y border-white/5"
+          className="relative max-w-3xl mx-auto mb-16 py-12 px-8 border-y border-white/15"
         >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark text-xs font-mono text-slate-100 uppercase tracking-widest">
             Thesis
           </div>
           
-          <p className="font-serif text-2xl md:text-3xl lg:text-4xl italic text-slate-200 leading-[1.3] mb-8">
+          <p className="font-serif text-2xl md:text-3xl lg:text-4xl italic text-slate-100 leading-[1.3] mb-8">
             "{quoteText}"
             {!quoteDone && <span className="typewriter-cursor" />}
           </p>
           
           <div className="flex flex-col items-center gap-4">
-            <p className="font-mono text-[10px] text-accent uppercase tracking-[0.3em]">
+            <p className="font-mono text-xs text-accent uppercase tracking-[0.3em]">
               {siteMetadata.quoteAuthor}
             </p>
-            <div className="h-8 w-[1px] bg-gradient-to-b from-accent/40 to-transparent" />
+            <div className="h-8 w-[1px] bg-gradient-to-b from-accent/70 to-transparent" />
           </div>
         </motion.div>
 
-        {/* Refined Subtext */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+        {/* Refined Subtext - Upgraded UI/UX */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, delay: 1.8 }}
-          className="font-sans text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-20 font-light"
+          className="relative max-w-4xl mx-auto my-16 px-6 md:px-12 py-10 border-l-2 border-accent/30 bg-slate-900/10 backdrop-blur-sm text-left mb-20"
         >
-          {siteMetadata.heroSubtext}
-        </motion.p>
+          {/* Ký tự mở đầu trang trọng (Drop Cap) dạng mờ chạy ngầm */}
+          <span className="absolute -top-6 -left-4 font-serif text-9xl text-accent/5 select-none pointer-events-none font-bold">
+            “
+          </span>
+
+          {/* Khối 1: Lời dẫn nhập (Style tự sự, cỡ chữ lớn, thanh lịch) */}
+          <p className="font-serif text-xl md:text-2xl lg:text-3xl text-slate-100 font-light leading-relaxed mb-8 italic tracking-wide">
+            Khi lật mở những trang sử ký, chúng ta thường bị choáng ngợp bởi hào quang của các triều đại, 
+            danh tiếng của các vị vua hay sức mạnh của các cuộc viễn chinh. Nhưng đằng sau những biến động 
+            vĩ đại đó, có một động lực ngầm liên tục dịch chuyển bánh xe lịch sử...
+          </p>
+
+          {/* Khối 2: Tuyên ngôn cốt lõi (Sắc bén, uy quyền, tương phản mạnh) */}
+          <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row md:items-start gap-4">
+            {/* Nhãn nhãn thông số công nghệ nhỏ để giữ chất Sci-fi */}
+            <span className="font-mono text-xs text-accent tracking-[0.3em] uppercase pt-1 shrink-0">
+              [ CORE THESIS ]
+            </span>
+            
+            <div className="space-y-4">
+              <h4 className="font-sans text-2xl md:text-3xl font-medium text-white leading-snug">
+                Karl Marx gọi đó là{' '}
+                <span className="text-gradient-gold font-serif font-bold italic inline-block drop-shadow-[0_0_30px_rgba(212,175,55,0.4)]">
+                  Đấu tranh giai cấp.
+                </span>
+              </h4>
+              
+              <p className="font-sans text-base md:text-lg text-slate-100 leading-loose font-light tracking-wide">
+                Đây không phải là một lý thuyết quá khứ — nó là{' '}
+                <span className="text-white font-medium border-b border-accent/40 pb-0.5">
+                  lăng kính giải mã
+                </span>{' '}
+                toàn bộ thế giới chúng ta đang sống ngày hôm nay.
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Premium Actions */}
         <motion.div
@@ -112,13 +168,13 @@ export default function Hero() {
         >
           <div className="flex flex-wrap justify-center gap-6">
             <button
-              onClick={() => document.getElementById('theory')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => navigate('/theory')}
               className="btn-premium px-12 py-5"
             >
               Khám phá hệ tư tưởng
             </button>
             <button
-              onClick={() => document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => navigate('/timeline')}
               className="btn-outline-premium px-12 py-5"
             >
               Lịch sử đấu tranh
@@ -126,9 +182,9 @@ export default function Hero() {
           </div>
 
           {/* Minimalist Scroll */}
-          <div className="flex flex-col items-center gap-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
+          <div className="flex flex-col items-center gap-4 opacity-70 hover:opacity-100 transition-opacity duration-500">
             <div className="w-[1px] h-20 bg-gradient-to-b from-accent to-transparent" />
-            <span className="text-[9px] font-mono tracking-[0.5em] uppercase text-accent">Scroll</span>
+            <span className="text-xs font-mono tracking-[0.5em] uppercase text-accent">Scroll</span>
           </div>
         </motion.div>
       </div>

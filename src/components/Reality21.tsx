@@ -15,8 +15,8 @@ function InequalityChart() {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-slate-900 border border-white/5 p-4 shadow-2xl">
-          <p className="font-mono text-accent text-[10px] uppercase tracking-widest mb-2">Year {label}</p>
+        <div className="bg-slate-900 border border-white/15 p-4 shadow-2xl">
+          <p className="font-mono text-accent text-xs uppercase tracking-widest mb-2">Year {label}</p>
           {payload.map((p: any, i: number) => (
             <p key={i} className="text-xs font-sans text-slate-300 flex justify-between gap-4">
               <span className="opacity-60">{p.name}:</span>
@@ -30,13 +30,13 @@ function InequalityChart() {
   }
 
   return (
-    <div ref={chartRef} className="p-10 glass-card border-white/5 mt-20">
+    <div ref={chartRef} className="p-10 glass-card border-white/15 mt-20">
       <div className="flex flex-wrap items-center justify-between gap-8 mb-12">
         <div>
           <h4 className="font-serif text-2xl text-slate-100 mb-2">
             Bất Bình Đẳng Tài Sản Toàn Cầu
           </h4>
-          <p className="text-[9px] font-mono text-slate-500 uppercase tracking-[0.3em]">
+          <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em]">
             Data Source: World Inequality Database (1980–2024)
           </p>
         </div>
@@ -45,10 +45,10 @@ function InequalityChart() {
             <button
               key={t}
               onClick={() => setChartType(t)}
-              className={`px-6 py-2 rounded-sm text-[9px] font-mono uppercase tracking-[0.2em] transition-all ${
+              className={`px-6 py-2 rounded-sm text-xs font-mono uppercase tracking-[0.2em] transition-all ${
                 chartType === t
                   ? 'bg-accent text-dark font-bold'
-                  : 'text-slate-500 hover:text-slate-300'
+                  : 'text-slate-100 hover:text-white'
               }`}
             >
               {t}
@@ -68,22 +68,22 @@ function InequalityChart() {
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#ffffff" strokeOpacity={0.03} vertical={false} />
-              <XAxis dataKey="name" stroke="#475569" tick={{ fontFamily: 'Space Grotesk', fontSize: 9 }} axisLine={false} tickLine={false} dy={10} />
-              <YAxis stroke="#475569" tick={{ fontFamily: 'Space Grotesk', fontSize: 9 }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
+              <XAxis dataKey="name" stroke="#64748b" tick={{ fontFamily: 'Space Grotesk', fontSize: 12, fill: '#cbd5e1' }} axisLine={false} tickLine={false} dy={10} />
+              <YAxis stroke="#64748b" tick={{ fontFamily: 'Space Grotesk', fontSize: 12, fill: '#cbd5e1' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
               <Tooltip content={<CustomTooltip />} />
               <Legend verticalAlign="top" align="right" height={40} iconType="circle"
-                wrapperStyle={{ fontFamily: 'Space Grotesk', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', paddingBottom: '20px' }} />
+                wrapperStyle={{ fontFamily: 'Space Grotesk', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.2em', paddingBottom: '20px', color: '#f1f5f9' }} />
               <Area type="monotone" dataKey="top1" name="Top 1%" stroke="#d4af37" fill="url(#areaGrad)" strokeWidth={2} dot={{ fill: '#d4af37', r: 3, strokeWidth: 0 }} activeDot={{ r: 5, strokeWidth: 0 }} />
               <Area type="monotone" dataKey="bottom50" name="Bottom 50%" stroke="#475569" fill="transparent" strokeWidth={1} strokeDasharray="4 4" dot={{ fill: '#475569', r: 2, strokeWidth: 0 }} />
             </AreaChart>
           ) : (
             <BarChart data={realityData.chartData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#ffffff" strokeOpacity={0.03} vertical={false} />
-              <XAxis dataKey="name" stroke="#475569" tick={{ fontFamily: 'Space Grotesk', fontSize: 9 }} axisLine={false} tickLine={false} dy={10} />
-              <YAxis stroke="#475569" tick={{ fontFamily: 'Space Grotesk', fontSize: 9 }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
+              <XAxis dataKey="name" stroke="#64748b" tick={{ fontFamily: 'Space Grotesk', fontSize: 12, fill: '#cbd5e1' }} axisLine={false} tickLine={false} dy={10} />
+              <YAxis stroke="#64748b" tick={{ fontFamily: 'Space Grotesk', fontSize: 12, fill: '#cbd5e1' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
               <Tooltip content={<CustomTooltip />} />
               <Legend verticalAlign="top" align="right" height={40} iconType="circle"
-                wrapperStyle={{ fontFamily: 'Space Grotesk', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', paddingBottom: '20px' }} />
+                wrapperStyle={{ fontFamily: 'Space Grotesk', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.2em', paddingBottom: '20px', color: '#f1f5f9' }} />
               <Bar dataKey="top1" name="Top 1%" fill="#d4af37" radius={[2, 2, 0, 0]} barSize={32} />
               <Bar dataKey="bottom50" name="Bottom 50%" fill="#1e293b" radius={[2, 2, 0, 0]} barSize={32} />
             </BarChart>
@@ -102,7 +102,7 @@ function StatCard({ stat, index }: { stat: typeof realityData.stats[0]; index: n
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: index * 0.15 }}
-      className="p-12 border-r border-white/5 last:border-0 flex flex-col items-center md:items-start"
+      className="p-12 border-r border-white/15 last:border-0 flex flex-col items-center md:items-start"
     >
       <div className="font-serif text-6xl font-medium text-accent mb-4 tracking-tighter">
         {inView ? (
@@ -114,11 +114,49 @@ function StatCard({ stat, index }: { stat: typeof realityData.stats[0]; index: n
           />
         ) : '0'}
       </div>
-      <p className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.4em] text-center md:text-left">
+      <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.4em] text-center md:text-left">
         {stat.label}
       </p>
     </motion.div>
   )
+}
+
+function highlightKeywords(text: string) {
+  const keywords = [
+    'Thuật toán', 'Máy chủ', 'Big Data', 'Nền tảng ứng dụng',
+    'tư liệu sản xuất số', 'thuật toán', 'tập đoàn công nghệ',
+    'tài xế công nghệ', 'đình công tập thể', 'bản chất bóc lột',
+    'Silicon Valley', 'Oxfam', '1% giàu nhất', '99%', 'vô sản hóa',
+    'tư liệu sản xuất mới', 'AI', 'Chip', 'siêu máy tính'
+  ];
+  
+  let parts: (string | any)[] = [text];
+  
+  keywords.forEach(keyword => {
+    const newParts: (string | any)[] = [];
+    parts.forEach(part => {
+      if (typeof part === 'string') {
+        const regex = new RegExp(`(${keyword})`, 'gi');
+        const split = part.split(regex);
+        split.forEach((subPart, index) => {
+          if (subPart.toLowerCase() === keyword.toLowerCase()) {
+            newParts.push(
+              <span key={`${keyword}-${index}`} className="font-medium text-white border-b border-accent/50">
+                {subPart}
+              </span>
+            );
+          } else if (subPart !== '') {
+            newParts.push(subPart);
+          }
+        });
+      } else {
+        newParts.push(part);
+      }
+    });
+    parts = newParts;
+  });
+  
+  return parts;
 }
 
 export default function Reality21() {
@@ -136,8 +174,8 @@ export default function Reality21() {
             viewport={{ once: true }}
             className="flex items-center gap-4 mb-8"
           >
-            <div className="h-[1px] w-12 bg-accent/60" />
-            <span className="text-accent font-mono text-[10px] tracking-[0.4em] uppercase">
+            <div className="h-[1px] w-12 bg-accent/75" />
+            <span className="text-accent font-mono text-xs tracking-[0.4em] uppercase">
               Section 04: Digital Era Reality
             </span>
           </motion.div>
@@ -147,14 +185,14 @@ export default function Reality21() {
             <span className="text-accent italic">Thời Đại Số</span>
           </h2>
           
-          <p className="font-sans text-slate-400 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
+          <p className="font-sans text-slate-100 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
             Bản chất của bóc lột không biến mất — nó chỉ tiến hóa sang những hình thái tinh vi 
             dưới sự hỗ trợ của thuật toán và hạ tầng kỹ thuật số.
           </p>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 glass-card border-white/5 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-3 glass-card border-white/15 mb-32">
           {realityData.stats.map((s, i) => (
             <StatCard key={i} stat={s} index={i} />
           ))}
@@ -163,59 +201,96 @@ export default function Reality21() {
         {/* Case Study Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           {/* Tabs */}
-          <div className="lg:col-span-4 space-y-3">
-            <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.5em] mb-8">
-              Analytical Studies
-            </p>
-            {realityData.caseStudies.map((c, i) => (
-              <button
-                key={c.id}
-                onClick={() => setActiveCaseStudy(i)}
-                className={`w-full flex items-center gap-6 p-6 rounded-sm border transition-all duration-500 text-left ${
-                  activeCaseStudy === i
-                    ? 'bg-accent border-accent text-dark shadow-[0_0_30px_rgba(212,175,55,0.2)]'
-                    : 'bg-transparent border-white/5 text-slate-500 hover:border-white/20 hover:text-slate-300'
-                }`}
-              >
-                <span className="text-2xl">{c.icon}</span>
-                <span className="font-serif font-medium text-lg tracking-tight">{c.tag}</span>
-              </button>
-            ))}
+          <div className="lg:col-span-4">
+            <div className="sticky top-32">
+              <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.5em] mb-10 pl-2">
+                Case Study Archives
+              </p>
+              <div className="space-y-4 relative">
+                {/* Vertical Progress Line for Tabs */}
+                <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-white/10" />
+                
+                {realityData.caseStudies.map((c, i) => (
+                  <button
+                    key={c.id}
+                    onClick={() => setActiveCaseStudy(i)}
+                    className="w-full relative group pl-8 py-4 text-left transition-all duration-500"
+                  >
+                    {/* Active Indicator */}
+                    <div className={`absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-700 ${
+                      activeCaseStudy === i ? 'bg-accent h-full shadow-[0_0_15px_rgba(212,175,55,0.6)]' : 'bg-transparent h-0'
+                    }`} />
+                    
+                    <div className="flex flex-col">
+                      <span className={`text-[10px] font-mono uppercase tracking-[0.3em] mb-1 transition-colors duration-500 ${
+                        activeCaseStudy === i ? 'text-accent' : 'text-slate-100'
+                      }`}>
+                        Index 0{i + 1}
+                      </span>
+                      <span className={`font-serif text-xl tracking-tight transition-all duration-500 ${
+                        activeCaseStudy === i ? 'text-white translate-x-1' : 'text-slate-100 group-hover:text-white'
+                      }`}>
+                        {c.tag}
+                      </span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Decorative detail */}
+              <div className="mt-20 p-6 border border-white/15 rounded-sm bg-white/[0.01]">
+                 <p className="text-xs text-slate-100 font-mono leading-relaxed">
+                   Các nghiên cứu điển hình nhằm minh chứng sự vận động của quy luật giai cấp trong bối cảnh nền kinh tế số và AI.
+                 </p>
+              </div>
+            </div>
           </div>
 
-          {/* Content */}
+          {/* Content Area */}
           <div className="lg:col-span-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCase.id}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.6 }}
-                className="glass-card border-white/5 p-12 min-h-[560px] flex flex-col"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.6, ease: "circOut" }}
+                className="relative glass-card border-white/15 p-12 md:p-16 min-h-[600px] flex flex-col overflow-hidden"
               >
-                <div className="flex items-center gap-6 mb-12">
-                  <span className="text-5xl grayscale opacity-40">{activeCase.icon}</span>
-                  <div>
-                    <h3 className="font-serif text-3xl text-slate-100">{activeCase.title}</h3>
-                    <div className="h-[1px] w-12 bg-accent/40 mt-3" />
-                  </div>
-                </div>
-
-                <p className="font-serif text-xl text-slate-400 italic mb-12 leading-relaxed pl-8 border-l border-accent/20">
-                  {activeCase.intro}
-                </p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-auto">
-                  {activeCase.analysis.map((item, i) => (
-                    <div key={i} className="p-8 bg-white/[0.02] border border-white/5 rounded-sm hover:border-accent/10 transition-colors duration-500">
-                      <div className="flex items-center gap-4 mb-4">
-                        <span className="text-xl opacity-40">{item.icon}</span>
-                        <span className="text-[9px] font-mono text-accent uppercase tracking-[0.4em]">{item.label}</span>
-                      </div>
-                      <p className="text-sm text-slate-300 leading-relaxed font-light">{item.value}</p>
+                <div className="relative z-10">
+                  <div className="flex items-center gap-8 mb-12">
+                    <div>
+                      <h3 className="font-serif text-4xl md:text-5xl text-white leading-tight tracking-tighter">
+                        {activeCase.title}
+                      </h3>
+                      <div className="h-[2px] w-16 bg-accent/40 mt-6" />
                     </div>
-                  ))}
+                  </div>
+
+                  <p className="font-serif text-xl md:text-2xl text-slate-100 italic mb-16 leading-relaxed border-l-2 border-accent/20 pl-10 py-2">
+                    {activeCase.intro}
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+                    {activeCase.analysis.map((item, i) => (
+                      <div 
+                        key={i} 
+                        className="group p-8 bg-slate-950/60 border border-white/10 rounded-xl hover:border-accent/30 transition-all duration-500"
+                      >
+                        <div className="mb-6 relative h-10 flex items-end">
+                          <span className="absolute left-0 -top-2 font-mono text-accent/10 font-bold text-6xl select-none pointer-events-none">
+                            0{i + 1}
+                          </span>
+                          <span className="relative z-10 text-xs font-mono text-accent uppercase tracking-[0.4em] group-hover:text-white transition-colors duration-500 pl-4 border-l-2 border-accent/40 font-bold">
+                            {item.label}
+                          </span>
+                        </div>
+                        <p className="text-white text-base md:text-lg leading-loose font-normal transition-colors duration-500 group-hover:text-white">
+                          {highlightKeywords(item.value)}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>
