@@ -24,7 +24,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
       <div className="flip-card-inner w-full h-full">
         {/* FRONT */}
         <div
-          className={`flip-card-front w-full h-full glass-card p-10 flex flex-col relative overflow-hidden transition-all duration-700 ${
+          className={`flip-card-front w-full h-full glass-card p-10 flex flex-col relative overflow-hidden transition-all duration-700 rounded-2xl ${
             isHovered ? 'bg-slate-900/80 border-accent/50 shadow-[0_0_50px_rgba(212,175,55,0.15)] scale-[1.02]' : 'bg-slate-900/60 border-white/15'
           }`}
         >
@@ -68,8 +68,8 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
               </h3>
             </div>
 
-            <p className={`font-sans text-sm leading-relaxed flex-1 font-light transition-colors duration-500 ${
-              isHovered ? 'text-slate-100' : 'text-slate-300'
+            <p className={`font-sans text-base md:text-lg leading-loose tracking-wide font-light flex-1 transition-colors duration-500 ${
+              isHovered ? 'text-white' : 'text-slate-200'
             }`}>
               {card.frontSummary}
             </p>
@@ -92,7 +92,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
         </div>
 
         {/* BACK */}
-        <div className="flip-card-back glass-card p-10 flex flex-col border-accent/30 bg-slate-950/90 shadow-[0_0_60px_rgba(212,175,55,0.15)]">
+        <div className="flip-card-back glass-card p-10 flex flex-col border-accent/30 bg-slate-950/90 shadow-[0_0_60px_rgba(212,175,55,0.15)] rounded-2xl">
           <div className="flex items-center justify-between mb-10 border-b border-white/10 pb-6">
             <div>
               <h3 className="font-serif text-2xl text-white">{card.title}</h3>
@@ -115,8 +115,8 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
                   <div key={c.number} className="flex gap-6 items-start">
                     <span className="font-serif italic text-accent text-xl opacity-40">{c.number}</span>
                     <div>
-                      <p className="text-slate-100 text-sm font-medium mb-1">{c.title}</p>
-                      <p className="text-slate-300 text-xs leading-relaxed font-light">{c.desc}</p>
+                      <p className="text-slate-100 text-base font-medium mb-1">{c.title}</p>
+                      <p className="text-slate-200 text-sm leading-loose tracking-wide font-light">{c.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -132,7 +132,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
                     <div className="mb-2">
                       <span className="text-xs font-mono text-accent uppercase tracking-widest">{s.era}</span>
                     </div>
-                    <p className="text-slate-300 text-xs leading-relaxed font-light">{s.desc}</p>
+                    <p className="text-slate-200 text-sm leading-loose tracking-wide font-light">{s.desc}</p>
                   </div>
                 ))}
               </div>
@@ -145,9 +145,9 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
                   <div key={i} className="p-5 bg-white/[0.04] border border-white/15 rounded-sm">
                     <div className="flex items-center gap-4 mb-2">
                       {f.icon && <span className="text-xl opacity-60">{f.icon}</span>}
-                      <p className="text-slate-100 text-sm font-medium">{f.title}</p>
+                      <p className="text-slate-100 text-base font-medium">{f.title}</p>
                     </div>
-                    <p className="text-slate-300 text-xs leading-relaxed font-light">{f.desc}</p>
+                    <p className="text-slate-200 text-sm leading-loose tracking-wide font-light">{f.desc}</p>
                   </div>
                 ))}
               </div>
@@ -158,8 +158,8 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
               <div className="space-y-4">
                 {card.points.map((p: any, i: number) => (
                   <div key={i} className="p-5 bg-white/[0.04] border border-white/15 rounded-sm">
-                    <p className="text-slate-100 text-sm font-medium mb-1">{p.title}</p>
-                    <p className="text-slate-300 text-xs leading-relaxed font-light">{p.desc}</p>
+                    <p className="text-slate-100 text-base font-medium mb-1">{p.title}</p>
+                    <p className="text-slate-200 text-sm leading-loose tracking-wide font-light">{p.desc}</p>
                   </div>
                 ))}
               </div>
@@ -173,8 +173,8 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
                   <div key={i} className="flex gap-4 items-start">
                     <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
                     <div>
-                      <p className="text-slate-200 text-xs font-medium mb-1">{link.title}</p>
-                      <p className="text-slate-200 text-xs leading-relaxed italic">{link.desc}</p>
+                      <p className="text-slate-100 text-sm font-medium mb-1">{link.title}</p>
+                      <p className="text-slate-200 text-sm leading-loose tracking-wide italic">{link.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -184,7 +184,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
 
           {card.keyTakeaway && (
             <div className="mt-8 p-6 bg-accent/[0.03] border border-accent/10 rounded-sm">
-              <p className="text-xs font-sans text-slate-300 leading-relaxed italic">
+              <p className="text-sm font-sans text-slate-200 leading-loose tracking-wide italic">
                 <span className="text-accent font-mono font-bold not-italic uppercase text-xs tracking-widest mr-2">Cốt yếu:</span>
                 {card.keyTakeaway}
               </p>
