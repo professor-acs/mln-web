@@ -36,7 +36,7 @@ function InequalityChart() {
           <h4 className="font-serif text-2xl text-slate-100 mb-2">
             Bất Bình Đẳng Tài Sản Toàn Cầu
           </h4>
-          <p className="text-xs font-mono text-slate-200 uppercase tracking-[0.3em]">
+          <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em]">
             Data Source: World Inequality Database (1980–2024)
           </p>
         </div>
@@ -48,7 +48,7 @@ function InequalityChart() {
               className={`px-6 py-2 rounded-sm text-xs font-mono uppercase tracking-[0.2em] transition-all ${
                 chartType === t
                   ? 'bg-accent text-dark font-bold'
-                  : 'text-slate-200 hover:text-slate-100'
+                  : 'text-slate-100 hover:text-white'
               }`}
             >
               {t}
@@ -114,7 +114,7 @@ function StatCard({ stat, index }: { stat: typeof realityData.stats[0]; index: n
           />
         ) : '0'}
       </div>
-      <p className="text-xs font-mono text-slate-200 uppercase tracking-[0.4em] text-center md:text-left">
+      <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.4em] text-center md:text-left">
         {stat.label}
       </p>
     </motion.div>
@@ -185,7 +185,7 @@ export default function Reality21() {
             <span className="text-accent italic">Thời Đại Số</span>
           </h2>
           
-          <p className="font-sans text-slate-200 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
+          <p className="font-sans text-slate-100 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
             Bản chất của bóc lột không biến mất — nó chỉ tiến hóa sang những hình thái tinh vi 
             dưới sự hỗ trợ của thuật toán và hạ tầng kỹ thuật số.
           </p>
@@ -203,32 +203,32 @@ export default function Reality21() {
           {/* Tabs */}
           <div className="lg:col-span-4">
             <div className="sticky top-32">
-              <p className="text-xs font-mono text-slate-200 uppercase tracking-[0.5em] mb-10 pl-2">
+              <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.5em] mb-10 pl-2">
                 Case Study Archives
               </p>
               <div className="space-y-4 relative">
                 {/* Vertical Progress Line for Tabs */}
-                <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-white/15" />
+                <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-white/10" />
                 
                 {realityData.caseStudies.map((c, i) => (
                   <button
                     key={c.id}
                     onClick={() => setActiveCaseStudy(i)}
-                    className="w-full relative group pl-8 py-2 text-left transition-all duration-500"
+                    className="w-full relative group pl-8 py-4 text-left transition-all duration-500"
                   >
                     {/* Active Indicator */}
-                    <div className={`absolute left-0 top-0 bottom-0 w-[2px] transition-all duration-700 ${
-                      activeCaseStudy === i ? 'bg-accent h-full shadow-[0_0_15px_rgba(212,175,55,0.5)]' : 'bg-transparent h-0'
+                    <div className={`absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-700 ${
+                      activeCaseStudy === i ? 'bg-accent h-full shadow-[0_0_15px_rgba(212,175,55,0.6)]' : 'bg-transparent h-0'
                     }`} />
                     
                     <div className="flex flex-col">
                       <span className={`text-[10px] font-mono uppercase tracking-[0.3em] mb-1 transition-colors duration-500 ${
-                        activeCaseStudy === i ? 'text-accent' : 'text-slate-350'
+                        activeCaseStudy === i ? 'text-accent' : 'text-slate-100'
                       }`}>
                         Index 0{i + 1}
                       </span>
                       <span className={`font-serif text-xl tracking-tight transition-all duration-500 ${
-                        activeCaseStudy === i ? 'text-white translate-x-1' : 'text-slate-200 group-hover:text-slate-100'
+                        activeCaseStudy === i ? 'text-white translate-x-1' : 'text-slate-100 group-hover:text-white'
                       }`}>
                         {c.tag}
                       </span>
@@ -239,7 +239,7 @@ export default function Reality21() {
 
               {/* Decorative detail */}
               <div className="mt-20 p-6 border border-white/15 rounded-sm bg-white/[0.01]">
-                 <p className="text-xs text-slate-200 font-mono leading-relaxed">
+                 <p className="text-xs text-slate-100 font-mono leading-relaxed">
                    Các nghiên cứu điển hình nhằm minh chứng sự vận động của quy luật giai cấp trong bối cảnh nền kinh tế số và AI.
                  </p>
               </div>
@@ -257,16 +257,8 @@ export default function Reality21() {
                 transition={{ duration: 0.6, ease: "circOut" }}
                 className="relative glass-card border-white/15 p-12 md:p-16 min-h-[600px] flex flex-col overflow-hidden"
               >
-                {/* Decorative background watermark */}
-                <div className="absolute top-0 right-0 font-serif text-[15rem] text-white/[0.02] leading-none select-none pointer-events-none translate-x-1/4 -translate-y-1/4">
-                  {activeCase.icon}
-                </div>
-
                 <div className="relative z-10">
                   <div className="flex items-center gap-8 mb-12">
-                    <div className="w-20 h-20 rounded-full border border-white/15 flex items-center justify-center bg-white/[0.04] text-4xl shadow-inner">
-                      {activeCase.icon}
-                    </div>
                     <div>
                       <h3 className="font-serif text-4xl md:text-5xl text-white leading-tight tracking-tighter">
                         {activeCase.title}
@@ -275,23 +267,25 @@ export default function Reality21() {
                     </div>
                   </div>
 
-                  <p className="font-serif text-xl md:text-2xl text-slate-200 italic mb-16 leading-relaxed border-l-2 border-accent/20 pl-10 py-2">
+                  <p className="font-serif text-xl md:text-2xl text-slate-100 italic mb-16 leading-relaxed border-l-2 border-accent/20 pl-10 py-2">
                     {activeCase.intro}
                   </p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
                     {activeCase.analysis.map((item, i) => (
                       <div 
                         key={i} 
-                        className="group p-8 bg-slate-950/60 border border-white/15 rounded-xl hover:border-accent/30 transition-all duration-500"
+                        className="group p-8 bg-slate-950/60 border border-white/10 rounded-xl hover:border-accent/30 transition-all duration-500"
                       >
-                        <div className="flex items-center justify-between mb-6">
-                          <span className="font-mono text-accent font-bold text-lg opacity-80">0{i + 1}</span>
-                          <span className="text-xs font-mono text-slate-250 uppercase tracking-[0.3em] group-hover:text-accent transition-colors duration-500">
+                        <div className="mb-6 relative h-10 flex items-end">
+                          <span className="absolute left-0 -top-2 font-mono text-accent/10 font-bold text-6xl select-none pointer-events-none">
+                            0{i + 1}
+                          </span>
+                          <span className="relative z-10 text-xs font-mono text-accent uppercase tracking-[0.4em] group-hover:text-white transition-colors duration-500 pl-4 border-l-2 border-accent/40 font-bold">
                             {item.label}
                           </span>
                         </div>
-                        <p className="text-slate-200 text-base leading-loose font-light transition-colors duration-500 group-hover:text-white">
+                        <p className="text-white text-base md:text-lg leading-loose font-normal transition-colors duration-500 group-hover:text-white">
                           {highlightKeywords(item.value)}
                         </p>
                       </div>

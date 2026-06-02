@@ -28,13 +28,6 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
             isHovered ? 'bg-slate-900/80 border-accent/50 shadow-[0_0_50px_rgba(212,175,55,0.15)] scale-[1.02]' : 'bg-slate-900/60 border-white/15'
           }`}
         >
-          {/* Decorative Background Icon */}
-          <div className={`absolute -right-6 -top-6 text-9xl transition-all duration-1000 select-none pointer-events-none ${
-            isHovered ? 'opacity-[0.08] rotate-0 scale-110' : 'opacity-[0.02] -rotate-12 scale-100'
-          }`}>
-            {card.icon}
-          </div>
-
           {/* Radiant Glow */}
           <AnimatePresence>
             {isHovered && !flipped && (
@@ -52,36 +45,36 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
             <div className={`w-16 h-16 rounded-sm border mb-12 flex items-center justify-center text-4xl transition-all duration-700 ${
               isHovered ? 'bg-accent/10 border-accent/40 rotate-0 shadow-[0_0_20px_rgba(212,175,55,0.2)]' : 'bg-white/5 border-white/10 -rotate-6'
             }`}>
-              {card.icon}
+              <div className="w-2 h-2 bg-accent rounded-full" />
             </div>
 
             <div className="mb-8">
               <span className={`font-mono text-xs uppercase tracking-[0.5em] mb-4 block transition-colors duration-500 ${
-                isHovered ? 'text-accent' : 'text-slate-200'
+                isHovered ? 'text-accent' : 'text-slate-100'
               }`}>
                 {card.subtitle}
               </span>
               <h3 className={`font-serif text-3xl leading-tight transition-colors duration-500 ${
-                isHovered ? 'text-white' : 'text-slate-300'
+                isHovered ? 'text-white' : 'text-slate-100'
               }`}>
                 {card.title}
               </h3>
             </div>
 
             <p className={`font-sans text-base md:text-lg leading-loose tracking-wide font-light flex-1 transition-colors duration-500 ${
-              isHovered ? 'text-white' : 'text-slate-200'
+              isHovered ? 'text-white' : 'text-slate-100'
             }`}>
               {card.frontSummary}
             </p>
 
             <div className="mt-10 pt-8 border-t border-white/15 flex items-center justify-between">
               <span className={`text-xs font-mono uppercase tracking-[0.4em] transition-all duration-500 ${
-                isHovered ? 'text-accent opacity-100 translate-x-0' : 'text-slate-200 -translate-x-2'
+                isHovered ? 'text-accent opacity-100 translate-x-0' : 'text-slate-100 -translate-x-2'
               }`}>
                 Xem chi tiết
               </span>
               <div className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-500 ${
-                isHovered ? 'border-accent bg-accent text-dark rotate-0' : 'border-white/10 text-slate-500 rotate-[-45deg]'
+                isHovered ? 'border-accent bg-accent text-dark rotate-0' : 'border-white/10 text-slate-100 rotate-[-45deg]'
               }`}>
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -116,7 +109,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
                     <span className="font-serif italic text-accent text-xl opacity-40">{c.number}</span>
                     <div>
                       <p className="text-slate-100 text-base font-medium mb-1">{c.title}</p>
-                      <p className="text-slate-200 text-sm leading-loose tracking-wide font-light">{c.desc}</p>
+                      <p className="text-slate-100 text-sm leading-loose tracking-wide font-light">{c.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -132,7 +125,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
                     <div className="mb-2">
                       <span className="text-xs font-mono text-accent uppercase tracking-widest">{s.era}</span>
                     </div>
-                    <p className="text-slate-200 text-sm leading-loose tracking-wide font-light">{s.desc}</p>
+                    <p className="text-slate-100 text-sm leading-loose tracking-wide font-light">{s.desc}</p>
                   </div>
                 ))}
               </div>
@@ -144,10 +137,9 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
                 {card.forms.map((f: any, i: number) => (
                   <div key={i} className="p-5 bg-white/[0.04] border border-white/15 rounded-sm">
                     <div className="flex items-center gap-4 mb-2">
-                      {f.icon && <span className="text-xl opacity-60">{f.icon}</span>}
                       <p className="text-slate-100 text-base font-medium">{f.title}</p>
                     </div>
-                    <p className="text-slate-200 text-sm leading-loose tracking-wide font-light">{f.desc}</p>
+                    <p className="text-slate-100 text-sm leading-loose tracking-wide font-light">{f.desc}</p>
                   </div>
                 ))}
               </div>
@@ -159,7 +151,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
                 {card.points.map((p: any, i: number) => (
                   <div key={i} className="p-5 bg-white/[0.04] border border-white/15 rounded-sm">
                     <p className="text-slate-100 text-base font-medium mb-1">{p.title}</p>
-                    <p className="text-slate-200 text-sm leading-loose tracking-wide font-light">{p.desc}</p>
+                    <p className="text-slate-100 text-sm leading-loose tracking-wide font-light">{p.desc}</p>
                   </div>
                 ))}
               </div>
@@ -174,7 +166,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
                     <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
                     <div>
                       <p className="text-slate-100 text-sm font-medium mb-1">{link.title}</p>
-                      <p className="text-slate-200 text-sm leading-loose tracking-wide italic">{link.desc}</p>
+                      <p className="text-slate-100 text-sm leading-loose tracking-wide italic">{link.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -184,7 +176,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
 
           {card.keyTakeaway && (
             <div className="mt-8 p-6 bg-accent/[0.03] border border-accent/10 rounded-sm">
-              <p className="text-sm font-sans text-slate-200 leading-loose tracking-wide italic">
+              <p className="text-sm font-sans text-slate-100 leading-loose tracking-wide italic">
                 <span className="text-accent font-mono font-bold not-italic uppercase text-xs tracking-widest mr-2">Cốt yếu:</span>
                 {card.keyTakeaway}
               </p>
@@ -237,7 +229,7 @@ export default function CoreTheory() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-sans text-slate-200 max-w-2xl text-lg md:text-xl leading-relaxed font-light"
+              className="font-sans text-slate-100 max-w-2xl text-lg md:text-xl leading-relaxed font-light"
             >
               {section.description}
             </motion.p>
@@ -255,7 +247,7 @@ export default function CoreTheory() {
                   {activeSection}
                 </span>
                 <div className="flex flex-col items-start gap-1">
-                  <span className="text-[10px] font-mono text-slate-350 uppercase tracking-[0.5em]">Section</span>
+                  <span className="text-[10px] font-mono text-slate-100 uppercase tracking-[0.5em]">Section</span>
                   <motion.svg
                     className="w-4 h-4 text-accent/60"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -283,7 +275,7 @@ export default function CoreTheory() {
                         className={`w-full px-5 py-4 text-left flex items-center gap-4 transition-all duration-300 border-b border-white/15 last:border-b-0 ${
                           activeSection === s
                             ? 'bg-accent/20 text-accent font-bold'
-                            : 'text-slate-200 hover:text-white hover:bg-white/[0.05]'
+                            : 'text-slate-100 hover:text-white hover:bg-white/[0.05]'
                         }`}
                       >
                         <span className={`font-serif text-2xl transition-colors duration-300 ${
@@ -291,7 +283,7 @@ export default function CoreTheory() {
                         }`}>{s}</span>
                         <div>
                           <p className="text-sm font-medium leading-tight">{sectionContent[s].title}</p>
-                          <p className="text-xs font-mono text-slate-300 uppercase tracking-wider mt-0.5">
+                          <p className="text-xs font-mono text-slate-100 uppercase tracking-wider mt-0.5">
                             {sectionContent[s].cards.length} cards
                           </p>
                         </div>
@@ -330,11 +322,11 @@ export default function CoreTheory() {
         >
           <div className="flex items-center gap-4">
             <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            <p className="text-xs font-mono text-slate-200 uppercase tracking-[0.3em]">
+            <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em]">
               Official Reference Archive
             </p>
           </div>
-          <p className="text-xs font-serif italic text-slate-300 max-w-md text-center md:text-right leading-relaxed">
+          <p className="text-xs font-serif italic text-slate-100 max-w-md text-center md:text-right leading-relaxed">
             V.I. Lenin, "Sáng kiến vĩ đại" & Giáo trình Triết học Mác-Lênin (Bộ Giáo dục và Đào tạo Việt Nam)
           </p>
         </motion.div>

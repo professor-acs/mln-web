@@ -20,11 +20,11 @@ export default function AiAppendix() {
         style={{ background: 'rgba(10,10,26,0.95)', backdropFilter: 'blur(12px)' }}>
         <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-3">
-            <span className="text-gold-DEFAULT/70 text-xs font-mono">
-              📋 Triết học Marx-Lenin · Chương III · Giai cấp và Đấu tranh giai cấp
-            </span>
-            <span className="hidden sm:inline w-px h-4 bg-gold-muted" />
-            <span className="hidden sm:inline text-cream/40 text-xs font-mono">
+              <span className="text-gold-DEFAULT/90 text-xs font-mono">
+                Triết học Marx-Lenin · Chương III · Giai cấp và Đấu tranh giai cấp
+              </span>
+              <span className="hidden sm:inline w-px h-4 bg-gold-muted" />
+            <span className="hidden sm:inline text-cream/60 text-xs font-mono">
               Karl Marx & Friedrich Engels, 1848
             </span>
           </div>
@@ -66,13 +66,13 @@ export default function AiAppendix() {
                       Phụ Lục Học Thuật & Minh Bạch AI
                     </h2>
                   </div>
-                  <p className="text-xs font-mono text-cream/40">
+                  <p className="text-xs font-mono text-cream/60">
                     Đáp ứng Barem 4 · Ứng dụng AI có trách nhiệm · 2 điểm
                   </p>
                 </div>
                 <button
                   onClick={() => setOpen(false)}
-                  className="text-cream/40 hover:text-cream transition-colors p-2 rounded-xl hover:bg-white/5"
+                  className="text-cream/60 hover:text-cream transition-colors p-2 rounded-xl hover:bg-white/5"
                 >
                   <X size={20} />
                 </button>
@@ -89,7 +89,7 @@ export default function AiAppendix() {
                       className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-inter transition-all ${
                         activeTab === tab.id
                           ? 'bg-gold-DEFAULT text-dark-DEFAULT font-bold'
-                          : 'text-cream/60 hover:text-cream border border-white/10 hover:border-gold-muted'
+                          : 'text-cream/80 hover:text-cream border border-white/10 hover:border-gold-muted'
                       }`}
                     >
                       <Icon size={14} />
@@ -114,16 +114,16 @@ export default function AiAppendix() {
                     {/* Integrity markers */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {[
-                        { icon: '✅', label: 'Minh bạch', desc: 'Có phụ lục AI Usage liệt kê đầy đủ công cụ, mục đích và kết quả.' },
-                        { icon: '✅', label: 'Có trách nhiệm', desc: 'Kiểm chứng thông tin bằng giáo trình LLCT, nghị quyết và văn bản chính thống.' },
-                        { icon: '✅', label: 'Sáng tạo', desc: 'AI đóng vai trò hỗ trợ kỹ thuật, không thay thế toàn bộ tư duy học thuật.' },
-                        { icon: '✅', label: 'Liêm chính', desc: 'Phân định rõ AI output và phần sinh viên chỉnh sửa, biên soạn.' },
+                        { label: 'Minh bạch', desc: 'Có phụ lục AI Usage liệt kê đầy đủ công cụ, mục đích và kết quả.' },
+                        { label: 'Có trách nhiệm', desc: 'Kiểm chứng thông tin bằng giáo trình LLCT, nghị quyết và văn bản chính thống.' },
+                        { label: 'Sáng tạo', desc: 'AI đóng vai trò hỗ trợ kỹ thuật, không thay thế toàn bộ tư duy học thuật.' },
+                        { label: 'Liêm chính', desc: 'Phân định rõ AI output và phần sinh viên chỉnh sửa, biên soạn.' },
                       ].map((item, i) => (
                         <div key={i} className="flex gap-3 p-4 rounded-xl border border-green-700/30 bg-green-900/10">
-                          <span className="text-xl flex-shrink-0">{item.icon}</span>
+                          <div className="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 shrink-0" />
                           <div>
                             <p className="font-bold text-sm text-green-300 mb-1">{item.label}</p>
-                            <p className="text-xs text-cream/60 leading-relaxed">{item.desc}</p>
+                            <p className="text-xs text-cream/80 leading-relaxed">{item.desc}</p>
                           </div>
                         </div>
                       ))}
@@ -151,27 +151,29 @@ export default function AiAppendix() {
                     exit={{ opacity: 0, x: -10 }}
                     className="space-y-4"
                   >
-                    <p className="text-xs font-mono text-cream/40 mb-4">
+                    <p className="text-xs font-mono text-cream/60 mb-4">
                       Nhật ký sử dụng AI · Phân định AI output và phần chỉnh sửa của sinh viên
                     </p>
                     {aiAppendix.usageLog.map((entry, i) => (
                       <div key={i} className="glass-card p-5 border border-white/10">
                         <div className="flex items-center gap-2 mb-4">
-                          <Cpu size={14} className="text-neon-blue" />
-                          <h4 className="font-mono font-bold text-neon-blue text-sm">{entry.tool}</h4>
+                          <Cpu size={14} className="text-accent" />
+                          <h4 className="font-mono font-bold text-accent text-sm">{entry.tool}</h4>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                           <div>
-                            <p className="text-xs font-bold text-cream/40 uppercase tracking-wider mb-2">Mục đích</p>
-                            <p className="text-sm text-cream/70 leading-relaxed">{entry.purpose}</p>
+                            <p className="text-xs font-bold text-cream/60 uppercase tracking-wider mb-2">Mục đích</p>
+                            <p className="text-sm text-cream/80 leading-relaxed">{entry.purpose}</p>
                           </div>
                           <div>
-                            <p className="text-xs font-bold text-cream/40 uppercase tracking-wider mb-2">Kết quả AI</p>
-                            <p className="text-sm text-cream/70 leading-relaxed">{entry.output}</p>
+                            <p className="text-xs font-bold text-cream/60 uppercase tracking-wider mb-2">Kết quả AI</p>
+                            <p className="text-sm text-cream/80 leading-relaxed">{entry.output}</p>
                           </div>
                           <div>
-                            <p className="text-xs font-bold text-gold-DEFAULT/70 uppercase tracking-wider mb-2">✏️ Sinh viên chỉnh sửa</p>
-                            <p className="text-sm text-cream/70 leading-relaxed">{entry.edited}</p>
+                            <p className="text-xs font-bold text-cream/60 uppercase tracking-wider mb-2 flex items-center gap-2">
+                              Sinh viên chỉnh sửa
+                            </p>
+                            <p className="text-sm text-cream/90 leading-relaxed">{entry.edited}</p>
                           </div>
                         </div>
                       </div>
@@ -188,15 +190,15 @@ export default function AiAppendix() {
                     exit={{ opacity: 0, x: -10 }}
                     className="space-y-3"
                   >
-                    <p className="text-xs font-mono text-cream/40 mb-4">
+                    <p className="text-xs font-mono text-cream/60 mb-4">
                       Nguồn tài liệu đối chiếu chính thống · Kiểm chứng thông tin AI
                     </p>
                     {aiAppendix.references.map((ref, i) => (
                       <div key={i} className="flex gap-4 p-4 rounded-xl border border-white/10 bg-white/3">
-                        <span className="font-cinzel font-black text-gold-DEFAULT text-lg flex-shrink-0 w-6">
+                        <span className="font-serif font-black text-accent text-lg flex-shrink-0 w-6">
                           {i + 1}
                         </span>
-                        <p className="font-inter text-sm text-cream/70 leading-relaxed">{ref}</p>
+                        <p className="font-sans text-sm text-cream/90 leading-relaxed">{ref}</p>
                       </div>
                     ))}
                   </motion.div>

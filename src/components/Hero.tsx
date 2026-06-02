@@ -97,11 +97,11 @@ export default function Hero() {
           transition={{ duration: 1.5, delay: 0.6 }}
           className="relative max-w-3xl mx-auto mb-16 py-12 px-8 border-y border-white/15"
         >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark text-xs font-mono text-slate-200 uppercase tracking-widest">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark text-xs font-mono text-slate-100 uppercase tracking-widest">
             Thesis
           </div>
           
-          <p className="font-serif text-2xl md:text-3xl lg:text-4xl italic text-slate-200 leading-[1.3] mb-8">
+          <p className="font-serif text-2xl md:text-3xl lg:text-4xl italic text-slate-100 leading-[1.3] mb-8">
             "{quoteText}"
             {!quoteDone && <span className="typewriter-cursor" />}
           </p>
@@ -127,7 +127,7 @@ export default function Hero() {
           </span>
 
           {/* Khối 1: Lời dẫn nhập (Style tự sự, cỡ chữ lớn, thanh lịch) */}
-          <p className="font-serif text-xl md:text-2xl lg:text-3xl text-slate-300 font-light leading-relaxed mb-8 italic tracking-wide">
+          <p className="font-serif text-xl md:text-2xl lg:text-3xl text-slate-100 font-light leading-relaxed mb-8 italic tracking-wide">
             Khi lật mở những trang sử ký, chúng ta thường bị choáng ngợp bởi hào quang của các triều đại, 
             danh tiếng của các vị vua hay sức mạnh của các cuộc viễn chinh. Nhưng đằng sau những biến động 
             vĩ đại đó, có một động lực ngầm liên tục dịch chuyển bánh xe lịch sử...
@@ -148,7 +148,7 @@ export default function Hero() {
                 </span>
               </h4>
               
-              <p className="font-sans text-base md:text-lg text-slate-200 leading-loose font-light tracking-wide">
+              <p className="font-sans text-base md:text-lg text-slate-100 leading-loose font-light tracking-wide">
                 Đây không phải là một lý thuyết quá khứ — nó là{' '}
                 <span className="text-white font-medium border-b border-accent/40 pb-0.5">
                   lăng kính giải mã

@@ -72,7 +72,7 @@ export default function Quiz() {
             Kiểm Tra <span className="text-accent italic">Nhận Thức</span>
           </h2>
           
-          <p className="font-sans text-slate-200 max-w-xl mx-auto text-lg leading-relaxed font-light">
+          <p className="font-sans text-slate-100 max-w-xl mx-auto text-lg leading-relaxed font-light">
             Thử thách chiều sâu kiến thức của bạn về lý luận giai cấp 
             qua bộ câu hỏi trắc nghiệm chuyên sâu.
           </p>
@@ -91,10 +91,10 @@ export default function Quiz() {
               >
                 <div className="w-24 h-24 border border-accent/20 rounded-full flex items-center justify-center mx-auto mb-10 relative">
                   <div className="absolute inset-2 border border-accent/5 rounded-full animate-pulse" />
-                  <span className="text-4xl grayscale opacity-40">📜</span>
+                  <div className="w-2 h-2 bg-accent rounded-full" />
                 </div>
                 <h3 className="font-serif text-3xl text-slate-100 mb-6">Sẵn sàng bắt đầu?</h3>
-                <p className="text-slate-300 mb-12 max-w-sm mx-auto font-light leading-relaxed">
+                <p className="text-slate-100 mb-12 max-w-sm mx-auto font-light leading-relaxed">
                   Bộ câu hỏi tổng hợp các luận điểm quan trọng nhất trong Chương III của Triết học Marx-Lenin.
                 </p>
                 <button onClick={handleStart} className="btn-premium px-12 py-5">
@@ -114,7 +114,7 @@ export default function Quiz() {
                 {/* Progress */}
                 <div className="flex items-center justify-between mb-16">
                    <div className="flex items-center gap-6">
-                     <span className="text-xs font-mono text-slate-200 uppercase tracking-[0.3em]">
+                     <span className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em]">
                        Question {currentQ + 1} of {quizQuestions.length}
                      </span>
                      <div className="flex gap-1.5">
@@ -146,11 +146,11 @@ export default function Quiz() {
                     const isCorrect = opt.id === question.correct
                     const isWrong = isSelected && !isCorrect
                     
-                    let statusClasses = "border-white/15 text-slate-200 hover:border-white/30 hover:bg-white/[0.05]"
+                    let statusClasses = "border-white/15 text-slate-100 hover:border-white/30 hover:bg-white/[0.05]"
                     if (quizState !== 'question') {
                       if (isCorrect) statusClasses = "border-emerald-500/40 bg-emerald-500/[0.05] text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.08)] font-bold"
                       else if (isWrong) statusClasses = "border-rose-500/40 bg-rose-500/[0.05] text-rose-400 font-bold"
-                      else statusClasses = "border-white/10 text-slate-350 opacity-60"
+                      else statusClasses = "border-white/10 text-slate-100 opacity-60"
                     }
 
                     return (
@@ -202,7 +202,7 @@ export default function Quiz() {
                       animate={{ height: 'auto', opacity: 1 }}
                       className="mt-10 p-8 bg-accent/[0.04] border-l-2 border-accent/65 rounded-sm"
                     >
-                      <p className="text-xs font-sans text-slate-200 leading-relaxed italic font-light">
+                      <p className="text-xs font-sans text-slate-100 leading-relaxed italic font-light">
                         <span className="text-accent font-mono font-bold not-italic uppercase text-xs tracking-[0.3em] mr-4">Context:</span>
                         {question.explanation.long}
                       </p>
@@ -221,18 +221,18 @@ export default function Quiz() {
               >
                 <div className="w-24 h-24 border border-white/10 rounded-full flex items-center justify-center mx-auto mb-10 relative">
                    <div className="absolute inset-0 border border-accent/20 rounded-full animate-ping opacity-20" />
-                   <span className="text-4xl grayscale opacity-40">🎓</span>
+                   <div className="w-2 h-2 bg-accent rounded-full shadow-[0_0_15px_rgba(212,175,55,0.8)]" />
                 </div>
                 <h3 className="font-serif text-4xl text-slate-100 mb-6">Assessment Complete</h3>
                 <div className="flex justify-center gap-16 mb-16">
                    <div>
-                     <p className="text-xs font-mono text-slate-200 uppercase tracking-[0.3em] mb-2">Accuracy</p>
+                     <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em] mb-2">Accuracy</p>
                      <p className="text-5xl font-serif text-emerald-400 tracking-tighter">
                        {Math.round((scores.correct / quizQuestions.length) * 100)}%
                      </p>
                    </div>
                    <div>
-                     <p className="text-xs font-mono text-slate-200 uppercase tracking-[0.3em] mb-2">Correct</p>
+                     <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em] mb-2">Correct</p>
                      <p className="text-5xl font-serif text-slate-100 tracking-tighter">{scores.correct}</p>
                    </div>
                 </div>

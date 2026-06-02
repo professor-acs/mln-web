@@ -13,12 +13,12 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
       initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 1.2, delay: index * 0.1 }}
-      className="relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-32 last:mb-0"
+      className="relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-32 mb-40 last:mb-0 items-center"
     >
       {/* Desktop Center Line */}
-      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/5 -translate-x-1/2">
-        <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full transition-all duration-500 ${
-          isHovered ? 'bg-accent scale-150 shadow-[0_0_15px_rgba(212,175,55,0.8)]' : 'bg-white/20'
+      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/10 -translate-x-1/2">
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full transition-all duration-700 ${
+          isHovered ? 'bg-accent scale-125 shadow-[0_0_20px_rgba(212,175,55,1)]' : 'bg-white/20'
         }`} />
       </div>
 
@@ -26,19 +26,19 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
       <div className={`${index % 2 === 0 ? 'md:text-right' : 'md:order-2 md:text-left'} flex flex-col`}>
         <div className="mb-6">
           <span className={`font-mono text-xs uppercase tracking-[0.5em] mb-2 block transition-colors duration-500 ${
-            isHovered ? 'text-accent' : 'text-slate-200'
+            isHovered ? 'text-accent' : 'text-slate-100'
           }`}>
             {epoch.period}
           </span>
           <h3 className={`font-serif text-4xl leading-tight transition-colors duration-500 ${
-            isHovered ? 'text-white' : 'text-slate-200'
+            isHovered ? 'text-white' : 'text-slate-100'
           }`}>
             {epoch.era}
           </h3>
         </div>
 
         <motion.div 
-          className={`p-10 rounded-sm border transition-all duration-700 relative overflow-hidden group ${
+          className={`p-10 rounded-sm border transition-all duration-700 relative overflow-hidden group w-full max-w-xl ${
             index % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'
           } ${
             isHovered 
@@ -77,11 +77,6 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
 
           <div className="relative z-10">
             <div className="flex items-center gap-6 mb-10">
-              <div className={`text-4xl transition-all duration-700 ${
-                isHovered ? 'opacity-100 grayscale-0 scale-110 rotate-0' : 'opacity-40 grayscale-[0.5] -rotate-6'
-              }`}>
-                {epoch.icon}
-              </div>
               <div className={`flex-1 h-[1px] transition-all duration-700 ${
                 isHovered ? 'bg-accent/40' : 'bg-white/10'
               }`} />
@@ -156,19 +151,32 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
 
       {/* Aesthetic Side (Desktop Only) */}
       <div className={`hidden md:flex items-center justify-center ${index % 2 === 0 ? 'md:order-2' : ''}`}>
-        <div className="relative w-64 h-64 flex items-center justify-center">
+        <div className="relative w-80 h-80 flex items-center justify-center">
+           {/* Image Container */}
+           <div className={`absolute inset-0 rounded-full overflow-hidden transition-all duration-1000 ${
+             isHovered ? 'scale-105 rotate-3 shadow-[0_0_60px_rgba(212,175,55,0.2)]' : 'scale-100 rotate-0 grayscale-[0.6] opacity-40'
+           }`}>
+              <img 
+                src={epoch.image} 
+                alt={epoch.era}
+                className="w-full h-full object-cover"
+                crossOrigin="anonymous"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-dark/20 group-hover:bg-transparent transition-colors duration-700" />
+           </div>
+
            <div className={`absolute inset-0 border rounded-full transition-all duration-700 ${
-             isHovered ? 'border-accent/20 scale-110 shadow-[0_0_30px_rgba(212,175,55,0.1)]' : 'border-white/5 scale-100'
+             isHovered ? 'border-accent/40 scale-110' : 'border-white/10 scale-100'
            }`} />
-           <div className={`absolute inset-4 border border-accent/5 rounded-full animate-[spin_20s_linear_infinite] transition-opacity duration-700 ${
+           
+           <div className={`absolute inset-4 border border-accent/10 rounded-full animate-[spin_30s_linear_infinite] transition-opacity duration-700 ${
              isHovered ? 'opacity-100' : 'opacity-0'
            }`} />
-           <div className={`text-7xl select-none transition-all duration-700 ${
-             isHovered ? 'opacity-20 scale-125' : 'opacity-[0.03] scale-100'
-           }`}>{epoch.icon}</div>
-           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark">
+
+           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark z-20">
               <span className={`text-[10px] font-mono tracking-[0.6em] uppercase whitespace-nowrap transition-colors duration-500 ${
-                isHovered ? 'text-accent' : 'text-slate-200'
+                isHovered ? 'text-accent' : 'text-slate-100'
               }`}>
                 Historical Milestone
               </span>
@@ -202,7 +210,7 @@ export default function Timeline() {
             Của Nhân Loại
           </h2>
           
-          <p className="font-sans text-slate-200 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
+          <p className="font-sans text-slate-100 max-w-2xl text-lg md:text-xl leading-relaxed font-light">
             Nhìn lại hành trình của các hình thái kinh tế - xã hội, nơi mỗi cuộc cách mạng 
             là một nấc thang tất yếu đưa xã hội lên tầm cao mới.
           </p>
@@ -229,7 +237,7 @@ export default function Timeline() {
             "Đấu tranh giai cấp là động lực trực tiếp của lịch sử các xã hội có giai cấp."
           </p>
           <div className="h-[1px] w-24 bg-accent/30 mx-auto mb-8" />
-          <p className="text-xs font-mono text-slate-200 uppercase tracking-[0.5em]">
+          <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.5em]">
             Friedrich Engels & Karl Marx
           </p>
         </motion.div>
