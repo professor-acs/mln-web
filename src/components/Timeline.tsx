@@ -25,8 +25,8 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
       {/* Content Side */}
       <div className={`${index % 2 === 0 ? 'md:text-right' : 'md:order-2 md:text-left'} flex flex-col`}>
         <div className="mb-6">
-          <span className={`font-mono text-[10px] uppercase tracking-[0.5em] mb-2 block transition-colors duration-500 ${
-            isHovered ? 'text-accent' : 'text-slate-300'
+          <span className={`font-mono text-xs uppercase tracking-[0.5em] mb-2 block transition-colors duration-500 ${
+            isHovered ? 'text-accent' : 'text-slate-200'
           }`}>
             {epoch.period}
           </span>
@@ -42,8 +42,8 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
             index % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'
           } ${
             isHovered 
-              ? 'bg-slate-900/60 border-accent/40 shadow-[0_0_50px_rgba(212,175,55,0.1)] scale-[1.02]' 
-              : 'bg-slate-900/40 border-white/10 backdrop-blur-sm'
+              ? 'bg-slate-900/80 border-accent/50 shadow-[0_0_50px_rgba(212,175,55,0.15)] scale-[1.02]' 
+              : 'bg-slate-900/60 border-white/20 backdrop-blur-sm'
           }`}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -86,9 +86,9 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
                 isHovered ? 'bg-accent/40' : 'bg-white/10'
               }`} />
               <div className="flex items-center gap-3">
-                 <span className={`text-[9px] font-mono uppercase tracking-widest transition-colors duration-500 ${
-                   isHovered ? 'text-accent' : 'text-slate-200'
-                 }`}>
+                  <span className={`text-xs font-mono uppercase tracking-widest transition-colors duration-500 ${
+                    isHovered ? 'text-accent' : 'text-slate-100'
+                  }`}>
                    Analysis
                  </span>
                  <motion.div animate={{ rotate: isHovered ? 180 : 0 }} transition={{ duration: 0.5 }}>
@@ -103,17 +103,17 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
 
             <div className="grid grid-cols-2 gap-8 mb-8">
               <div className={`${index % 2 === 0 ? 'md:text-right' : 'text-left'}`}>
-                <p className={`text-[9px] font-mono uppercase mb-2 tracking-widest transition-colors duration-500 ${
-                  isHovered ? 'text-accent/80' : 'text-accent/40'
-                }`}>Thống trị</p>
+                 <p className={`text-xs font-mono uppercase mb-2 tracking-widest transition-colors duration-500 ${
+                   isHovered ? 'text-accent/90' : 'text-accent/70'
+                 }`}>Thống trị</p>
                 <p className={`text-base font-serif transition-colors duration-500 ${
                   isHovered ? 'text-slate-100' : 'text-slate-300'
                 }`}>{epoch.oppressor.name}</p>
               </div>
               <div className={`${index % 2 === 0 ? 'text-left' : 'md:text-right'}`}>
-                <p className={`text-[9px] font-mono uppercase mb-2 tracking-widest transition-colors duration-500 ${
-                  isHovered ? 'text-accent/80' : 'text-accent/40'
-                }`}>Bị trị</p>
+                 <p className={`text-xs font-mono uppercase mb-2 tracking-widest transition-colors duration-500 ${
+                   isHovered ? 'text-accent/90' : 'text-accent/70'
+                 }`}>Bị trị</p>
                 <p className={`text-base font-serif transition-colors duration-500 ${
                   isHovered ? 'text-slate-100' : 'text-slate-300'
                 }`}>{epoch.oppressed.name}</p>
@@ -135,7 +135,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.1 }}
                     >
-                       <p className="text-[9px] font-mono text-accent uppercase tracking-widest mb-2">Conflict Nature</p>
+                       <p className="text-xs font-mono text-accent uppercase tracking-widest mb-2">Conflict Nature</p>
                        <p className="text-sm text-slate-300 leading-relaxed font-light italic">"{epoch.conflict}"</p>
                     </motion.div>
                     <motion.div
@@ -143,7 +143,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.2 }}
                     >
-                       <p className="text-[9px] font-mono text-accent uppercase tracking-widest mb-2">Dialectical Result</p>
+                       <p className="text-xs font-mono text-accent uppercase tracking-widest mb-2">Dialectical Result</p>
                        <p className="text-sm text-slate-200 leading-relaxed font-light">{epoch.result}</p>
                     </motion.div>
                   </div>
@@ -167,8 +167,8 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
              isHovered ? 'opacity-20 scale-125' : 'opacity-[0.03] scale-100'
            }`}>{epoch.icon}</div>
            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark">
-              <span className={`text-[8px] font-mono tracking-[0.6em] uppercase whitespace-nowrap transition-colors duration-500 ${
-                isHovered ? 'text-accent' : 'text-slate-400'
+              <span className={`text-[10px] font-mono tracking-[0.6em] uppercase whitespace-nowrap transition-colors duration-500 ${
+                isHovered ? 'text-accent' : 'text-slate-200'
               }`}>
                 Historical Milestone
               </span>
@@ -192,7 +192,7 @@ export default function Timeline() {
             className="flex items-center gap-4 mb-8"
           >
             <div className="h-[1px] w-12 bg-accent/60" />
-            <span className="text-accent font-mono text-[10px] tracking-[0.4em] uppercase">
+            <span className="text-accent font-mono text-xs tracking-[0.4em] uppercase">
               Section 03: History of Struggle
             </span>
           </motion.div>
@@ -220,16 +220,16 @@ export default function Timeline() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-48 p-16 glass-card border-accent/10 text-center max-w-4xl mx-auto relative"
+          className="mt-48 p-16 glass-card border-accent/25 text-center max-w-4xl mx-auto relative"
         >
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 border border-white/5 rounded-full flex items-center justify-center bg-dark">
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 border border-white/15 rounded-full flex items-center justify-center bg-dark">
              <div className="w-2 h-2 bg-accent rounded-full shadow-[0_0_15px_rgba(212,175,55,0.8)]" />
           </div>
           <p className="font-serif text-3xl md:text-4xl text-slate-100 italic mb-10 leading-relaxed tracking-tight">
             "Đấu tranh giai cấp là động lực trực tiếp của lịch sử các xã hội có giai cấp."
           </p>
           <div className="h-[1px] w-24 bg-accent/30 mx-auto mb-8" />
-          <p className="text-[10px] font-mono text-slate-350 uppercase tracking-[0.5em]">
+          <p className="text-xs font-mono text-slate-200 uppercase tracking-[0.5em]">
             Friedrich Engels & Karl Marx
           </p>
         </motion.div>

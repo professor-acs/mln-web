@@ -62,7 +62,7 @@ export default function Quiz() {
             className="flex items-center justify-center gap-4 mb-8"
           >
             <div className="h-[1px] w-8 bg-accent/40" />
-            <span className="text-accent font-mono text-[10px] tracking-[0.5em] uppercase">
+            <span className="text-accent font-mono text-xs tracking-[0.5em] uppercase">
               Section 05: Knowledge Assessment
             </span>
             <div className="h-[1px] w-8 bg-accent/40" />
@@ -79,7 +79,7 @@ export default function Quiz() {
         </div>
 
         {/* Quiz Container */}
-        <div className="glass-card border-white/5 overflow-hidden">
+        <div className="glass-card border-white/15 overflow-hidden">
           <AnimatePresence mode="wait">
             {quizState === 'idle' && !answeredAll && (
               <motion.div
@@ -114,7 +114,7 @@ export default function Quiz() {
                 {/* Progress */}
                 <div className="flex items-center justify-between mb-16">
                    <div className="flex items-center gap-6">
-                     <span className="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em]">
+                     <span className="text-xs font-mono text-slate-200 uppercase tracking-[0.3em]">
                        Question {currentQ + 1} of {quizQuestions.length}
                      </span>
                      <div className="flex gap-1.5">
@@ -122,15 +122,15 @@ export default function Quiz() {
                           <div 
                             key={i} 
                             className={`h-[1px] transition-all duration-700 ${
-                              i === currentQ ? 'w-8 bg-accent' : i < currentQ ? 'w-4 bg-accent/30' : 'w-4 bg-white/5'
+                              i === currentQ ? 'w-8 bg-accent' : i < currentQ ? 'w-4 bg-accent/50' : 'w-4 bg-white/15'
                             }`} 
                           />
                         ))}
                      </div>
                    </div>
-                   <div className="flex items-center gap-6 text-[9px] font-mono uppercase tracking-[0.2em]">
-                     <span className="text-emerald-500/60">Correct: {scores.correct}</span>
-                     <span className="text-rose-500/60">Mistakes: {scores.wrong}</span>
+                   <div className="flex items-center gap-6 text-xs font-mono uppercase tracking-[0.2em]">
+                     <span className="text-emerald-400 font-bold">Correct: {scores.correct}</span>
+                     <span className="text-rose-400 font-bold">Mistakes: {scores.wrong}</span>
                    </div>
                 </div>
 
@@ -146,11 +146,11 @@ export default function Quiz() {
                     const isCorrect = opt.id === question.correct
                     const isWrong = isSelected && !isCorrect
                     
-                    let statusClasses = "border-white/5 text-slate-200 hover:border-white/20 hover:bg-white/[0.02]"
+                    let statusClasses = "border-white/15 text-slate-200 hover:border-white/30 hover:bg-white/[0.05]"
                     if (quizState !== 'question') {
-                      if (isCorrect) statusClasses = "border-emerald-500/30 bg-emerald-500/[0.03] text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.05)]"
-                      else if (isWrong) statusClasses = "border-rose-500/30 bg-rose-500/[0.03] text-rose-400"
-                      else statusClasses = "border-white/5 text-slate-400 opacity-40"
+                      if (isCorrect) statusClasses = "border-emerald-500/40 bg-emerald-500/[0.05] text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.08)] font-bold"
+                      else if (isWrong) statusClasses = "border-rose-500/40 bg-rose-500/[0.05] text-rose-400 font-bold"
+                      else statusClasses = "border-white/10 text-slate-350 opacity-60"
                     }
 
                     return (
@@ -160,7 +160,7 @@ export default function Quiz() {
                         disabled={quizState !== 'question'}
                         className={`w-full p-6 rounded-sm border text-left font-sans text-sm transition-all duration-500 flex items-center gap-6 ${statusClasses}`}
                       >
-                        <span className="w-6 h-6 rounded-full border border-current flex items-center justify-center text-[9px] font-mono opacity-60">
+                        <span className="w-6 h-6 rounded-full border border-current flex items-center justify-center text-xs font-mono opacity-80">
                           {opt.id.toUpperCase()}
                         </span>
                         <span className="font-light tracking-wide">{opt.text}</span>
@@ -170,14 +170,14 @@ export default function Quiz() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center justify-between pt-10 border-t border-white/5">
+                <div className="flex items-center justify-between pt-10 border-t border-white/15">
                   <AnimatePresence>
                     {quizState === 'answered' && (
                       <motion.button
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         onClick={handleShowExplanation}
-                        className="text-[9px] font-mono text-accent uppercase tracking-[0.3em] hover:opacity-100 opacity-60 transition-opacity"
+                        className="text-xs font-mono text-accent uppercase tracking-[0.3em] hover:opacity-100 opacity-80 transition-opacity font-bold"
                       >
                         Detailed Analysis
                       </motion.button>
@@ -200,10 +200,10 @@ export default function Quiz() {
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
-                      className="mt-10 p-8 bg-accent/[0.02] border-l border-accent/40 rounded-sm"
+                      className="mt-10 p-8 bg-accent/[0.04] border-l-2 border-accent/65 rounded-sm"
                     >
                       <p className="text-xs font-sans text-slate-200 leading-relaxed italic font-light">
-                        <span className="text-accent font-mono font-bold not-italic uppercase text-[9px] tracking-[0.3em] mr-4">Context:</span>
+                        <span className="text-accent font-mono font-bold not-italic uppercase text-xs tracking-[0.3em] mr-4">Context:</span>
                         {question.explanation.long}
                       </p>
                     </motion.div>
@@ -226,13 +226,13 @@ export default function Quiz() {
                 <h3 className="font-serif text-4xl text-slate-100 mb-6">Assessment Complete</h3>
                 <div className="flex justify-center gap-16 mb-16">
                    <div>
-                     <p className="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-2">Accuracy</p>
-                     <p className="text-5xl font-serif text-emerald-500 tracking-tighter">
+                     <p className="text-xs font-mono text-slate-200 uppercase tracking-[0.3em] mb-2">Accuracy</p>
+                     <p className="text-5xl font-serif text-emerald-400 tracking-tighter">
                        {Math.round((scores.correct / quizQuestions.length) * 100)}%
                      </p>
                    </div>
                    <div>
-                     <p className="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-2">Correct</p>
+                     <p className="text-xs font-mono text-slate-200 uppercase tracking-[0.3em] mb-2">Correct</p>
                      <p className="text-5xl font-serif text-slate-100 tracking-tighter">{scores.correct}</p>
                    </div>
                 </div>

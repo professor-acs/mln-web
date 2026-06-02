@@ -31,8 +31,8 @@ export default function Hero() {
   const navigate = useNavigate()
   const { displayed: quoteText, done: quoteDone } = useTypewriter(
     siteMetadata.mainQuote,
-    40,
-    1000
+    20,
+    300
   )
 
   return (
@@ -40,6 +40,25 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden"
     >
+      {/* Background Hero Image — Karl Marx */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.12 }}
+        transition={{ duration: 2.5 }}
+        className="absolute inset-0 z-0 pointer-events-none"
+      >
+        <img
+          src={siteMetadata.heroImage}
+          alt="Karl Marx"
+          className="w-full h-full object-cover filter grayscale brightness-50"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+      </motion.div>
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-dark/60 via-dark/70 to-dark pointer-events-none" />
+
       <div className="relative z-10 w-full max-w-5xl mx-auto text-center">
         {/* Subtle Category Tag */}
         <motion.div
@@ -48,11 +67,11 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="inline-flex items-center gap-4 mb-16"
         >
-          <div className="h-[1px] w-8 bg-accent/40" />
-          <span className="text-accent font-mono text-[10px] tracking-[0.5em] uppercase">
+          <div className="h-[1px] w-8 bg-accent/70" />
+          <span className="text-accent font-mono text-xs tracking-[0.5em] uppercase">
             {siteMetadata.course}
           </span>
-          <div className="h-[1px] w-8 bg-accent/40" />
+          <div className="h-[1px] w-8 bg-accent/70" />
         </motion.div>
 
         {/* Editorial Title */}
@@ -76,9 +95,9 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, delay: 0.6 }}
-          className="relative max-w-3xl mx-auto mb-16 py-12 px-8 border-y border-white/5"
+          className="relative max-w-3xl mx-auto mb-16 py-12 px-8 border-y border-white/15"
         >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark text-[10px] font-mono text-slate-350 uppercase tracking-widest">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark text-xs font-mono text-slate-200 uppercase tracking-widest">
             Thesis
           </div>
           
@@ -88,10 +107,10 @@ export default function Hero() {
           </p>
           
           <div className="flex flex-col items-center gap-4">
-            <p className="font-mono text-[10px] text-accent uppercase tracking-[0.3em]">
+            <p className="font-mono text-xs text-accent uppercase tracking-[0.3em]">
               {siteMetadata.quoteAuthor}
             </p>
-            <div className="h-8 w-[1px] bg-gradient-to-b from-accent/40 to-transparent" />
+            <div className="h-8 w-[1px] bg-gradient-to-b from-accent/70 to-transparent" />
           </div>
         </motion.div>
 
@@ -100,7 +119,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 1.8 }}
-          className="font-sans text-slate-200 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-20 font-light"
+          className="font-sans text-slate-100 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto mb-20 font-light"
         >
           {siteMetadata.heroSubtext}
         </motion.p>
@@ -128,9 +147,9 @@ export default function Hero() {
           </div>
 
           {/* Minimalist Scroll */}
-          <div className="flex flex-col items-center gap-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
+          <div className="flex flex-col items-center gap-4 opacity-70 hover:opacity-100 transition-opacity duration-500">
             <div className="w-[1px] h-20 bg-gradient-to-b from-accent to-transparent" />
-            <span className="text-[9px] font-mono tracking-[0.5em] uppercase text-accent">Scroll</span>
+            <span className="text-xs font-mono tracking-[0.5em] uppercase text-accent">Scroll</span>
           </div>
         </motion.div>
       </div>
