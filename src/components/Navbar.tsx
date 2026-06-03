@@ -3,11 +3,11 @@ import { motion } from 'framer-motion'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const routes = [
-  { path: '/', label: 'Intro' },
-  { path: '/theory', label: 'Theory' },
-  { path: '/timeline', label: 'History' },
-  { path: '/reality', label: 'Reality' },
-  { path: '/quiz', label: 'Interactive' },
+  { path: '/', label: 'Trang chủ' },
+  { path: '/theory', label: 'Lý Luận' },
+  { path: '/timeline', label: 'Lịch Sử' },
+  { path: '/reality', label: 'Hiện thực' },
+  { path: '/quiz', label: 'Quiz' },
 ]
 
 export default function Navbar() {
@@ -48,7 +48,7 @@ export default function Navbar() {
               Marx-Lenin
             </span>
             <span className="text-[10px] text-accent font-mono uppercase tracking-[0.4em]">
-              Archive 03
+              Lưu trữ 03
             </span>
           </div>
         </motion.div>
@@ -80,8 +80,8 @@ export default function Navbar() {
         {/* Status Indicator */}
         <div className="flex items-center gap-4">
           <div className="hidden lg:flex flex-col items-end mr-4">
-            <span className="text-[10px] font-mono text-slate-100 uppercase tracking-widest">System Status</span>
-            <span className="text-xs font-mono text-accent uppercase tracking-widest font-bold">Active</span>
+            <span className="text-[10px] font-mono text-slate-100 uppercase tracking-widest">Trạng thái Hệ thống</span>
+            <span className="text-xs font-mono text-accent uppercase tracking-widest font-bold">Hoạt động</span>
           </div>
           <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group hover:border-accent/40 transition-colors duration-500">
             <div className="w-1 h-1 bg-accent rounded-full animate-pulse" />

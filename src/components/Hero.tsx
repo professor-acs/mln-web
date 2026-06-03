@@ -98,7 +98,7 @@ export default function Hero() {
           className="relative max-w-3xl mx-auto mb-16 py-12 px-8 border-y border-white/15"
         >
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-dark text-xs font-mono text-slate-100 uppercase tracking-widest">
-            Thesis
+            Luận đề
           </div>
           
           <p className="font-serif text-2xl md:text-3xl lg:text-4xl italic text-slate-100 leading-[1.3] mb-8">
@@ -137,7 +137,7 @@ export default function Hero() {
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row md:items-start gap-4">
             {/* Nhãn nhãn thông số công nghệ nhỏ để giữ chất Sci-fi */}
             <span className="font-mono text-xs text-accent tracking-[0.3em] uppercase pt-1 shrink-0">
-              [ CORE THESIS ]
+              [ LUẬN ĐỀ CỐT LÕI ]
             </span>
             
             <div className="space-y-4">
@@ -166,25 +166,57 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 2.2 }}
           className="flex flex-col items-center gap-16"
         >
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-6 z-20">
+            {/* NÚT 1: KHÁM PHÁ HỆ TƯ TƯỞNG */}
             <button
               onClick={() => navigate('/theory')}
-              className="btn-premium px-12 py-5"
+              /* Nền kính mờ (bg-white/5 + backdrop-blur) nguyên bản. Khi hover viền sẽ sáng lên và tỏa bóng mờ */
+              className="relative px-12 py-5 group overflow-hidden rounded-sm bg-white/5 backdrop-blur-md border border-white/10 transition-all duration-700 hover:bg-white/10 hover:border-white/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] flex items-center justify-center min-w-[300px]"
             >
-              Khám phá hệ tư tưởng
+              {/* 1. HIỆU ỨNG TIA SÁNG LƯỚT CHÉO: Quét qua bề mặt nút như ống kính máy quay */}
+              <div className="absolute inset-0 -translate-x-[150%] skew-x-[30deg] bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:translate-x-[150%] transition-transform duration-[1500ms] ease-in-out pointer-events-none"></div>
+
+              {/* 2. DẤU NGOẶC TRÁI (Tech Bracket): Trượt từ ngoài vào */}
+              <span className="absolute left-6 opacity-0 -translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-700 font-mono text-white/40 text-xl pointer-events-none">
+                [
+              </span>
+
+              {/* 3. VĂN BẢN (Text): Giãn cách chữ (tracking) rộng ra khi hover tạo cảm giác hít thở */}
+              <span className="relative z-10 font-sans text-slate-300 tracking-wider group-hover:text-white group-hover:tracking-[0.2em] transition-all duration-700 uppercase text-sm font-medium">
+                Khám phá hệ tư tưởng
+              </span>
+
+              {/* 4. DẤU NGOẶC PHẢI (Tech Bracket): Trượt từ ngoài vào */}
+              <span className="absolute right-6 opacity-0 translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-700 font-mono text-white/40 text-xl pointer-events-none">
+                ]
+              </span>
             </button>
+
+            {/* NÚT 2: LỊCH SỬ ĐẤU TRANH */}
             <button
               onClick={() => navigate('/timeline')}
-              className="btn-outline-premium px-12 py-5"
+              className="relative px-12 py-5 group overflow-hidden rounded-sm bg-white/5 backdrop-blur-md border border-white/10 transition-all duration-700 hover:bg-white/10 hover:border-white/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] flex items-center justify-center min-w-[300px]"
             >
-              Lịch sử đấu tranh
+              <div className="absolute inset-0 -translate-x-[150%] skew-x-[30deg] bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:translate-x-[150%] transition-transform duration-[1500ms] ease-in-out pointer-events-none"></div>
+
+              <span className="absolute left-6 opacity-0 -translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-700 font-mono text-white/40 text-xl pointer-events-none">
+                [
+              </span>
+
+              <span className="relative z-10 font-sans text-slate-300 tracking-wider group-hover:text-white group-hover:tracking-[0.2em] transition-all duration-700 uppercase text-sm font-medium">
+                Lịch sử đấu tranh
+              </span>
+
+              <span className="absolute right-6 opacity-0 translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-700 font-mono text-white/40 text-xl pointer-events-none">
+                ]
+              </span>
             </button>
           </div>
 
           {/* Minimalist Scroll */}
           <div className="flex flex-col items-center gap-4 opacity-70 hover:opacity-100 transition-opacity duration-500">
             <div className="w-[1px] h-20 bg-gradient-to-b from-accent to-transparent" />
-            <span className="text-xs font-mono tracking-[0.5em] uppercase text-accent">Scroll</span>
+            <span className="text-xs font-mono tracking-[0.5em] uppercase text-accent">Cuộn</span>
           </div>
         </motion.div>
       </div>

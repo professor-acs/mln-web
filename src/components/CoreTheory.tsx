@@ -231,7 +231,7 @@ export default function CoreTheory() {
             >
               <div className="h-[1px] w-12 bg-accent/60" />
               <span className="text-accent font-mono text-xs tracking-[0.4em] uppercase">
-                {section.subtitle}: Core Ideology
+                {section.subtitle}: Lý luận Cốt lõi
               </span>
             </motion.div>
 
@@ -268,7 +268,7 @@ export default function CoreTheory() {
                   {activeSection}
                 </span>
                 <div className="flex flex-col items-start gap-1">
-                  <span className="text-[10px] font-mono text-slate-100 uppercase tracking-[0.5em]">Section</span>
+                  <span className="text-[10px] font-mono text-slate-100 uppercase tracking-[0.5em]">Phần</span>
                   <motion.svg
                     className="w-4 h-4 text-accent/60"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -305,7 +305,7 @@ export default function CoreTheory() {
                         <div>
                           <p className="text-sm font-medium leading-tight">{sectionContent[s].title}</p>
                           <p className="text-xs font-mono text-slate-100 uppercase tracking-wider mt-0.5">
-                            {sectionContent[s].cards.length} cards
+                            {sectionContent[s].cards.length} thẻ
                           </p>
                         </div>
                         {activeSection === s && (
@@ -344,7 +344,7 @@ export default function CoreTheory() {
           <div className="flex items-center gap-4">
             <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em]">
-              Official Reference Archive
+              Kho Lưu trữ Tài liệu Tham khảo Chính thức
             </p>
           </div>
           <p className="text-xs font-serif italic text-slate-100 max-w-md text-center md:text-right leading-relaxed">

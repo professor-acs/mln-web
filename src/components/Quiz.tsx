@@ -63,7 +63,7 @@ export default function Quiz() {
           >
             <div className="h-[1px] w-8 bg-accent/40" />
             <span className="text-accent font-mono text-xs tracking-[0.5em] uppercase">
-              Section 05: Knowledge Assessment
+              Phần 05: Đánh giá Nhận thức
             </span>
             <div className="h-[1px] w-8 bg-accent/40" />
           </motion.div>
@@ -115,7 +115,7 @@ export default function Quiz() {
                 <div className="flex items-center justify-between mb-16">
                    <div className="flex items-center gap-6">
                      <span className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em]">
-                       Question {currentQ + 1} of {quizQuestions.length}
+                       Câu hỏi {currentQ + 1} / {quizQuestions.length}
                      </span>
                      <div className="flex gap-1.5">
                         {quizQuestions.map((_, i) => (
@@ -129,8 +129,8 @@ export default function Quiz() {
                      </div>
                    </div>
                    <div className="flex items-center gap-6 text-xs font-mono uppercase tracking-[0.2em]">
-                     <span className="text-emerald-400 font-bold">Correct: {scores.correct}</span>
-                     <span className="text-rose-400 font-bold">Mistakes: {scores.wrong}</span>
+                     <span className="text-emerald-400 font-bold">Đúng: {scores.correct}</span>
+                     <span className="text-rose-400 font-bold">Sai: {scores.wrong}</span>
                    </div>
                 </div>
 
@@ -179,7 +179,7 @@ export default function Quiz() {
                         onClick={handleShowExplanation}
                         className="text-xs font-mono text-accent uppercase tracking-[0.3em] hover:opacity-100 opacity-80 transition-opacity font-bold"
                       >
-                        Detailed Analysis
+                        Phân tích Chi tiết
                       </motion.button>
                     )}
                   </AnimatePresence>
@@ -189,7 +189,7 @@ export default function Quiz() {
                       onClick={handleNext}
                       className="btn-premium px-10 py-4"
                     >
-                      {currentQ < quizQuestions.length - 1 ? 'Next Phase' : 'Finalize'}
+                      {currentQ < quizQuestions.length - 1 ? 'Tiếp theo' : 'Hoàn thành'}
                     </button>
                   )}
                 </div>
@@ -203,7 +203,7 @@ export default function Quiz() {
                       className="mt-10 p-8 bg-accent/[0.04] border-l-2 border-accent/65 rounded-sm"
                     >
                       <p className="text-xs font-sans text-slate-100 leading-relaxed italic font-light">
-                        <span className="text-accent font-mono font-bold not-italic uppercase text-xs tracking-[0.3em] mr-4">Context:</span>
+                        <span className="text-accent font-mono font-bold not-italic uppercase text-xs tracking-[0.3em] mr-4">Giải thích:</span>
                         {question.explanation.long}
                       </p>
                     </motion.div>
@@ -223,21 +223,21 @@ export default function Quiz() {
                    <div className="absolute inset-0 border border-accent/20 rounded-full animate-ping opacity-20" />
                    <div className="w-2 h-2 bg-accent rounded-full shadow-[0_0_15px_rgba(212,175,55,0.8)]" />
                 </div>
-                <h3 className="font-serif text-4xl text-slate-100 mb-6">Assessment Complete</h3>
+                <h3 className="font-serif text-4xl text-slate-100 mb-6">Đánh giá Hoàn tất</h3>
                 <div className="flex justify-center gap-16 mb-16">
                    <div>
-                     <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em] mb-2">Accuracy</p>
+                     <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em] mb-2">Tỷ lệ chính xác</p>
                      <p className="text-5xl font-serif text-emerald-400 tracking-tighter">
                        {Math.round((scores.correct / quizQuestions.length) * 100)}%
                      </p>
                    </div>
                    <div>
-                     <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em] mb-2">Correct</p>
+                     <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em] mb-2">Số câu đúng</p>
                      <p className="text-5xl font-serif text-slate-100 tracking-tighter">{scores.correct}</p>
                    </div>
                 </div>
                 <button onClick={handleReset} className="btn-outline-premium px-12 py-5">
-                  Restart Evaluation
+                  Đánh giá lại
                 </button>
               </motion.div>
             )}
