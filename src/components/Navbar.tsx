@@ -54,7 +54,7 @@ export default function Navbar() {
               Marx-Lenin
             </span>
             <span className="text-[8px] md:text-[10px] text-accent font-mono uppercase tracking-[0.4em]">
-              Archive 03
+              Chương 03
             </span>
           </div>
         </motion.div>
