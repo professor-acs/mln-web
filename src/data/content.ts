@@ -4,7 +4,7 @@
 // ============================================================
 
 export const siteMetadata = {
-  title: 'Những Bàn Tay Bị Lãng Quên',
+  title: 'Giai Cấp Và Dân Tộc',
   subtitle: 'AI ĐANG VIẾT NÊN LỊCH SỬ?',
   mainQuote: '"Lịch sử của tất cả các xã hội tồn tại từ trước đến nay chỉ là lịch sử của đấu tranh giai cấp."',
   quoteAuthor: '— Karl Marx & Friedrich Engels, Tuyên ngôn của Đảng Cộng sản (1848)',
@@ -607,7 +607,7 @@ export const sectionContent: Record<SectionType, {
         id: 'nationality-concept',
         title: 'Khái Niệm Dân Tộc',
         subtitle: 'Định nghĩa học thuật',
-        image: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1625851823323-ca66790f56ef?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         frontSummary: 'Dân tộc (nation) là một cộng đồng người ổn định được hình thành trong lịch sử dựa trên 4 đặc trưng cộng đồng bền vững.',
         points: [
           { title: 'Cộng đồng lãnh thổ', desc: 'Lãnh thổ ổn định là điều kiện tiên quyết cho sự hình thành dân tộc — "đất nước" theo nghĩa cụ thể.' },
@@ -622,7 +622,7 @@ export const sectionContent: Record<SectionType, {
         id: 'nationality-roles',
         title: 'Quan Hệ Giai Cấp - Dân Tộc',
         subtitle: 'Biện chứng và thực tiễn',
-        image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1598980090474-7cdbe604d815?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         frontSummary: 'Vấn đề giai cấp và dân tộc có mối quan hệ biện chứng sâu sắc. Sự giải phóng giai cấp là tiền đề cho sự giải phóng dân tộc và ngược lại.',
         forms: [
           { title: 'Giai cấp quy định dân tộc', desc: 'Giai cấp thống trị trong xã hội quy định tính chất và khuynh hướng phát triển của dân tộc. Giai cấp tư sản tạo ra dân tộc tư sản chủ nghĩa.' },
@@ -636,7 +636,7 @@ export const sectionContent: Record<SectionType, {
         id: 'nationality-historical-char',
         title: 'Đặc Điểm & Thực Tiễn',
         subtitle: 'Lịch sử & Đời sống',
-        image: 'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1677138156122-6f868f7cf4cd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         frontSummary: 'Sự hình thành dân tộc có những đặc điểm khác biệt giữa phương Tây và phương Đông, biểu hiện mạnh mẽ trong đời sống hiện đại.',
         points: [
           { title: 'Châu Âu', desc: 'Dân tộc hình thành gắn liền với sự ra đời của chủ nghĩa tư bản — thị trường thống nhất, ngôn ngữ quốc gia.' },
@@ -676,7 +676,7 @@ export const sectionContent: Record<SectionType, {
         id: 'humanity',
         title: 'Vấn Đề Nhân Loại',
         subtitle: 'Cộng đồng toàn cầu',
-        image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800',
+        image: 'https://images.unsplash.com/photo-1591372161553-fee79c8b3e07?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         frontSummary: 'Nhân loại là toàn thể cộng đồng người sống trên Trái Đất, với bản chất xã hội là cơ sở cho tính thống nhất.',
         points: [
           { title: 'Khái niệm', desc: 'Toàn thể cộng đồng người sống trên Trái Đất, vượt qua mọi ranh giới giai cấp và quốc gia.' },
@@ -690,7 +690,7 @@ export const sectionContent: Record<SectionType, {
         id: 'dialectical-relation',
         title: 'Mối Quan Hệ Biện Chứng',
         subtitle: 'Tổng thể thống nhất',
-        image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800',
+        image: 'https://plus.unsplash.com/premium_photo-1757018693682-85221eac01cb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         frontSummary: 'Sự phát triển của nhân loại tạo điều kiện cho đấu tranh giai cấp và dân tộc, và ngược lại.',
         points: [
           { title: 'Tính chi phối', desc: 'Lợi ích giai cấp và dân tộc chi phối cách thức giải quyết các vấn đề nhân loại.' },

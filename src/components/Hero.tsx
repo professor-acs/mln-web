@@ -82,11 +82,18 @@ export default function Hero() {
           className="mb-12"
         >
           <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl font-medium leading-[0.95] text-slate-100 tracking-tighter">
-            {siteMetadata.title.split(' ').map((word, i) => (
-              <span key={i} className={word.toLowerCase() === 'bị' || word.toLowerCase() === 'lãng' ? 'italic text-accent' : ''}>
-                {word}{' '}
-              </span>
-            ))}
+            {siteMetadata.title.split(' ').map((word, i) => {
+              const lowerWord = word.toLowerCase();
+              const isAccent = lowerWord === 'bị' || lowerWord === 'lãng' || lowerWord === 'dân' || lowerWord === 'tộc';
+              return (
+                <span key={i}>
+                  {lowerWord === 'dân' && <br />}
+                  <span className={isAccent ? 'italic text-accent' : ''}>
+                    {word}{' '}
+                  </span>
+                </span>
+              );
+            })}
           </h1>
         </motion.div>
 
