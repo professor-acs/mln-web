@@ -118,13 +118,13 @@ export default function Quiz() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                className="p-12"
+                className="p-6 md:p-12"
               >
                 {/* Progress */}
-                <div className="flex items-center justify-between mb-16">
-                   <div className="flex items-center gap-6">
-                     <span className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em]">
-                       Câu hỏi {currentQ + 1} / {quizQuestions.length}
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 md:mb-16 gap-6">
+                   <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+                     <span className="text-[10px] md:text-xs font-mono text-slate-100 uppercase tracking-[0.3em]">
+                       Question {currentQ + 1} of {quizQuestions.length}
                      </span>
                      <div className="flex gap-1.5">
                         {quizQuestions.map((_, i) => (
@@ -137,19 +137,19 @@ export default function Quiz() {
                         ))}
                      </div>
                    </div>
-                   <div className="flex items-center gap-6 text-xs font-mono uppercase tracking-[0.2em]">
-                     <span className="text-emerald-400 font-bold">Đúng: {scores.correct}</span>
-                     <span className="text-rose-400 font-bold">Sai: {scores.wrong}</span>
+                   <div className="flex items-center gap-6 text-[10px] md:text-xs font-mono uppercase tracking-[0.2em]">
+                     <span className="text-emerald-400 font-bold">Correct: {scores.correct}</span>
+                     <span className="text-rose-400 font-bold">Mistakes: {scores.wrong}</span>
                    </div>
                 </div>
 
                 {/* Question */}
-                <h4 className="font-serif text-3xl text-slate-100 mb-12 leading-relaxed tracking-tight">
+                <h4 className="font-serif text-2xl md:text-3xl text-slate-100 mb-8 md:mb-12 leading-relaxed tracking-tight">
                   {question.question}
                 </h4>
 
                 {/* Options */}
-                <div className="grid grid-cols-1 gap-4 mb-16">
+                <div className="grid grid-cols-1 gap-3 md:gap-4 mb-10 md:mb-16">
                   {question.options.map((opt) => {
                     const isSelected = selectedAnswer === opt.id
                     const isCorrect = opt.id === question.correct
@@ -167,9 +167,9 @@ export default function Quiz() {
                         key={opt.id}
                         onClick={() => handleAnswer(opt.id)}
                         disabled={quizState !== 'question'}
-                        className={`w-full p-6 rounded-sm border text-left font-sans text-sm transition-all duration-500 flex items-center gap-6 ${statusClasses}`}
+                        className={`w-full p-4 md:p-6 rounded-sm border text-left font-sans text-sm transition-all duration-500 flex items-center gap-4 md:gap-6 ${statusClasses}`}
                       >
-                        <span className="w-6 h-6 rounded-full border border-current flex items-center justify-center text-xs font-mono opacity-80">
+                        <span className="w-6 h-6 rounded-full border border-current flex items-center justify-center text-[10px] md:text-xs font-mono opacity-80 shrink-0">
                           {opt.id.toUpperCase()}
                         </span>
                         <span className="font-light tracking-wide">{opt.text}</span>
@@ -179,50 +179,28 @@ export default function Quiz() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center justify-between pt-10 border-t border-white/15">
-                  <div className="min-h-[24px]">
-                    <AnimatePresence>
-                      {quizState === 'answered' && (
-                        <motion.button
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          onClick={handleShowExplanation}
-                          className="text-xs font-mono text-accent uppercase tracking-[0.3em] hover:opacity-100 opacity-80 transition-opacity font-bold"
-                        >
-                          Phân tích Chi tiết
-                        </motion.button>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  <button
-                    onClick={handleNext}
-                    disabled={!selectedAnswer}
-                    className={`relative px-8 py-3 group overflow-hidden rounded-sm backdrop-blur-md border transition-all duration-500 flex items-center justify-center min-w-[160px]
-                      ${selectedAnswer 
-                        ? 'bg-white/5 border-white/20 text-slate-200 hover:bg-white/10 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] cursor-pointer' 
-                        : 'bg-white/0 border-white/5 text-slate-600 cursor-not-allowed'
-                      }`}
-                  >
-                    {/* Tia sáng quét nhanh (chỉ xuất hiện khi nút đã được kích hoạt) */}
-                    {selectedAnswer && (
-                      <div className="absolute inset-0 -translate-x-[150%] skew-x-[30deg] bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:translate-x-[150%] transition-transform duration-[1000ms] ease-in-out pointer-events-none"></div>
-                    )}
-
-                    <span className="relative z-10 font-sans tracking-widest uppercase text-xs font-semibold flex items-center gap-3">
-                      {currentQ === quizQuestions.length - 1 ? 'Hoàn thành' : 'Tiếp theo'}
-                      
-                      {/* Icon Mũi tên: Trượt sang phải khi hover */}
-                      <svg 
-                        className={`w-4 h-4 transition-transform duration-500 ${selectedAnswer ? 'group-hover:translate-x-1' : ''}`} 
-                        fill="none" 
-                        viewBox="0 0 24 24" 
-                        stroke="currentColor"
+                <div className="flex flex-col md:flex-row items-center justify-between pt-8 md:pt-10 border-t border-white/15 gap-6">
+                  <AnimatePresence>
+                    {quizState === 'answered' && (
+                      <motion.button
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        onClick={handleShowExplanation}
+                        className="text-[10px] md:text-xs font-mono text-accent uppercase tracking-[0.3em] hover:opacity-100 opacity-80 transition-opacity font-bold"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </span>
-                  </button>
+                        Detailed Analysis
+                      </motion.button>
+                    )}
+                  </AnimatePresence>
+
+                  {quizState !== 'question' && (
+                    <button
+                      onClick={handleNext}
+                      className="btn-premium px-8 md:px-10 py-3 md:py-4 w-full md:w-auto"
+                    >
+                      {currentQ < quizQuestions.length - 1 ? 'Next Phase' : 'Finalize'}
+                    </button>
+                  )}
                 </div>
 
                 {/* Explanation */}

@@ -15,8 +15,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
       initial={{ opacity: 0, y: 60 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 1, delay: index * 0.15, ease: 'easeOut' }}
-      className={`flip-card-container cursor-pointer group ${flipped ? 'flipped' : ''}`}
-      style={{ height: '560px' }}
+      className={`flip-card-container cursor-pointer group h-[650px] md:h-[560px] ${flipped ? 'flipped' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => setFlipped(!flipped)}
@@ -24,7 +23,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
       <div className="flip-card-inner w-full h-full">
         {/* FRONT */}
         <div
-          className={`flip-card-front w-full h-full glass-card p-10 flex flex-col relative overflow-hidden transition-all duration-700 rounded-2xl border border-white/10 hover:border-accent/30 ${
+          className={`flip-card-front w-full h-full glass-card p-6 md:p-10 flex flex-col relative overflow-hidden transition-all duration-700 rounded-2xl border border-white/10 hover:border-accent/30 ${
             isHovered ? 'bg-slate-900/80 shadow-[0_0_50px_rgba(212,175,55,0.15)] scale-[1.02]' : 'bg-slate-900/60'
           }`}
         >
@@ -106,7 +105,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
         </div>
 
         {/* BACK */}
-        <div className="flip-card-back glass-card p-10 flex flex-col border-accent/30 bg-slate-950/90 shadow-[0_0_60px_rgba(212,175,55,0.15)] rounded-2xl">
+        <div className="flip-card-back glass-card p-6 md:p-10 flex flex-col border-accent/30 bg-slate-950/90 shadow-[0_0_60px_rgba(212,175,55,0.15)] rounded-2xl">
           <div className="flex items-center justify-between mb-10 border-b border-white/10 pb-6">
             <div>
               <h3 className="font-serif text-2xl text-white">{card.title}</h3>
@@ -196,9 +195,9 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
           </div>
 
           {card.keyTakeaway && (
-            <div className="mt-8 p-6 bg-accent/[0.03] border border-accent/10 rounded-sm">
-              <p className="text-sm font-sans text-slate-100 leading-loose tracking-wide italic">
-                <span className="text-accent font-mono font-bold not-italic uppercase text-xs tracking-widest mr-2">Cốt yếu:</span>
+            <div className="mt-4 md:mt-8 p-4 md:p-6 bg-accent/[0.03] border border-accent/10 rounded-sm shrink-0">
+              <p className="text-xs md:text-sm font-sans text-slate-100 leading-relaxed md:leading-loose tracking-wide italic">
+                <span className="text-accent font-mono font-bold not-italic uppercase text-[10px] md:text-xs tracking-widest mr-2">Cốt yếu:</span>
                 {card.keyTakeaway}
               </p>
             </div>
