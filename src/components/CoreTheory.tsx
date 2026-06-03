@@ -28,6 +28,25 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
             isHovered ? 'bg-slate-900/80 border-accent/50 shadow-[0_0_50px_rgba(212,175,55,0.15)] scale-[1.02]' : 'bg-slate-900/60 border-white/15'
           }`}
         >
+          {/* === KHỐI BACKGROUND IMAGE (Xử lý hiệu ứng ảnh) === */}
+          {card.image && (
+            <div className="absolute inset-0 z-0 overflow-hidden bg-slate-950">
+              <img 
+                src={card.image} 
+                alt={card.title} 
+                className="w-full h-full object-cover scale-125 blur-2xl opacity-40 group-hover:blur-md group-hover:opacity-70 group-hover:scale-110 transition-all duration-[1500ms] ease-in-out"
+                crossOrigin="anonymous"
+                referrerPolicy="no-referrer"
+              />
+              
+              {/* LỚP PHỦ BẢO VỆ CHỮ */}
+              <div className="absolute inset-0 bg-slate-900/80 group-hover:bg-slate-900/40 transition-colors duration-1000"></div>
+              
+              {/* LỚP GRADIENT ĐÁY */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-700"></div>
+            </div>
+          )}
+
           {/* Radiant Glow */}
           <AnimatePresence>
             {isHovered && !flipped && (
@@ -35,13 +54,13 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 pointer-events-none"
+                className="absolute inset-0 pointer-events-none z-10"
                 style={{ background: 'radial-gradient(circle at 20% 20%, rgba(212,175,55,0.1) 0%, transparent 60%)' }}
               />
             )}
           </AnimatePresence>
 
-          <div className="relative z-10 flex flex-col h-full">
+          <div className="relative z-20 flex flex-col h-full">
             <div className={`w-16 h-16 rounded-sm border mb-12 flex items-center justify-center text-4xl transition-all duration-700 ${
               isHovered ? 'bg-accent/10 border-accent/40 rotate-0 shadow-[0_0_20px_rgba(212,175,55,0.2)]' : 'bg-white/5 border-white/10 -rotate-6'
             }`}>
@@ -54,14 +73,14 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
               }`}>
                 {card.subtitle}
               </span>
-              <h3 className={`font-serif text-3xl leading-tight transition-colors duration-500 ${
+              <h3 className={`font-serif text-3xl leading-tight transition-colors duration-500 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] ${
                 isHovered ? 'text-white' : 'text-slate-100'
               }`}>
                 {card.title}
               </h3>
             </div>
 
-            <p className={`font-sans text-base md:text-lg leading-loose tracking-wide font-light flex-1 transition-colors duration-500 ${
+            <p className={`font-sans text-base md:text-lg leading-loose tracking-wide font-light flex-1 transition-colors duration-500 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] ${
               isHovered ? 'text-white' : 'text-slate-100'
             }`}>
               {card.frontSummary}
