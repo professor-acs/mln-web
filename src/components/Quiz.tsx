@@ -97,8 +97,17 @@ export default function Quiz() {
                 <p className="text-slate-100 mb-12 max-w-sm mx-auto font-light leading-relaxed">
                   Bộ câu hỏi tổng hợp các luận điểm quan trọng nhất trong Chương III của Triết học Marx-Lenin.
                 </p>
-                <button onClick={handleStart} className="btn-premium px-12 py-5">
-                  Bắt đầu khảo sát
+                <button
+                  onClick={handleStart}
+                  className="relative px-12 py-5 mt-8 group overflow-hidden rounded-sm bg-white/5 backdrop-blur-md border border-white/10 transition-all duration-700 hover:bg-white/10 hover:border-white/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] flex items-center justify-center min-w-[280px] mx-auto"
+                >
+                  {/* Lớp tia sáng lướt chéo ẩn bên dưới */}
+                  <div className="absolute inset-0 -translate-x-[150%] skew-x-[30deg] bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:translate-x-[150%] transition-transform duration-[1500ms] ease-in-out pointer-events-none"></div>
+
+                  {/* Văn bản: Giãn khoảng cách chữ (tracking) khi hover để tạo cảm giác "Wow" mượt mà */}
+                  <span className="relative z-10 font-sans text-slate-300 tracking-wider group-hover:text-white group-hover:tracking-[0.2em] transition-all duration-700 uppercase text-sm font-medium">
+                    Bắt đầu khảo sát
+                  </span>
                 </button>
               </motion.div>
             )}
@@ -171,27 +180,49 @@ export default function Quiz() {
 
                 {/* Actions */}
                 <div className="flex items-center justify-between pt-10 border-t border-white/15">
-                  <AnimatePresence>
-                    {quizState === 'answered' && (
-                      <motion.button
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        onClick={handleShowExplanation}
-                        className="text-xs font-mono text-accent uppercase tracking-[0.3em] hover:opacity-100 opacity-80 transition-opacity font-bold"
-                      >
-                        Phân tích Chi tiết
-                      </motion.button>
-                    )}
-                  </AnimatePresence>
+                  <div className="min-h-[24px]">
+                    <AnimatePresence>
+                      {quizState === 'answered' && (
+                        <motion.button
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          onClick={handleShowExplanation}
+                          className="text-xs font-mono text-accent uppercase tracking-[0.3em] hover:opacity-100 opacity-80 transition-opacity font-bold"
+                        >
+                          Phân tích Chi tiết
+                        </motion.button>
+                      )}
+                    </AnimatePresence>
+                  </div>
 
-                  {quizState !== 'question' && (
-                    <button
-                      onClick={handleNext}
-                      className="btn-premium px-10 py-4"
-                    >
-                      {currentQ < quizQuestions.length - 1 ? 'Tiếp theo' : 'Hoàn thành'}
-                    </button>
-                  )}
+                  <button
+                    onClick={handleNext}
+                    disabled={!selectedAnswer}
+                    className={`relative px-8 py-3 group overflow-hidden rounded-sm backdrop-blur-md border transition-all duration-500 flex items-center justify-center min-w-[160px]
+                      ${selectedAnswer 
+                        ? 'bg-white/5 border-white/20 text-slate-200 hover:bg-white/10 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] cursor-pointer' 
+                        : 'bg-white/0 border-white/5 text-slate-600 cursor-not-allowed'
+                      }`}
+                  >
+                    {/* Tia sáng quét nhanh (chỉ xuất hiện khi nút đã được kích hoạt) */}
+                    {selectedAnswer && (
+                      <div className="absolute inset-0 -translate-x-[150%] skew-x-[30deg] bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:translate-x-[150%] transition-transform duration-[1000ms] ease-in-out pointer-events-none"></div>
+                    )}
+
+                    <span className="relative z-10 font-sans tracking-widest uppercase text-xs font-semibold flex items-center gap-3">
+                      {currentQ === quizQuestions.length - 1 ? 'Hoàn thành' : 'Tiếp theo'}
+                      
+                      {/* Icon Mũi tên: Trượt sang phải khi hover */}
+                      <svg 
+                        className={`w-4 h-4 transition-transform duration-500 ${selectedAnswer ? 'group-hover:translate-x-1' : ''}`} 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </span>
+                  </button>
                 </div>
 
                 {/* Explanation */}
@@ -236,8 +267,26 @@ export default function Quiz() {
                      <p className="text-5xl font-serif text-slate-100 tracking-tighter">{scores.correct}</p>
                    </div>
                 </div>
-                <button onClick={handleReset} className="btn-outline-premium px-12 py-5">
-                  Đánh giá lại
+                <button
+                  onClick={handleReset}
+                  className="relative px-8 py-3 mt-6 group overflow-hidden rounded-sm bg-white/5 backdrop-blur-md border border-white/20 text-slate-200 transition-all duration-500 hover:bg-white/10 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] flex items-center justify-center min-w-[160px] mx-auto"
+                >
+                  {/* Tia sáng quét */}
+                  <div className="absolute inset-0 -translate-x-[150%] skew-x-[30deg] bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:translate-x-[150%] transition-transform duration-[1000ms] ease-in-out pointer-events-none"></div>
+
+                  <span className="relative z-10 font-sans tracking-widest uppercase text-xs font-semibold flex items-center gap-3">
+                    Làm lại
+                    
+                    {/* Icon Vòng lặp: Xoay ngược 180 độ khi hover */}
+                    <svg 
+                      className="w-4 h-4 transition-transform duration-500 group-hover:-rotate-180" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                  </span>
                 </button>
               </motion.div>
             )}
