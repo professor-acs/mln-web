@@ -194,8 +194,8 @@ export const realityData = {
     { name: '2024', top1: 52, bottom50: 5 },
   ],
   stats: [
-    { value: 52, suffix: '%', label: 'Tài sản thế giới trong tay 1% giàu nhất', color: '#e74c3c' },
-    { value: 3.7, suffix: 'B', label: 'Người lao động trong nền kinh tế gig toàn cầu', color: '#00d4ff' },
+    { value: 45, suffix: '%', label: 'Tài sản thế giới trong tay 1% giàu nhất', color: '#e74c3c' },
+    { value: 400, suffix: 'M', label: 'Người lao động trong nền kinh tế gig toàn cầu', color: '#00d4ff' },
     { value: 85, suffix: 'M', label: 'Việc làm có thể bị AI thay thế (WEF 2025)', color: '#c9a84c' },
   ],
 }
