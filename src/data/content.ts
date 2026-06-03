@@ -452,7 +452,7 @@ export const sectionContent: Record<SectionType, {
         title: 'Vấn Đề Nhân Loại',
         subtitle: 'Cộng đồng toàn cầu',
         image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800',
-        frontSummary: 'Nhân loại là toàn thể cộng đồng người sống trên Trái Đất, with bản chất xã hội là cơ sở cho tính thống nhất.',
+        frontSummary: 'Nhân loại là toàn thể cộng đồng người sống trên Trái Đất, với bản chất xã hội là cơ sở cho tính thống nhất.',
         points: [
           { title: 'Khái niệm', desc: 'Toàn thể cộng đồng người sống trên Trái Đất, vượt qua mọi ranh giới giai cấp và quốc gia.' },
           { title: 'Cơ sở thống nhất', desc: 'Bản chất xã hội của con người và nhu cầu giải quyết các vấn đề toàn cầu.' },
