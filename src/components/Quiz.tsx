@@ -63,7 +63,7 @@ export default function Quiz() {
           >
             <div className="h-[1px] w-8 bg-accent/40" />
             <span className="text-accent font-mono text-xs tracking-[0.5em] uppercase">
-              Section 05: Knowledge Assessment
+              Phần 05: Đánh giá Nhận thức
             </span>
             <div className="h-[1px] w-8 bg-accent/40" />
           </motion.div>
@@ -97,8 +97,17 @@ export default function Quiz() {
                 <p className="text-slate-100 mb-12 max-w-sm mx-auto font-light leading-relaxed">
                   Bộ câu hỏi tổng hợp các luận điểm quan trọng nhất trong Chương III của Triết học Marx-Lenin.
                 </p>
-                <button onClick={handleStart} className="btn-premium px-12 py-5">
-                  Bắt đầu khảo sát
+                <button
+                  onClick={handleStart}
+                  className="relative px-12 py-5 mt-8 group overflow-hidden rounded-sm bg-white/5 backdrop-blur-md border border-white/10 transition-all duration-700 hover:bg-white/10 hover:border-white/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] flex items-center justify-center min-w-[280px] mx-auto"
+                >
+                  {/* Lớp tia sáng lướt chéo ẩn bên dưới */}
+                  <div className="absolute inset-0 -translate-x-[150%] skew-x-[30deg] bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:translate-x-[150%] transition-transform duration-[1500ms] ease-in-out pointer-events-none"></div>
+
+                  {/* Văn bản: Giãn khoảng cách chữ (tracking) khi hover để tạo cảm giác "Wow" mượt mà */}
+                  <span className="relative z-10 font-sans text-slate-300 tracking-wider group-hover:text-white group-hover:tracking-[0.2em] transition-all duration-700 uppercase text-sm font-medium">
+                    Bắt đầu khảo sát
+                  </span>
                 </button>
               </motion.div>
             )}
@@ -109,12 +118,12 @@ export default function Quiz() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                className="p-12"
+                className="p-6 md:p-12"
               >
                 {/* Progress */}
-                <div className="flex items-center justify-between mb-16">
-                   <div className="flex items-center gap-6">
-                     <span className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em]">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 md:mb-16 gap-6">
+                   <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+                     <span className="text-[10px] md:text-xs font-mono text-slate-100 uppercase tracking-[0.3em]">
                        Question {currentQ + 1} of {quizQuestions.length}
                      </span>
                      <div className="flex gap-1.5">
@@ -128,19 +137,19 @@ export default function Quiz() {
                         ))}
                      </div>
                    </div>
-                   <div className="flex items-center gap-6 text-xs font-mono uppercase tracking-[0.2em]">
+                   <div className="flex items-center gap-6 text-[10px] md:text-xs font-mono uppercase tracking-[0.2em]">
                      <span className="text-emerald-400 font-bold">Correct: {scores.correct}</span>
                      <span className="text-rose-400 font-bold">Mistakes: {scores.wrong}</span>
                    </div>
                 </div>
 
                 {/* Question */}
-                <h4 className="font-serif text-3xl text-slate-100 mb-12 leading-relaxed tracking-tight">
+                <h4 className="font-serif text-2xl md:text-3xl text-slate-100 mb-8 md:mb-12 leading-relaxed tracking-tight">
                   {question.question}
                 </h4>
 
                 {/* Options */}
-                <div className="grid grid-cols-1 gap-4 mb-16">
+                <div className="grid grid-cols-1 gap-3 md:gap-4 mb-10 md:mb-16">
                   {question.options.map((opt) => {
                     const isSelected = selectedAnswer === opt.id
                     const isCorrect = opt.id === question.correct
@@ -158,9 +167,9 @@ export default function Quiz() {
                         key={opt.id}
                         onClick={() => handleAnswer(opt.id)}
                         disabled={quizState !== 'question'}
-                        className={`w-full p-6 rounded-sm border text-left font-sans text-sm transition-all duration-500 flex items-center gap-6 ${statusClasses}`}
+                        className={`w-full p-4 md:p-6 rounded-sm border text-left font-sans text-sm transition-all duration-500 flex items-center gap-4 md:gap-6 ${statusClasses}`}
                       >
-                        <span className="w-6 h-6 rounded-full border border-current flex items-center justify-center text-xs font-mono opacity-80">
+                        <span className="w-6 h-6 rounded-full border border-current flex items-center justify-center text-[10px] md:text-xs font-mono opacity-80 shrink-0">
                           {opt.id.toUpperCase()}
                         </span>
                         <span className="font-light tracking-wide">{opt.text}</span>
@@ -170,14 +179,14 @@ export default function Quiz() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center justify-between pt-10 border-t border-white/15">
+                <div className="flex flex-col md:flex-row items-center justify-between pt-8 md:pt-10 border-t border-white/15 gap-6">
                   <AnimatePresence>
                     {quizState === 'answered' && (
                       <motion.button
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         onClick={handleShowExplanation}
-                        className="text-xs font-mono text-accent uppercase tracking-[0.3em] hover:opacity-100 opacity-80 transition-opacity font-bold"
+                        className="text-[10px] md:text-xs font-mono text-accent uppercase tracking-[0.3em] hover:opacity-100 opacity-80 transition-opacity font-bold"
                       >
                         Detailed Analysis
                       </motion.button>
@@ -187,7 +196,7 @@ export default function Quiz() {
                   {quizState !== 'question' && (
                     <button
                       onClick={handleNext}
-                      className="btn-premium px-10 py-4"
+                      className="btn-premium px-8 md:px-10 py-3 md:py-4 w-full md:w-auto"
                     >
                       {currentQ < quizQuestions.length - 1 ? 'Next Phase' : 'Finalize'}
                     </button>
@@ -203,7 +212,7 @@ export default function Quiz() {
                       className="mt-10 p-8 bg-accent/[0.04] border-l-2 border-accent/65 rounded-sm"
                     >
                       <p className="text-xs font-sans text-slate-100 leading-relaxed italic font-light">
-                        <span className="text-accent font-mono font-bold not-italic uppercase text-xs tracking-[0.3em] mr-4">Context:</span>
+                        <span className="text-accent font-mono font-bold not-italic uppercase text-xs tracking-[0.3em] mr-4">Giải thích:</span>
                         {question.explanation.long}
                       </p>
                     </motion.div>
@@ -223,21 +232,39 @@ export default function Quiz() {
                    <div className="absolute inset-0 border border-accent/20 rounded-full animate-ping opacity-20" />
                    <div className="w-2 h-2 bg-accent rounded-full shadow-[0_0_15px_rgba(212,175,55,0.8)]" />
                 </div>
-                <h3 className="font-serif text-4xl text-slate-100 mb-6">Assessment Complete</h3>
+                <h3 className="font-serif text-4xl text-slate-100 mb-6">Đánh giá Hoàn tất</h3>
                 <div className="flex justify-center gap-16 mb-16">
                    <div>
-                     <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em] mb-2">Accuracy</p>
+                     <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em] mb-2">Tỷ lệ chính xác</p>
                      <p className="text-5xl font-serif text-emerald-400 tracking-tighter">
                        {Math.round((scores.correct / quizQuestions.length) * 100)}%
                      </p>
                    </div>
                    <div>
-                     <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em] mb-2">Correct</p>
+                     <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em] mb-2">Số câu đúng</p>
                      <p className="text-5xl font-serif text-slate-100 tracking-tighter">{scores.correct}</p>
                    </div>
                 </div>
-                <button onClick={handleReset} className="btn-outline-premium px-12 py-5">
-                  Restart Evaluation
+                <button
+                  onClick={handleReset}
+                  className="relative px-8 py-3 mt-6 group overflow-hidden rounded-sm bg-white/5 backdrop-blur-md border border-white/20 text-slate-200 transition-all duration-500 hover:bg-white/10 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] flex items-center justify-center min-w-[160px] mx-auto"
+                >
+                  {/* Tia sáng quét */}
+                  <div className="absolute inset-0 -translate-x-[150%] skew-x-[30deg] bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:translate-x-[150%] transition-transform duration-[1000ms] ease-in-out pointer-events-none"></div>
+
+                  <span className="relative z-10 font-sans tracking-widest uppercase text-xs font-semibold flex items-center gap-3">
+                    Làm lại
+                    
+                    {/* Icon Vòng lặp: Xoay ngược 180 độ khi hover */}
+                    <svg 
+                      className="w-4 h-4 transition-transform duration-500 group-hover:-rotate-180" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                  </span>
                 </button>
               </motion.div>
             )}

@@ -4,9 +4,9 @@
 // ============================================================
 
 export const siteMetadata = {
-  title: 'Những Bàn Tay Bị Lãng Quên',
+  title: 'Giai Cấp Và Dân Tộc',
   subtitle: 'AI ĐANG VIẾT NÊN LỊCH SỬ?',
-  mainQuote: '"The history of all hitherto existing society is the history of class struggles."',
+  mainQuote: '"Lịch sử của tất cả các xã hội tồn tại từ trước đến nay chỉ là lịch sử của đấu tranh giai cấp."',
   quoteAuthor: '— Karl Marx & Friedrich Engels, Tuyên ngôn của Đảng Cộng sản (1848)',
   quoteVietnamese: '"Lịch sử của tất cả các xã hội tồn tại từ trước đến nay chỉ là lịch sử của đấu tranh giai cấp."',
   heroSubtext: `Khi lật mở những trang sử ký, chúng ta thường bị choáng ngợp bởi hào quang của các triều đại, 
@@ -22,7 +22,7 @@ export const theoryCards = [
     id: 'class-def',
     title: 'Giai Cấp Là Gì?',
     subtitle: 'Định nghĩa của V.I. Lenin',
-    image: 'https://images.unsplash.com/photo-1523374228107-6e44bd2b524e?q=80&w=800', // Hình ảnh phân tầng xã hội
+    image: 'https://images.unsplash.com/photo-1740215306586-363212cac416?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Hình ảnh phân tầng xã hội
     frontSummary: 'Theo V.I. Lenin, giai cấp là những tập đoàn người to lớn khác nhau về vị trí trong một hệ thống sản xuất xã hội nhất định.',
     criteria: [
       {
@@ -53,7 +53,7 @@ export const theoryCards = [
     id: 'origin',
     title: 'Nguồn Gốc Giai Cấp',
     subtitle: 'Bản đồ nguồn gốc xã hội',
-    image: 'https://images.unsplash.com/photo-1584267385494-9fdd9a71ad75?q=80&w=800', // Hình ảnh công cụ kim loại/lịch sử
+    image: 'https://images.unsplash.com/photo-1528918832583-cd56bc35dbc7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Hình ảnh công cụ kim loại/lịch sử
     frontSummary: 'Giai cấp xuất hiện khi lực lượng sản xuất phát triển tạo ra của cải dư thừa, dẫn đến sự ra đời của chế độ tư hữu.',
     stages: [
       {
@@ -81,7 +81,7 @@ export const theoryCards = [
     id: 'struggle',
     title: 'Đấu Tranh Giai Cấp',
     subtitle: 'Động lực phát triển',
-    image: 'https://images.unsplash.com/photo-1573163508993-99da3382e9e1?q=80&w=800', // Hình ảnh đấu tranh/biểu tình
+    image: 'https://images.unsplash.com/photo-1591155426209-23831d47700d?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Hình ảnh đấu tranh/biểu tình
     frontSummary: 'Mâu thuẫn giữa lực lượng sản xuất mới và quan hệ sản xuất lỗi thời là cội nguồn của mọi cuộc đấu tranh giai cấp.',
     forms: [
       { title: 'Kinh tế', desc: 'Đòi quyền lợi sát sườn: tăng lương, giảm giờ làm, bảo hiểm.' },
@@ -98,7 +98,7 @@ export const timelineEpochs = [
     id: 'slavery',
     era: 'Chiếm hữu nô lệ',
     period: '~3500 TCN – 500 SCN',
-    image: 'https://thf.bing.com/th/id/OIP.kqvxpYhj_OXRTx-Zl-sC-QHaEK?w=324&h=182&c=7&r=0&o=7&cb=thfc1falcon&dpr=1.3&pid=1.7&rm=3',
+    image: 'https://images.unsplash.com/photo-1578305850166-f575daffa13d?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     oppressor: { name: 'Chủ nô', desc: 'Nắm giữ tư liệu sản xuất và quyền sinh sát nô lệ' },
     oppressed: { name: 'Nô lệ', desc: 'Được xem là "công cụ biết nói", không có quyền làm người' },
     conflict: 'Mâu thuẫn cực độ khi nô lệ bị bóc lột đến kiệt quệ sức lực.',
@@ -110,7 +110,7 @@ export const timelineEpochs = [
     id: 'feudal',
     era: 'Phong kiến',
     period: '~500 – 1800 SCN',
-    image: 'https://images.unsplash.com/photo-1533154683836-84ea7a0bc310?q=80&w=2000',
+    image: 'https://images.unsplash.com/photo-1689787923139-6dd0dceb229a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     oppressor: { name: 'Địa chủ', desc: 'Độc quyền sở hữu toàn bộ ruộng đất' },
     oppressed: { name: 'Nông dân', desc: 'Được tự do thân thể nhưng bị ràng buộc vào đất đai' },
     conflict: 'Địa chủ chiếm đoạt phần lớn hoa lợi qua chế độ tô thuế nặng nề.',
@@ -122,7 +122,7 @@ export const timelineEpochs = [
     id: 'capitalism',
     era: 'Tư bản chủ nghĩa',
     period: '1800 – Hiện tại',
-    image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2000',
+    image: 'https://images.unsplash.com/photo-1723221402837-6d95b426e06e?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     oppressor: { name: 'Tư sản', desc: 'Sở hữu nhà máy, máy móc và vốn tư bản' },
     oppressed: { name: 'Vô sản', desc: 'Không có tài sản, phải bán sức lao động để tồn tại' },
     conflict: 'Mâu thuẫn giữa tính chất xã hội của sản xuất và sự chiếm hữu tư nhân.',
@@ -194,8 +194,8 @@ export const realityData = {
     { name: '2024', top1: 52, bottom50: 5 },
   ],
   stats: [
-    { value: 52, suffix: '%', label: 'Tài sản thế giới trong tay 1% giàu nhất', color: '#e74c3c' },
-    { value: 3.7, suffix: 'B', label: 'Người lao động trong nền kinh tế gig toàn cầu', color: '#00d4ff' },
+    { value: 45, suffix: '%', label: 'Tài sản thế giới trong tay 1% giàu nhất', color: '#e74c3c' },
+    { value: 400, suffix: 'M', label: 'Người lao động trong nền kinh tế gig toàn cầu', color: '#00d4ff' },
     { value: 85, suffix: 'M', label: 'Việc làm có thể bị AI thay thế (WEF 2025)', color: '#c9a84c' },
   ],
 }
@@ -274,6 +274,231 @@ export const quizQuestions = [
     explanation: {
       short: 'Đáp án đúng: B — Nhân loại là tiền đề sinh tồn!',
       long: 'Sự tồn tại của cộng đồng nhân loại là điều kiện tiên quyết. Trong xã hội có giai cấp, lợi ích nhân loại bị chi phối bởi lợi ích giai cấp, nhưng không bao giờ tách rời khỏi nhau.',
+    },
+  },
+  {
+    id: 6,
+    question: 'Theo quan điểm của Triết học Mác - Lênin, dấu hiệu chủ yếu nào quy định địa vị của một giai cấp trong hệ thống sản xuất xã hội?',
+    options: [
+      { id: 'A', text: 'Sự khác nhau về trình độ học vấn và văn hóa.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Mối quan hệ kinh tế - vật chất (quan hệ đối với tư liệu sản xuất).', color: 'from-green-600 to-green-700' },
+      { id: 'C', text: 'Vai trò quản lý trong bộ máy hành chính nhà nước.', color: 'from-red-600 to-red-700' },
+      { id: 'D', text: 'Mức thu nhập và quan hệ phân phối sản phẩm.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'B',
+    explanation: {
+      short: 'Đáp án đúng: B — Mối quan hệ kinh tế - vật chất!',
+      long: 'Giai cấp là những tập đoàn người có địa vị kinh tế - xã hội khác nhau. Dấu hiệu chủ yếu nhất để quy định địa vị này chính là các mối quan hệ kinh tế - vật chất, đặc biệt là quan hệ sở hữu đối với tư liệu sản xuất.',
+    },
+  },
+  {
+    id: 7,
+    question: 'Đâu là nguyên nhân sâu xa dẫn đến sự ra đời của giai cấp trong lịch sử nhân loại?',
+    options: [
+      { id: 'A', text: 'Do sự xuất hiện của nhà nước và pháp luật.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Do sự phân công lao động quốc tế.', color: 'from-red-600 to-red-700' },
+      { id: 'C', text: 'Do lực lượng sản xuất phát triển tạo ra của cải dư thừa và chế độ tư hữu.', color: 'from-green-600 to-green-700' },
+      { id: 'D', text: 'Do các cuộc chiến tranh giành lãnh thổ giữa các bộ lạc.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'C',
+    explanation: {
+      short: 'Đáp án đúng: C — Lực lượng sản xuất phát triển tạo ra của cải dư thừa và chế độ tư hữu!',
+      long: 'Giai cấp không tồn tại từ đầu. Khi lực lượng sản xuất phát triển (đặc biệt là công cụ bằng đồng), dẫn đến lao động dư thừa và của cải dư thừa. Sự xuất hiện của chế độ tư hữu đã dẫn đến phân hóa giàu nghèo, từ đó sinh ra giai cấp.',
+    },
+  },
+  {
+    id: 8,
+    question: 'Trong xã hội hiện đại, những nhóm người như nhân viên văn phòng, freelancer, tiểu thương được xếp vào nhóm nào trong phân loại giai cấp?',
+    options: [
+      { id: 'A', text: 'Giai cấp cơ bản.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Giai cấp thống trị.', color: 'from-red-600 to-red-700' },
+      { id: 'C', text: 'Tầng lớp trung gian.', color: 'from-green-600 to-green-700' },
+      { id: 'D', text: 'Giai cấp không cơ bản.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'C',
+    explanation: {
+      short: 'Đáp án đúng: C — Tầng lớp trung gian!',
+      long: 'Tầng lớp trung gian là những người không đại diện cho phương thức sản xuất nào. Họ không phải là giai cấp bóc lột cũng không bị bóc lột nặng nề, nhưng lại rất dễ bị tổn thương và ảnh hưởng bởi các biến động kinh tế.',
+    },
+  },
+  {
+    id: 9,
+    question: 'Thực chất của mối quan hệ giai cấp trong xã hội có giai cấp đối kháng là gì?',
+    options: [
+      { id: 'A', text: 'Quan hệ bóc lột và bị bóc lột.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Quan hệ hợp tác và phân công lao động.', color: 'from-green-600 to-green-700' },
+      { id: 'C', text: 'Quan hệ cạnh tranh kinh tế lành mạnh.', color: 'from-red-600 to-red-700' },
+      { id: 'D', text: 'Quan hệ bình đẳng về quyền lợi chính trị.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'A',
+    explanation: {
+      short: 'Đáp án đúng: A — Quan hệ bóc lột và bị bóc lột!',
+      long: 'Thực chất của quan hệ giai cấp là tập đoàn người này chiếm đoạt lao động của tập đoàn người khác, hình thành nên quan hệ bóc lột và bị bóc lột.',
+    },
+  },
+  {
+    id: 10,
+    question: 'Theo lý luận về đấu tranh giai cấp, đâu là hình thức đấu tranh quan trọng nhất?',
+    options: [
+      { id: 'A', text: 'Đấu tranh kinh tế.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Đấu tranh chính trị.', color: 'from-green-600 to-green-700' },
+      { id: 'C', text: 'Đấu tranh tư tưởng.', color: 'from-red-600 to-red-700' },
+      { id: 'D', text: 'Đấu tranh vũ trang.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'B',
+    explanation: {
+      short: 'Đáp án đúng: B — Đấu tranh chính trị!',
+      long: 'Đấu tranh giai cấp bao gồm đấu tranh kinh tế, chính trị và tư tưởng, trong đó đấu tranh chính trị là hình thức cao nhất và quan trọng nhất nhằm mục tiêu giành, giữ hoặc lật đổ chính quyền.',
+    },
+  },
+  {
+    id: 11,
+    question: 'Vai trò của đấu tranh giai cấp trong lịch sử xã hội có giai cấp là gì?',
+    options: [
+      { id: 'A', text: 'Là nguyên nhân dẫn đến sự diệt vong của nhân loại.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Là động lực trực tiếp, quan trọng thúc đẩy sự phát triển của lịch sử.', color: 'from-green-600 to-green-700' },
+      { id: 'C', text: 'Là hiện tượng tạm thời sẽ tự biến mất khi kinh tế phát triển.', color: 'from-red-600 to-red-700' },
+      { id: 'D', text: 'Là rào cản ngăn chặn sự tiến bộ của khoa học kỹ thuật.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'B',
+    explanation: {
+      short: 'Đáp án đúng: B — Động lực trực tiếp, quan trọng thúc đẩy lịch sử!',
+      long: 'Đấu tranh giai cấp là động lực trực tiếp, quan trọng của lịch sử xã hội có giai cấp. Nó là chìa khóa để giải quyết mâu thuẫn giữa lực lượng sản xuất đang phát triển và quan hệ sản xuất đã lỗi thời.',
+    },
+  },
+  {
+    id: 12,
+    question: 'Đặc điểm nổi bật của cuộc đấu tranh giai cấp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam là gì?',
+    options: [
+      { id: 'A', text: 'Là cuộc đấu tranh thuần túy về mặt quân sự.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Diễn ra trong bối cảnh quá độ gián tiếp, bỏ qua chế độ tư bản chủ nghĩa.', color: 'from-green-600 to-green-700' },
+      { id: 'C', text: 'Chỉ tập trung vào lĩnh vực văn hóa - tư tưởng.', color: 'from-red-600 to-red-700' },
+      { id: 'D', text: 'Xóa bỏ hoàn toàn mâu thuẫn giai cấp ngay lập tức.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'B',
+    explanation: {
+      short: 'Đáp án đúng: B — Quá độ gián tiếp, bỏ qua chế độ tư bản chủ nghĩa!',
+      long: 'Ở Việt Nam, đặc điểm lớn nhất là quá độ gián tiếp (bỏ qua chế độ tư bản chủ nghĩa). Dù vậy, vẫn tồn tại mâu thuẫn giai cấp và cơ sở kinh tế cho giai cấp bóc lột, đòi hỏi sự lãnh đạo chặt chẽ của Đảng Cộng sản.',
+    },
+  },
+  {
+    id: 13,
+    question: 'Trình tự nào sau đây phản ánh đúng quá trình hình thành dân tộc trong lịch sử?',
+    options: [
+      { id: 'A', text: 'Thị tộc → Bộ tộc → Bộ lạc → Dân tộc.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Bộ lạc → Thị tộc → Bộ tộc → Dân tộc.', color: 'from-red-600 to-red-700' },
+      { id: 'C', text: 'Thị tộc → Bộ lạc → Bộ tộc → Dân tộc.', color: 'from-green-600 to-green-700' },
+      { id: 'D', text: 'Bộ tộc → Bộ lạc → Thị tộc → Dân tộc.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'C',
+    explanation: {
+      short: 'Đáp án đúng: C — Thị tộc → Bộ lạc → Bộ tộc → Dân tộc!',
+      long: 'Dân tộc là kết quả của một quá trình phát triển lâu dài của cộng đồng người, đi từ hình thức thấp đến cao: Thị tộc → Bộ lạc → Bộ tộc → Dân tộc.'
+    },
+  },
+  {
+    id: 14,
+    question: 'Đặc điểm lịch sử hình thành dân tộc ở phương Đông (tiêu biểu như Việt Nam) có điểm gì khác biệt cốt lõi so với phương Tây?',
+    options: [
+      { id: 'A', text: 'Hình thành gắn liền với sự ra đời của chủ nghĩa tư bản.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Hình thành muộn hơn so với các nước châu Âu.', color: 'from-red-600 to-red-700' },
+      { id: 'C', text: 'Gắn liền với quá trình đấu tranh chống ngoại xâm và cải tạo thiên nhiên.', color: 'from-green-600 to-green-700' },
+      { id: 'D', text: 'Chỉ hình thành khi có sự can thiệp của các đế quốc.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'C',
+    explanation: {
+      short: 'Đáp án đúng: C — Đấu tranh chống ngoại xâm và cải tạo thiên nhiên!',
+      long: 'Nếu như ở châu Âu, dân tộc hình thành gắn liền với sự ra đời của chủ nghĩa tư bản, thì ở phương Đông (như Việt Nam), dân tộc hình thành rất sớm, gắn liền với nhu cầu trị thủy (cải tạo thiên nhiên) và đoàn kết chống ngoại xâm.'
+    },
+  },
+  {
+    id: 15,
+    question: 'Hiện tượng người dân cả nước cùng quyên góp, gửi hàng cứu trợ khi miền Trung gặp bão lũ phản ánh đặc trưng nào của dân tộc?',
+    options: [
+      { id: 'A', text: 'Cộng đồng thống nhất về kinh tế.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Cộng đồng người có nhà nước và pháp luật thống nhất.', color: 'from-red-600 to-red-700' },
+      { id: 'C', text: 'Sự bền vững về văn hóa và tâm lý, tính cách (tình đồng bào).', color: 'from-green-600 to-green-700' },
+      { id: 'D', text: 'Cộng đồng thống nhất về ngôn ngữ.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'C',
+    explanation: {
+      short: 'Đáp án đúng: C — Sự bền vững về văn hóa và tâm lý, tính cách!',
+      long: 'Dù khác biệt về giai cấp hay mức sống, sự đoàn kết tương trợ lẫn nhau trong hoạn nạn thể hiện sâu sắc tính bền vững về văn hóa, tâm lý và tính cách của cộng đồng dân tộc Việt Nam.'
+    },
+  },
+  {
+    id: 16,
+    question: 'Xét về mối quan hệ giữa giai cấp và dân tộc, nhận định nào sau đây là ĐÚNG?',
+    options: [
+      { id: 'A', text: 'Dân tộc ra đời trước giai cấp.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Giai cấp quyết định khuynh hướng phát triển và tính chất của dân tộc.', color: 'from-green-600 to-green-700' },
+      { id: 'C', text: 'Sự diệt vong của một giai cấp đồng nghĩa với sự diệt vong của dân tộc.', color: 'from-red-600 to-red-700' },
+      { id: 'D', text: 'Trong một dân tộc chỉ có thể tồn tại duy nhất một giai cấp.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'B',
+    explanation: {
+      short: 'Đáp án đúng: B — Giai cấp quyết định khuynh hướng và tính chất dân tộc!',
+      long: 'Giai cấp có trước dân tộc hàng nghìn năm. Giai cấp thống trị sẽ quyết định tính chất và khuynh hướng phát triển của dân tộc đó. Khi giai cấp mất đi, dân tộc vẫn tiếp tục tồn tại lâu dài.'
+    },
+  },
+  {
+    id: 17,
+    question: 'Trong công cuộc đổi mới hiện nay, giai cấp nào đóng vai trò nòng cốt định hướng dân tộc tiến lên "công nghiệp hóa, hiện đại hóa theo định hướng XHCN"?',
+    options: [
+      { id: 'A', text: 'Giai cấp nông dân.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Tầng lớp tiểu thương.', color: 'from-red-600 to-red-700' },
+      { id: 'C', text: 'Giai cấp công nhân và tầng lớp trí thức.', color: 'from-green-600 to-green-700' },
+      { id: 'D', text: 'Giai cấp tư sản.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'C',
+    explanation: {
+      short: 'Đáp án đúng: C — Giai cấp công nhân và tầng lớp trí thức!',
+      long: 'Trong thời đại ngày nay, giai cấp công nhân và tầng lớp trí thức đóng vai trò quan trọng hàng đầu trong việc phát triển kinh tế, định hướng dân tộc phát triển theo con đường XHCN.'
+    },
+  },
+  {
+    id: 18,
+    question: 'Trong xã hội có giai cấp đối kháng, lợi ích của toàn nhân loại có đặc điểm gì?',
+    options: [
+      { id: 'A', text: 'Hoàn toàn độc lập, không liên quan đến lợi ích giai cấp.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Luôn luôn mâu thuẫn gay gắt với lợi ích dân tộc.', color: 'from-red-600 to-red-700' },
+      { id: 'C', text: 'Bị chi phối bởi lợi ích giai cấp và dân tộc.', color: 'from-green-600 to-green-700' },
+      { id: 'D', text: 'Chỉ đứng về phía giai cấp bị trị.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'C',
+    explanation: {
+      short: 'Đáp án đúng: C — Bị chi phối bởi lợi ích giai cấp và dân tộc!',
+      long: 'Mặc dù sự tồn tại của nhân loại là tiền đề cho giai cấp và dân tộc, nhưng trong xã hội có giai cấp, lợi ích nhân loại không tách rời và luôn bị chi phối bởi lợi ích của giai cấp và dân tộc thống trị.'
+    },
+  },
+  {
+    id: 19,
+    question: 'Việc nông dân trồng nông sản bán giá rất rẻ cho thương lái, sau đó thương lái xuất khẩu với giá cao gấp nhiều lần là biểu hiện của điều gì trong thực tiễn?',
+    options: [
+      { id: 'A', text: 'Sự thống nhất về lợi ích kinh tế trong dân tộc.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Mối quan hệ bóc lột sức lao động trong đời sống kinh tế.', color: 'from-green-600 to-green-700' },
+      { id: 'C', text: 'Đấu tranh chính trị giữa các tầng lớp.', color: 'from-red-600 to-red-700' },
+      { id: 'D', text: 'Sự phát triển tất yếu của lực lượng sản xuất.', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'B',
+    explanation: {
+      short: 'Đáp án đúng: B — Mối quan hệ bóc lột sức lao động!',
+      long: 'Đây là ví dụ điển hình về thực chất của quan hệ giai cấp trong đời sống, khi tập đoàn người này (thương lái/doanh nghiệp lớn) chiếm đoạt giá trị thặng dư từ sức lao động của tập đoàn người khác (nông dân).'
+    },
+  },
+  {
+    id: 20,
+    question: 'Hình thức đấu tranh giai cấp trong thời kỳ quá độ lên chủ nghĩa xã hội có điểm gì nổi bật so với các thời kỳ trước?',
+    options: [
+      { id: 'A', text: 'Chỉ sử dụng bạo lực vũ trang.', color: 'from-blue-600 to-blue-700' },
+      { id: 'B', text: 'Hoàn toàn thông qua con đường hòa bình, giáo dục.', color: 'from-red-600 to-red-700' },
+      { id: 'C', text: 'Chuyển sang đấu tranh kinh tế là duy nhất.', color: 'from-green-600 to-green-700' },
+      { id: 'D', text: 'Kết hợp đa dạng nhiều hình thức (đổ máu & không đổ máu, bạo lực & hòa bình, kinh tế & hành chính).', color: 'from-yellow-600 to-yellow-700' },
+    ],
+    correct: 'D',
+    explanation: {
+      short: 'Đáp án đúng: D — Kết hợp đa dạng nhiều hình thức!',
+      long: 'Thời kỳ quá độ có nội dung và điều kiện mới, do đó hình thức đấu tranh cũng vô cùng đa dạng, linh hoạt kết hợp giữa bạo lực và hòa bình, quân sự, kinh tế, giáo dục và hành chính nhằm xây dựng CNXH trên mọi lĩnh vực.'
     },
   },
 ]
@@ -604,6 +829,7 @@ export const sectionContent: Record<SectionType, {
         id: 'class-def',
         title: 'Giai Cấp Là Gì?',
         subtitle: 'Định nghĩa của V.I. Lenin',
+        image: 'https://images.unsplash.com/photo-1740215306586-363212cac416?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         frontSummary: 'Theo V.I. Lenin trong tác phẩm Sáng kiến vĩ đại, giai cấp được xác định qua 4 tiêu chí cốt lõi trong hệ thống sản xuất xã hội.',
         criteria: [
           { number: '01', title: 'Vị trí trong hệ thống sản xuất', desc: 'Tập đoàn thống trị (quản lý, định đoạt) đối lập với tập đoàn bị trị (lao động trực tiếp).' },
@@ -618,6 +844,7 @@ export const sectionContent: Record<SectionType, {
         id: 'origin',
         title: 'Nguồn Gốc Giai Cấp',
         subtitle: 'Bản đồ nguồn gốc xã hội',
+        image: 'https://images.unsplash.com/photo-1528918832583-cd56bc35dbc7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         frontSummary: 'Giai cấp không xuất hiện cùng với loài người. Nó là sản phẩm của một thời điểm lịch sử cụ thể khi lực lượng sản xuất phát triển đủ để tạo ra của cải dư thừa.',
         stages: [
           { era: 'Công xã nguyên thủy', state: 'Không có giai cấp', desc: 'Lực lượng sản xuất cực kỳ thấp kém, công cụ lao động thô sơ. Sản phẩm làm ra chỉ đủ ăn, không có của cải dư thừa → Không có tư hữu → Không có giai cấp.', arrow: false },
@@ -630,6 +857,7 @@ export const sectionContent: Record<SectionType, {
         id: 'struggle',
         title: 'Đấu Tranh Giai Cấp',
         subtitle: 'Động lực phát triển lịch sử',
+        image: 'https://images.unsplash.com/photo-1591155426209-23831d47700d?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         frontSummary: 'Mâu thuẫn giữa Lực lượng sản xuất (ngày càng phát triển, mang tính xã hội hóa cao) và Quan hệ sản xuất (lỗi thời, mang tính tư hữu) là nguồn gốc của đấu tranh giai cấp.',
         forms: [
           { title: 'Đấu tranh kinh tế', desc: 'Đòi tăng lương, giảm giờ làm, cải thiện điều kiện lao động. Đình công, bãi công.' },
@@ -651,6 +879,7 @@ export const sectionContent: Record<SectionType, {
         id: 'nationality-concept',
         title: 'Khái Niệm Dân Tộc',
         subtitle: 'Định nghĩa học thuật',
+        image: 'https://images.unsplash.com/photo-1625851823323-ca66790f56ef?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         frontSummary: 'Dân tộc (nation) là một cộng đồng người ổn định được hình thành trong lịch sử dựa trên 4 đặc trưng cộng đồng bền vững.',
         points: [
           { title: 'Cộng đồng lãnh thổ', desc: 'Lãnh thổ ổn định là điều kiện tiên quyết cho sự hình thành dân tộc — "đất nước" theo nghĩa cụ thể.' },
@@ -665,6 +894,7 @@ export const sectionContent: Record<SectionType, {
         id: 'nationality-roles',
         title: 'Quan Hệ Giai Cấp - Dân Tộc',
         subtitle: 'Biện chứng và thực tiễn',
+        image: 'https://images.unsplash.com/photo-1598980090474-7cdbe604d815?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         frontSummary: 'Vấn đề giai cấp và dân tộc có mối quan hệ biện chứng sâu sắc. Sự giải phóng giai cấp là tiền đề cho sự giải phóng dân tộc và ngược lại.',
         forms: [
           { title: 'Giai cấp quy định dân tộc', desc: 'Giai cấp thống trị trong xã hội quy định tính chất và khuynh hướng phát triển của dân tộc. Giai cấp tư sản tạo ra dân tộc tư sản chủ nghĩa.' },
@@ -678,6 +908,7 @@ export const sectionContent: Record<SectionType, {
         id: 'nationality-historical-char',
         title: 'Đặc Điểm & Thực Tiễn',
         subtitle: 'Lịch sử & Đời sống',
+        image: 'https://images.unsplash.com/photo-1677138156122-6f868f7cf4cd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         frontSummary: 'Sự hình thành dân tộc có những đặc điểm khác biệt giữa phương Tây và phương Đông, biểu hiện mạnh mẽ trong đời sống hiện đại.',
         points: [
           { title: 'Châu Âu', desc: 'Dân tộc hình thành gắn liền với sự ra đời của chủ nghĩa tư bản — thị trường thống nhất, ngôn ngữ quốc gia.' },
@@ -703,6 +934,7 @@ export const sectionContent: Record<SectionType, {
         id: 'class-nation',
         title: 'Giai Cấp & Dân Tộc',
         subtitle: 'Quan hệ biện chứng',
+        image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800',
         frontSummary: 'Giai cấp quyết định khuynh hướng phát triển của dân tộc, đồng thời dân tộc là môi trường cho đấu tranh giai cấp.',
         points: [
           { title: 'Giai cấp quyết định dân tộc', desc: 'Giai cấp thống trị quy định tính chất và khuynh hướng phát triển của dân tộc.' },
@@ -716,7 +948,8 @@ export const sectionContent: Record<SectionType, {
         id: 'humanity',
         title: 'Vấn Đề Nhân Loại',
         subtitle: 'Cộng đồng toàn cầu',
-        frontSummary: 'Nhân loại là toàn thể cộng đồng người sống trên Trái Đất, with bản chất xã hội là cơ sở cho tính thống nhất.',
+        image: 'https://images.unsplash.com/photo-1591372161553-fee79c8b3e07?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        frontSummary: 'Nhân loại là toàn thể cộng đồng người sống trên Trái Đất, với bản chất xã hội là cơ sở cho tính thống nhất.',
         points: [
           { title: 'Khái niệm', desc: 'Toàn thể cộng đồng người sống trên Trái Đất, vượt qua mọi ranh giới giai cấp và quốc gia.' },
           { title: 'Cơ sở thống nhất', desc: 'Bản chất xã hội của con người và nhu cầu giải quyết các vấn đề toàn cầu.' },
@@ -729,6 +962,7 @@ export const sectionContent: Record<SectionType, {
         id: 'dialectical-relation',
         title: 'Mối Quan Hệ Biện Chứng',
         subtitle: 'Tổng thể thống nhất',
+        image: 'https://plus.unsplash.com/premium_photo-1757018693682-85221eac01cb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         frontSummary: 'Sự phát triển của nhân loại tạo điều kiện cho đấu tranh giai cấp và dân tộc, và ngược lại.',
         points: [
           { title: 'Tính chi phối', desc: 'Lợi ích giai cấp và dân tộc chi phối cách thức giải quyết các vấn đề nhân loại.' },

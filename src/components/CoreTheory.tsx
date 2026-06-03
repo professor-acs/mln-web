@@ -15,8 +15,7 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
       initial={{ opacity: 0, y: 60 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 1, delay: index * 0.15, ease: 'easeOut' }}
-      className={`flip-card-container cursor-pointer group ${flipped ? 'flipped' : ''}`}
-      style={{ height: '560px' }}
+      className={`flip-card-container cursor-pointer group h-[650px] md:h-[560px] ${flipped ? 'flipped' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => setFlipped(!flipped)}
@@ -24,10 +23,36 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
       <div className="flip-card-inner w-full h-full">
         {/* FRONT */}
         <div
-          className={`flip-card-front w-full h-full glass-card p-10 flex flex-col relative overflow-hidden transition-all duration-700 rounded-2xl ${
-            isHovered ? 'bg-slate-900/80 border-accent/50 shadow-[0_0_50px_rgba(212,175,55,0.15)] scale-[1.02]' : 'bg-slate-900/60 border-white/15'
+          className={`flip-card-front w-full h-full glass-card p-6 md:p-10 flex flex-col relative overflow-hidden transition-all duration-700 rounded-2xl border border-white/10 hover:border-accent/30 ${
+            isHovered ? 'bg-slate-900/80 shadow-[0_0_50px_rgba(212,175,55,0.15)] scale-[1.02]' : 'bg-slate-900/60'
           }`}
         >
+          {/* === KHỐI BACKGROUND IMAGE (Xử lý hiệu ứng ảnh) === */}
+          {card.image && (
+            <div className="absolute inset-0 z-0 overflow-hidden bg-slate-950">
+              <img 
+                src={card.image} 
+                alt={card.title} 
+                className="w-full h-full object-cover object-bottom scale-110 blur-[3px] opacity-60 group-hover:blur-none group-hover:opacity-100 group-hover:scale-105 transition-all duration-[1500ms] ease-out"
+                crossOrigin="anonymous"
+                referrerPolicy="no-referrer"
+              />
+              
+              {/* LỚP 1: MÀNG LỌC TỔNG THỂ (Dìm độ chói của vùng khói sáng) */}
+              <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors duration-1000"></div>
+              
+              {/* LỚP 2: GRADIENT BẢO VỆ CHỮ (Bí kíp nằm ở các % Stop)
+                - from-black/95 từ 0% đến 10%: Đảm bảo Tiêu đề luôn có nền đen kịt.
+                - via-black/80 via-[55%]: ÉP dải màu đen kéo dài xuống tận 55% của Card để ôm trọn phần Description.
+                - to-transparent: Chỉ để trong suốt ở nửa dưới cùng.
+              */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/95 from-10% via-black/80 via-[55%] to-transparent group-hover:opacity-80 transition-opacity duration-1000"></div>
+
+              {/* LỚP 3: GRADIENT ĐÁY (Bảo vệ phần Footer "SEC X") */}
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/90 to-transparent"></div>
+            </div>
+          )}
+
           {/* Radiant Glow */}
           <AnimatePresence>
             {isHovered && !flipped && (
@@ -35,57 +60,52 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 pointer-events-none"
+                className="absolute inset-0 pointer-events-none z-10"
                 style={{ background: 'radial-gradient(circle at 20% 20%, rgba(212,175,55,0.1) 0%, transparent 60%)' }}
               />
             )}
           </AnimatePresence>
 
-          <div className="relative z-10 flex flex-col h-full">
-            <div className={`w-16 h-16 rounded-sm border mb-12 flex items-center justify-center text-4xl transition-all duration-700 ${
-              isHovered ? 'bg-accent/10 border-accent/40 rotate-0 shadow-[0_0_20px_rgba(212,175,55,0.2)]' : 'bg-white/5 border-white/10 -rotate-6'
-            }`}>
-              <div className="w-2 h-2 bg-accent rounded-full" />
-            </div>
+          <div className="relative z-20 flex flex-col h-full justify-between">
+            <div>
+              {/* Thêm shadow/glow vàng nhẹ cho đường gạch ngang */}
+              <div className="w-12 h-[2px] bg-accent mb-6 opacity-80 shadow-[0_0_8px_rgba(212,175,55,0.8)] group-hover:w-20 transition-all duration-700"></div>
 
-            <div className="mb-8">
-              <span className={`font-mono text-xs uppercase tracking-[0.5em] mb-4 block transition-colors duration-500 ${
-                isHovered ? 'text-accent' : 'text-slate-100'
-              }`}>
-                {card.subtitle}
-              </span>
-              <h3 className={`font-serif text-3xl leading-tight transition-colors duration-500 ${
-                isHovered ? 'text-white' : 'text-slate-100'
-              }`}>
-                {card.title}
-              </h3>
-            </div>
-
-            <p className={`font-sans text-base md:text-lg leading-loose tracking-wide font-light flex-1 transition-colors duration-500 ${
-              isHovered ? 'text-white' : 'text-slate-100'
-            }`}>
-              {card.frontSummary}
-            </p>
-
-            <div className="mt-10 pt-8 border-t border-white/15 flex items-center justify-between">
-              <span className={`text-xs font-mono uppercase tracking-[0.4em] transition-all duration-500 ${
-                isHovered ? 'text-accent opacity-100 translate-x-0' : 'text-slate-100 -translate-x-2'
-              }`}>
-                Xem chi tiết
-              </span>
-              <div className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-500 ${
-                isHovered ? 'border-accent bg-accent text-dark rotate-0' : 'border-white/10 text-slate-100 rotate-[-45deg]'
-              }`}>
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
+              <div className="mb-4">
+                <span className={`font-mono text-xs uppercase tracking-[0.5em] mb-4 block transition-colors duration-500 ${
+                  isHovered ? 'text-accent' : 'text-slate-100'
+                }`}>
+                  {card.subtitle}
+                </span>
+                
+                {/* TIÊU ĐỀ: Dùng Text Shadow kẹp 2 lớp */}
+                <h3 className="font-serif text-3xl md:text-4xl font-semibold mb-6 text-white tracking-wide [text-shadow:_0_4px_20px_rgb(0_0_0_/_100%),_0_2px_4px_rgb(0_0_0_/_100%)]">
+                  {card.title}
+                </h3>
               </div>
+
+              {/* ĐOẠN VĂN: Sáng slate-100, Glow Đen mạnh, font-normal */}
+              <p className="text-slate-100 text-base md:text-lg leading-loose tracking-wide font-normal [text-shadow:_0_2px_15px_rgb(0_0_0_/_100%),_0_1px_3px_rgb(0_0_0_/_100%)]">
+                {card.frontSummary}
+              </p>
+            </div>
+
+            {/* FOOTER CARD: UI Góc */}
+            <div className="mt-10 pt-6 border-t border-white/20 flex justify-between items-center relative">
+               <span className="font-mono text-accent text-sm font-semibold tracking-[0.1em] [text-shadow:_0_2px_8px_rgb(0_0_0_/_100%)]">
+                 SEC {index + 1}
+               </span>
+               
+               {/* Bọc nền đen mờ cho nút dấu + */}
+               <div className="w-8 h-8 rounded-full bg-black/40 border border-white/20 flex items-center justify-center backdrop-blur-sm group-hover:border-accent/60 group-hover:bg-accent/20 transition-all duration-500">
+                  <span className="text-white text-sm font-light">+</span>
+               </div>
             </div>
           </div>
         </div>
 
         {/* BACK */}
-        <div className="flip-card-back glass-card p-10 flex flex-col border-accent/30 bg-slate-950/90 shadow-[0_0_60px_rgba(212,175,55,0.15)] rounded-2xl">
+        <div className="flip-card-back glass-card p-6 md:p-10 flex flex-col border-accent/30 bg-slate-950/90 shadow-[0_0_60px_rgba(212,175,55,0.15)] rounded-2xl">
           <div className="flex items-center justify-between mb-10 border-b border-white/10 pb-6">
             <div>
               <h3 className="font-serif text-2xl text-white">{card.title}</h3>
@@ -175,9 +195,9 @@ function TheoryCard({ card, index }: { card: any; index: number }) {
           </div>
 
           {card.keyTakeaway && (
-            <div className="mt-8 p-6 bg-accent/[0.03] border border-accent/10 rounded-sm">
-              <p className="text-sm font-sans text-slate-100 leading-loose tracking-wide italic">
-                <span className="text-accent font-mono font-bold not-italic uppercase text-xs tracking-widest mr-2">Cốt yếu:</span>
+            <div className="mt-4 md:mt-8 p-4 md:p-6 bg-accent/[0.03] border border-accent/10 rounded-sm shrink-0">
+              <p className="text-xs md:text-sm font-sans text-slate-100 leading-relaxed md:leading-loose tracking-wide italic">
+                <span className="text-accent font-mono font-bold not-italic uppercase text-[10px] md:text-xs tracking-widest mr-2">Cốt yếu:</span>
                 {card.keyTakeaway}
               </p>
             </div>
@@ -210,7 +230,7 @@ export default function CoreTheory() {
             >
               <div className="h-[1px] w-12 bg-accent/60" />
               <span className="text-accent font-mono text-xs tracking-[0.4em] uppercase">
-                {section.subtitle}: Core Ideology
+                {section.subtitle}: Lý luận Cốt lõi
               </span>
             </motion.div>
 
@@ -247,7 +267,7 @@ export default function CoreTheory() {
                   {activeSection}
                 </span>
                 <div className="flex flex-col items-start gap-1">
-                  <span className="text-[10px] font-mono text-slate-100 uppercase tracking-[0.5em]">Section</span>
+                  <span className="text-[10px] font-mono text-slate-100 uppercase tracking-[0.5em]">Phần</span>
                   <motion.svg
                     className="w-4 h-4 text-accent/60"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -284,7 +304,7 @@ export default function CoreTheory() {
                         <div>
                           <p className="text-sm font-medium leading-tight">{sectionContent[s].title}</p>
                           <p className="text-xs font-mono text-slate-100 uppercase tracking-wider mt-0.5">
-                            {sectionContent[s].cards.length} cards
+                            {sectionContent[s].cards.length} thẻ
                           </p>
                         </div>
                         {activeSection === s && (
@@ -323,7 +343,7 @@ export default function CoreTheory() {
           <div className="flex items-center gap-4">
             <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em]">
-              Official Reference Archive
+              Kho Lưu trữ Tài liệu Tham khảo Chính thức
             </p>
           </div>
           <p className="text-xs font-serif italic text-slate-100 max-w-md text-center md:text-right leading-relaxed">

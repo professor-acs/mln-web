@@ -16,7 +16,7 @@ function InequalityChart() {
     if (active && payload && payload.length) {
       return (
         <div className="bg-slate-900 border border-white/15 p-4 shadow-2xl">
-          <p className="font-mono text-accent text-xs uppercase tracking-widest mb-2">Year {label}</p>
+          <p className="font-mono text-accent text-xs uppercase tracking-widest mb-2">Năm {label}</p>
           {payload.map((p: any, i: number) => (
             <p key={i} className="text-xs font-sans text-slate-300 flex justify-between gap-4">
               <span className="opacity-60">{p.name}:</span>
@@ -37,7 +37,7 @@ function InequalityChart() {
             Bất Bình Đẳng Tài Sản Toàn Cầu
           </h4>
           <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.3em]">
-            Data Source: World Inequality Database (1980–2024)
+            Nguồn dữ liệu: World Inequality Database (1980–2024)
           </p>
         </div>
         <div className="flex gap-1 p-1 bg-white/5 rounded-sm">
@@ -176,7 +176,7 @@ export default function Reality21() {
           >
             <div className="h-[1px] w-12 bg-accent/75" />
             <span className="text-accent font-mono text-xs tracking-[0.4em] uppercase">
-              Section 04: Digital Era Reality
+              Phần 04: Hiện thực Thời đại Số
             </span>
           </motion.div>
           
@@ -204,7 +204,7 @@ export default function Reality21() {
           <div className="lg:col-span-4">
             <div className="sticky top-32">
               <p className="text-xs font-mono text-slate-100 uppercase tracking-[0.5em] mb-10 pl-2">
-                Case Study Archives
+                Lưu trữ Case Study
               </p>
               <div className="space-y-4 relative">
                 {/* Vertical Progress Line for Tabs */}
@@ -225,7 +225,7 @@ export default function Reality21() {
                       <span className={`text-[10px] font-mono uppercase tracking-[0.3em] mb-1 transition-colors duration-500 ${
                         activeCaseStudy === i ? 'text-accent' : 'text-slate-100'
                       }`}>
-                        Index 0{i + 1}
+                        Mục 0{i + 1}
                       </span>
                       <span className={`font-serif text-xl tracking-tight transition-all duration-500 ${
                         activeCaseStudy === i ? 'text-white translate-x-1' : 'text-slate-100 group-hover:text-white'

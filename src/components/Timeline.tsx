@@ -14,6 +14,8 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 1.2, delay: index * 0.1 }}
       className="relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-32 mb-40 last:mb-0 items-center"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Desktop Center Line */}
       <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/10 -translate-x-1/2">
@@ -45,8 +47,6 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
               ? 'bg-slate-900/80 border-accent/50 shadow-[0_0_50px_rgba(212,175,55,0.15)] scale-[1.02]' 
               : 'bg-slate-900/60 border-white/20 backdrop-blur-sm'
           }`}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
         >
           {/* Permanent Accent Line (Top) */}
           <div className={`absolute top-0 left-0 h-[2px] transition-all duration-700 ${
@@ -84,7 +84,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
                   <span className={`text-xs font-mono uppercase tracking-widest transition-colors duration-500 ${
                     isHovered ? 'text-accent' : 'text-slate-100'
                   }`}>
-                   Analysis
+                   Phân tích
                  </span>
                  <motion.div animate={{ rotate: isHovered ? 180 : 0 }} transition={{ duration: 0.5 }}>
                     <svg className={`w-3 h-3 transition-colors duration-500 ${
@@ -130,7 +130,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.1 }}
                     >
-                       <p className="text-xs font-mono text-accent uppercase tracking-widest mb-2">Conflict Nature</p>
+                       <p className="text-xs font-mono text-accent uppercase tracking-widest mb-2">Bản chất Mâu thuẫn</p>
                        <p className="text-slate-200 mt-4 text-base leading-loose font-light italic">"{epoch.conflict}"</p>
                     </motion.div>
                     <motion.div
@@ -138,7 +138,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.2 }}
                     >
-                       <p className="text-xs font-mono text-accent uppercase tracking-widest mb-2">Dialectical Result</p>
+                       <p className="text-xs font-mono text-accent uppercase tracking-widest mb-2">Kết quả Biện chứng</p>
                        <p className="text-slate-200 mt-4 text-base leading-loose font-light">{epoch.result}</p>
                     </motion.div>
                   </div>
@@ -154,7 +154,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
         <div className="relative w-80 h-80 flex items-center justify-center">
            {/* Image Container */}
            <div className={`absolute inset-0 rounded-full overflow-hidden transition-all duration-1000 ${
-             isHovered ? 'scale-105 rotate-3 shadow-[0_0_60px_rgba(212,175,55,0.2)]' : 'scale-100 rotate-0 grayscale-[0.6] opacity-40'
+             isHovered ? 'scale-[1.08] rotate-0 shadow-[0_0_60px_rgba(212,175,55,0.2)]' : 'scale-100 rotate-0 grayscale-[0.6] opacity-40'
            }`}>
               <img 
                 src={epoch.image} 
@@ -167,7 +167,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
            </div>
 
            <div className={`absolute inset-0 border rounded-full transition-all duration-700 ${
-             isHovered ? 'border-accent/40 scale-110' : 'border-white/10 scale-100'
+             isHovered ? 'border-accent/40 scale-[1.12]' : 'border-white/10 scale-100'
            }`} />
            
            <div className={`absolute inset-4 border border-accent/10 rounded-full animate-[spin_30s_linear_infinite] transition-opacity duration-700 ${
@@ -178,7 +178,7 @@ function EpochCard({ epoch, index }: { epoch: typeof timelineEpochs[0]; index: n
               <span className={`text-[10px] font-mono tracking-[0.6em] uppercase whitespace-nowrap transition-colors duration-500 ${
                 isHovered ? 'text-accent' : 'text-slate-100'
               }`}>
-                Historical Milestone
+                Cột mốc Lịch sử
               </span>
            </div>
         </div>
@@ -201,7 +201,7 @@ export default function Timeline() {
           >
             <div className="h-[1px] w-12 bg-accent/60" />
             <span className="text-accent font-mono text-xs tracking-[0.4em] uppercase">
-              Section 03: History of Struggle
+              Phần 03: Lịch sử Đấu tranh
             </span>
           </motion.div>
           
