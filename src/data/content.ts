@@ -503,6 +503,278 @@ export const quizQuestions = [
   },
 ]
 
+// ============================================================
+//  SECTION CONTENT DATA (3.2.1, 3.2.2, 3.2.3)
+// ============================================================
+
+export const sectionContent = {
+  '3.2.1': {
+    id: '3.2.1',
+    title: 'Giai Cấp và Đấu Tranh Giai Cấp',
+    subtitle: '3.2.1',
+    description: 'Khái niệm cơ bản về giai cấp, nguồn gốc, và hình thức đấu tranh giai cấp',
+    navLabels: [
+      { id: 'ethnicity', label: 'Lịch Sử Giai Cấp' },
+      { id: 'reality', label: 'Thực Tiễn Giai Cấp' },
+      { id: 'quiz', label: 'Kiểm Định Giai Cấp' },
+    ],
+    cards: [
+      {
+        id: 'class-def',
+        icon: '🔍',
+        title: 'Giai Cấp Là Gì?',
+        subtitle: 'Định nghĩa của V.I. Lenin',
+        frontSummary: 'Theo V.I. Lenin trong tác phẩm Sáng kiến vĩ đại, giai cấp được xác định qua 4 tiêu chí cốt lõi trong hệ thống sản xuất xã hội.',
+        criteria: [
+          {
+            number: '01',
+            title: 'Vị trí trong hệ thống sản xuất',
+            desc: 'Tập đoàn thống trị (quản lý, định đoạt) đối lập với tập đoàn bị trị (lao động trực tiếp).',
+          },
+          {
+            number: '02',
+            title: 'Quan hệ đối với tư liệu sản xuất',
+            desc: 'Tiêu chí quan trọng nhất. Ai sở hữu đất đai, nhà xưởng, máy móc, công nghệ — người đó nắm quyền lực giai cấp.',
+          },
+          {
+            number: '03',
+            title: 'Vai trò trong tổ chức lao động',
+            desc: 'Ai ra mệnh lệnh, tổ chức quy trình sản xuất và ai phải tuân thủ, chấp hành.',
+          },
+          {
+            number: '04',
+            title: 'Phương thức phân phối sản phẩm',
+            desc: 'Tập đoàn nắm tư liệu sản xuất chiếm đoạt của cải dư thừa; người lao động chỉ nhận tiền công tối thiểu.',
+          },
+        ],
+        keyTakeaway: 'Giai cấp không mang tính tự nhiên hay vĩnh cửu. Bản chất của sự phân chia giai cấp là chế độ tư hữu về tư liệu sản xuất.',
+        color: 'gold',
+      },
+      {
+        id: 'origin',
+        icon: '🌱',
+        title: 'Nguồn Gốc Giai Cấp',
+        subtitle: 'Bản đồ nguồn gốc xã hội',
+        frontSummary: 'Giai cấp không xuất hiện cùng với loài người. Nó là sản phẩm của một thời điểm lịch sử cụ thể khi lực lượng sản xuất phát triển đủ để tạo ra của cải dư thừa.',
+        stages: [
+          {
+            icon: '🏕️',
+            era: 'Công xã nguyên thủy',
+            state: 'Không có giai cấp',
+            desc: 'Lực lượng sản xuất cực kỳ thấp kém, công cụ lao động thô sơ. Sản phẩm làm ra chỉ đủ ăn, không có của cải dư thừa → Không có tư hữu → Không có giai cấp.',
+            arrow: false,
+          },
+          {
+            icon: '⚒️',
+            era: 'Công cụ kim loại xuất hiện',
+            state: 'Năng suất tăng vọt',
+            desc: 'Công cụ lao động bằng kim loại xuất hiện → Năng suất lao động tăng vọt → Xuất hiện sản phẩm dư thừa.',
+            arrow: true,
+          },
+          {
+            icon: '👑',
+            era: 'Bước ngoặt phân hóa',
+            state: 'Tư hữu hình thành',
+            desc: 'Những người đứng đầu bộ lạc, thị tộc tận dụng chức quyền để chiếm đoạt sản phẩm dư thừa → Chế độ tư hữu hình thành → Xã hội nứt gãy thành kẻ có của và người không có của.',
+            arrow: true,
+          },
+        ],
+        color: 'crimson',
+      },
+      {
+        id: 'struggle',
+        icon: '⚡',
+        title: 'Đấu Tranh Giai Cấp',
+        subtitle: 'Động lực phát triển lịch sử',
+        frontSummary: 'Mâu thuẫn giữa Lực lượng sản xuất (ngày càng phát triển, mang tính xã hội hóa cao) và Quan hệ sản xuất (lỗi thời, mang tính tư hữu) là nguồn gốc của đấu tranh giai cấp.',
+        forms: [
+          { icon: '💰', title: 'Đấu tranh kinh tế', desc: 'Đòi tăng lương, giảm giờ làm, cải thiện điều kiện lao động. Đình công, bãi công.' },
+          { icon: '⚖️', title: 'Đấu tranh chính trị', desc: 'Đòi quyền bầu cử, quyền lập hội, chống chế độ áp bức. Hướng tới giành chính quyền.' },
+          { icon: '🧠', title: 'Đấu tranh tư tưởng', desc: 'Xây dựng hệ tư tưởng cách mạng, phê phán ý thức hệ của giai cấp thống trị.' },
+        ],
+        keyTakeaway: 'Đấu tranh giai cấp là động lực trực tiếp phát triển của xã hội có giai cấp, dẫn đến các cuộc cách mạng xã hội và sự ra đời của phương thức sản xuất mới.',
+        color: 'purple',
+      },
+    ]
+  },
+  '3.2.2': {
+    id: '3.2.2',
+    title: 'Dân Tộc',
+    subtitle: '3.2.2',
+    description: 'Khái niệm dân tộc, sự hình thành, và vai trò của dân tộc trong lịch sử',
+    navLabels: [
+      { id: 'ethnicity', label: 'Lịch Sử Dân Tộc' },
+      { id: 'reality', label: 'Thực Tiễn Dân Tộc' },
+      { id: 'quiz', label: 'Kiểm Định Dân Tộc' },
+    ],
+    cards: [
+      {
+        id: 'nationality-def',
+        icon: '🏛️',
+        title: 'Dân Tộc Là Gì?',
+        subtitle: 'Định nghĩa từ Triết học Mác-Lênin',
+        frontSummary: 'Dân tộc là một cộng đồng xã hội ổn định được hình thành bởi sự giống nhau về ngôn ngữ, lãnh thổ, nền kinh tế, và đặc tính tâm lý văn hóa.',
+        characteristics: [
+          {
+            number: '01',
+            title: 'Ngôn ngữ chung',
+            desc: 'Ngôn ngữ là phương tiện giao tiếp cơ bản giữa các thành viên dân tộc, phản ánh văn hóa độc đáo của dân tộc đó.',
+          },
+          {
+            number: '02',
+            title: 'Lãnh thổ công cộng',
+            desc: 'Dân tộc gắn liền với một lãnh thổ địa lý cụ thể, nơi hình thành nên tập quán, phong tục của dân tộc.',
+          },
+          {
+            number: '03',
+            title: 'Nền kinh tế thống nhất',
+            desc: 'Liên kết thị trường, chuỗi sản xuất, thương mại chung tạo nên sự liên kết kinh tế và lợi ích chung.',
+          },
+          {
+            number: '04',
+            title: 'Tâm lý văn hóa giống nhau',
+            desc: 'Cùng tính cách, tập quán, truyền thống, tín ngưỡng — tạo nên sự gắn kết tinh thần độc đáo.',
+          },
+        ],
+        keyTakeaway: 'Dân tộc là sản phẩm lịch sử, không phải danh mục sinh học. Dân tộc ra đời cùng với chủ nghĩa tư bản và phát triển qua các giai đoạn lịch sử khác nhau.',
+        color: 'blue',
+      },
+      {
+        id: 'nationality-history',
+        icon: '📚',
+        title: 'Sự Hình Thành Dân Tộc',
+        subtitle: 'Quá trình phát triển lịch sử',
+        frontSummary: 'Dân tộc không phải từ lâu đời như chủng tộc, mà là hiện tượng lịch sử khác biệt xuất hiện từ giai đoạn Phong kiến muộn và phát triển hoàn toàn trong giai đoạn tư bản chủ nghĩa.',
+        stages: [
+          {
+            icon: '🏰',
+            era: 'Phong kiến muộn',
+            state: 'Thành lập Quốc gia Dân tộc đầu tiên',
+            desc: 'Những Quốc gia dân tộc đầu tiên ra đời ở Tây Âu (Pháp, Tây Ban Nha, Anh) thông qua sự thống nhất các lãnh chúa phong kiến và hình thành các vương quốc trung ương mạnh.',
+            arrow: false,
+          },
+          {
+            icon: '🏭',
+            era: 'Phát triển tư bản chủ nghĩa',
+            state: 'Dân tộc trở thành Quốc gia Tư sản',
+            desc: 'Với sự phát triển của chủ nghĩa tư bản và nhu cầu thị trường thống nhất, dân tộc phát triển đầy đủ các yếu tố, giai cấp tư sản nắm chính quyền thành lập các Quốc gia dân tộc buổi đầu.',
+            arrow: true,
+          },
+          {
+            icon: '✊',
+            era: 'Đấu tranh Giải phóng Dân tộc',
+            state: 'Dân tộc bị áp bức đòi độc lập',
+            desc: 'Ở các nước bị thực dân chiếm đóng, các dân tộc bị áp bức đấu tranh để giành độc lập dân tộc, thành lập quốc gia dân tộc của riêng mình.',
+            arrow: true,
+          },
+        ],
+        color: 'emerald',
+      },
+      {
+        id: 'nationality-roles',
+        icon: '🌍',
+        title: 'Vai Trò và Vai Vế của Dân Tộc',
+        subtitle: 'Tính tiến bộ và hạn chế',
+        frontSummary: 'Dân tộc có vai trò lịch sử tiến bộ trong việc hình thành Quốc gia và đấu tranh giải phóng, nhưng nó cũng có những hạn chế vốn có của nó dưới tư bản chủ nghĩa.',
+        forms: [
+          { icon: '✨', title: 'Vai trò tiến bộ', desc: 'Thống nhất dân tộc, tạo ra sức mạnh chính trị để đấu tranh chống thực dân, xây dựng nền kinh tế độc lập.' },
+          { icon: '🚧', title: 'Hạn chế: Hẹp hòi dân tộc', desc: 'Chủ nghĩa dân tộc có thể dẫn đến tư duy hẹp hòi, xua đuổi người nước ngoài, hoặc hành động quân phát xít.' },
+          { icon: '⚖️', title: 'Giới hạn dưới tư bản', desc: 'Dân tộc không thể giải quyết mâu thuẫn giai cấp, tự nó không đi tới xã hội cộng sản được.' },
+        ],
+        keyTakeaway: 'Dân tộc là phạm trù lịch sử. Khi cách mạng xã hội chủ nghĩa thành công, dân tộc sẽ từng bước tan biến vào sự thống nhất của loài người dưới chủ nghĩa cộng sản.',
+        color: 'indigo',
+      },
+    ]
+  },
+  '3.2.3': {
+    id: '3.2.3',
+    title: 'Mối Quan Hệ: Giai Cấp - Dân Tộc - Nhân Loại',
+    subtitle: '3.2.3',
+    description: 'Mối quan hệ biện chứng giữa giai cấp, dân tộc và sự tiến hóa của loài người',
+    navLabels: [
+      { id: 'ethnicity', label: 'Quá Trình Lịch Sử' },
+      { id: 'reality', label: 'Thực Tiễn Toàn Cầu' },
+      { id: 'quiz', label: 'Kiểm Định Tương Lai' },
+    ],
+    cards: [
+      {
+        id: 'relationship',
+        icon: '🔗',
+        title: 'Mối Quan Hệ Giai Cấp - Dân Tộc',
+        subtitle: 'Tính chặt chẽ và Mâu thuẫn',
+        frontSummary: 'Giai cấp và dân tộc không phải hai thứ độc lập mà có mối quan hệ biện chứng: trong cùng một dân tộc có các giai cấp khác nhau, nhưng giai cấp vô sản có lợi ích chung vượt quá ranh giới dân tộc.',
+        relationship: [
+          {
+            number: '01',
+            title: 'Giai cấp chia cắt dân tộc',
+            desc: 'Mỗi dân tộc chứa đựng trong nó các giai cấp xung đột: tư sản và vô sản. Lợi ích giai cấp có thể mạnh hơn lòng yêu nước dân tộc.',
+          },
+          {
+            number: '02',
+            title: 'Dân tộc liên kết lớp người cùng lợi ích kinh tế',
+            desc: 'Tuy nhiên, dân tộc lại tạo nên sự liên kết xã hội mạnh, đặc biệt giữa giai cấp vô sản với toàn dân tộc khi chống lại áp bức ngoài (thực dân).',
+          },
+          {
+            number: '03',
+            title: 'Vô sản quốc tế vượt quá ranh giới dân tộc',
+            desc: 'Karl Marx khẳng định: "Vô sản không có tổ quốc." Lợi ích của giai cấp vô sản toàn thế giới là chung, nằm trên nền tảng xã hội chủ nghĩa.',
+          },
+        ],
+        keyTakeaway: 'Giai cấp là tính từ cơ sở vật chất (tư liệu sản xuất), dân tộc là tính từ lịch sử văn hóa. Cả hai đều là phạm trù lịch sử, cuối cùng sẽ biến mất khi loài người bước vào xã hội cộng sản.',
+        color: 'violet',
+      },
+      {
+        id: 'historical-process',
+        icon: '⏳',
+        title: 'Quá Trình Lịch Sử và Tiến Hóa Loài Người',
+        subtitle: 'Từ bộ lạc đến xã hội cộng sản',
+        frontSummary: 'Lịch sử nhân loại là quá trình liên tiếp: từ cộng đồng bộ lạc → các quốc gia dân tộc → thế giới thống nhất. Trong quá trình đó, giai cấp và dân tộc đều là hiện tượng gestation và hủy diệt bước bước.',
+        timeline: [
+          {
+            icon: '🏕️',
+            era: 'Công xã nguyên thủy',
+            desc: 'Bộ lạc/bộ tộc nhỏ, không có giai cấp, lợi ích chung toàn bộ cộng đồng. Đây là vàng thời đảo ngược: con người bình đẳng nhưng lực lượng sản xuất cực thấp.',
+            transition: 'Năng suất phát triển → Tư hữu hình thành → Giai cấp nảy sinh',
+          },
+          {
+            icon: '👑',
+            era: 'Các chế độ giai cấp',
+            desc: 'Nô lệ, phong kiến, tư bản: mỗi giai đoạn đều có giai cấp thống trị và bị thống trị, cũng như các dân tộc thành lập/mở rộng quyền lực quốc gia.',
+            transition: 'Đấu tranh giai cấp dẫn đến cách mạng xã hội',
+          },
+          {
+            icon: '✊',
+            era: 'Cách mạng vô sản & Xã hội chủ nghĩa',
+            desc: 'Giai cấp vô sản lên chính quyền, xóa bỏ tư hữu tư liệu sản xuất, hình thành loạt quốc gia xã hội chủ nghĩa. Đấu tranh dân tộc hòa lẫn với đấu tranh giai cấp.',
+            transition: 'Sự hội nhập quốc tế từ từ',
+          },
+          {
+            icon: '🌍',
+            era: 'Xã hội cộng sản (tương lai)',
+            desc: 'Không còn giai cấp (vô sản hòa lẫn với xã hội), không còn quốc gia (thế giới thống nhất). Loài người sống trong xã hội không giai cấp, không quốc gia: từ "tự do mỗi người là điều kiện tự do cho mọi người".',
+            transition: false,
+          },
+        ],
+        color: 'rose',
+      },
+      {
+        id: 'practical-implications',
+        icon: '💭',
+        title: 'Ý Nghĩa Thực Tiễn Đối với Việt Nam',
+        subtitle: 'Lý thuyết áp dụng vào thực tế',
+        frontSummary: 'Việt Nam là quốc gia thực hiện cách mạng xã hội chủ nghĩa, nhưng mâu thuẫn giai cấp vẫn tồn tại. Hiểu rõ mối quan hệ giữa giai cấp và dân tộc giúp định hướng chính sách.',
+        implications: [
+          { icon: '🤝', title: 'Liên kết giai cấp & dân tộc', desc: 'Công nhân-nông dân-trí thức phải thống nhất dưới lãnh đạo Đảng Cộng sản để xây dựng xã hội chủ nghĩa, không để bị chia rẽ bởi tư duy hẹp hòi dân tộc.' },
+          { icon: '🌐', title: 'Chủ nghĩa quốc tế vô sản', desc: 'Vô sản Việt Nam cần liên đoàn với vô sản thế giới chống chủ nghĩa đế quốc, chứ không bao giờ là "đồng chí" của tư sản nước mình.' },
+          { icon: '⚔️', title: 'Đấu tranh hai front', desc: 'Đấu tranh chống áp bức dân tộc (chống đế quốc) + đấu tranh chống áp bức giai cấp (chống tư sản) = đường lối chính trị toàn diện.' },
+          { icon: '🛠️', title: 'Xây dựng xã hội mới', desc: 'Khi xã hội chủ nghĩa thành công, tư hữu xóa bỏ, kỳ thị giai cấp biến mất, dân tộc dần hòa tan vào cộng đồng loài người thống nhất.' },
+        ],
+        color: 'orange',
+      },
+    ]
+  }
+}
+
 export const aiAppendix = {
   statement: 'Nhóm sinh viên thực hiện cam kết: Trí tuệ nhân tạo (AI) chỉ được sử dụng đúng vai trò làm trợ lý kỹ thuật hỗ trợ tối ưu hóa giao diện (UI Boilerplate), phát hiện lỗi cú pháp lập trình và gợi ý phân tách cấu trúc hiển thị dữ liệu. Toàn bộ nền tảng tư tưởng luận điểm, logic phân tích học thuật, lựa chọn case study thực tiễn và biên soạn nội dung giáo trình đều do các thành viên trong nhóm trực tiếp nghiên cứu, đối chiếu và chịu trách nhiệm nội dung trước Hội đồng Giảng viên.',
   usageLog: [
